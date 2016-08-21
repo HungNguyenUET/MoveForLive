@@ -9,6 +9,11 @@ import java.awt.event.KeyListener;
  */
 public class PlayerControllerManager extends ControllerManager implements KeyListener{
 
+    public PlayerControllerManager() {
+        this.add(PlayerController.instance);
+        this.add(PlayerController2.instance);
+    }
+
     public KeyListener getKeyListener(){
         return this;
     }

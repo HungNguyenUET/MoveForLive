@@ -27,7 +27,7 @@ public class PlayerController extends SingleController implements KeyListener, C
         this.gameInput = new GameInput();
         this.starManager = new ControllerManager();
         CollisionPool.instance.add(this);
-        PlayerControllerManager.instance.add(this);
+        //PlayerControllerManager.instance.add(this);
         //this.gameVector.dx = SPEED;
     }
 

@@ -22,7 +22,7 @@ public class PlayerController2 extends SingleController  implements Colliable, K
         this.gameInput = new GameInput();
 //        this.starManager = new ControllerManager();
         CollisionPool.instance.add(this);
-        PlayerControllerManager.instance.add(this);
+        //PlayerControllerManager.instance.add(this);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class PlayerController2 extends SingleController  implements Colliable, K
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
     }
     public final static PlayerController2 instance = new PlayerController2(
-            new Player(300, 500),
+            new Player(800, 500),
             new ImageDrawer("resources/demon.png")
     );
 
