@@ -22,5 +22,6 @@ public class EnemyController extends SingleController implements Colliable{
     @Override
     public void onCollide(Colliable colliable) {
 
+
     }
 }

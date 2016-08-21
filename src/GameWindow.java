@@ -2,7 +2,11 @@ import Controller.CollisionPool;
 import Controller.EnemyManager;
 import Controller.PlayerController;
 import Controller.WeaponManager;
+import Model.GameSetting;
 import Utils.Utils;
+import gamescence.GameScence;
+import gamescence.GameScenceListener;
+import gamescence.MenuGameScence;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;
@@ -12,19 +16,23 @@ import java.awt.image.BufferedImage;
 /**
  * Created by giaqu on 8/14/2016.
  */
-public class GameWindow extends Frame implements Runnable{
+public class GameWindow extends Frame implements Runnable, GameScenceListener{
 
-    Image backGround;
     BufferedImage bufferedImage;
     Graphics bufferedImageGraphics;
     Thread thread;
+    GameScence currentGameScence;
+    GameSetting gameSetting;
 
     public GameWindow(){
-        System.out.println("GameWindow Constructor");
-        this.setVisible(true);
-        this.setLocation(0, 0);
-        this.setSize(600, 800);
-
+        configUI();
+        changeGameScence(new MenuGameScence());
+        this.bufferedImage = new BufferedImage(gameSetting.getScreenWidth(),gameSetting.getScreenHeight(), BufferedImage.TYPE_INT_ARGB);
+        this.bufferedImageGraphics = bufferedImage.getGraphics();
+        thread = new Thread(this);
+        thread.start();
+    }
+    private void configUI() {
         this.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -62,23 +70,15 @@ public class GameWindow extends Frame implements Runnable{
 
             }
         });
-
-        backGround = Utils.loadImage("resources/background.png");
-        this.addKeyListener(PlayerController.playerController);
-        this.bufferedImage = new BufferedImage(600, 800, BufferedImage.TYPE_INT_ARGB);
-        this.bufferedImageGraphics = bufferedImage.getGraphics();
-        thread = new Thread(this);
-        thread.start();
+        gameSetting = GameSetting.getInstance();
+        this.setVisible(true);
+        this.setLocation(0, 0);
+        this.setSize(gameSetting.getScreenWidth(), gameSetting.getScreenHeight());
     }
 
     @Override
     public void update(Graphics g) {
-        bufferedImageGraphics.drawImage(backGround, 0, 0, null);
-        PlayerController.playerController.draw(bufferedImageGraphics);
-        WeaponManager.instance.draw(bufferedImageGraphics);
-        EnemyManager.instance.draw(bufferedImageGraphics);
-        bufferedImageGraphics.drawString("POINT: " + PlayerController.playerController.getGameObject().getPoint(), 500, 50);
-        bufferedImageGraphics.drawString("HP: " + PlayerController.playerController.getGameObject().getHp(), 50, 50);
+        this.currentGameScence.draw(bufferedImageGraphics);
         g.drawImage(bufferedImage, 0, 0, null);
     }
 
@@ -86,15 +86,19 @@ public class GameWindow extends Frame implements Runnable{
     public void run() {
         while (true){
             try {
-                PlayerController.playerController.run();
-                WeaponManager.instance.run();
-                EnemyManager.instance.run();
-                CollisionPool.instance.run();
-                Thread.sleep(17);
+                this.currentGameScence.run();
+                Thread.sleep(gameSetting.getThreadDelay());
                 repaint();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void changeGameScence(GameScence gameScence) {
+        currentGameScence = gameScence;
+        currentGameScence.setGameSceneListener(this);
+        this.addKeyListener(gameScence.getKeyListener());
     }
 }

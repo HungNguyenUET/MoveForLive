@@ -24,15 +24,15 @@ public class EnemyManager extends ControllerManager{
         count1++;
         count2++;
         int enX1 = 0;
-        int enX2 = 600;
-        int enY = 700 ;
+        int enX2 = 500;
+        int enY = 550 ;
         if(count1 == B){
             count1 = 0;
             for (int i = 0; i < 1; i++) {
 
                 EnemyController enemyController = new EnemyController(
                         new Enemy(enX1, enY),
-                        new ImageDrawer("resources/dauan.png")
+                        new ImageDrawer("resources/star.png")
                 );
                 this.add(enemyController);
             }
@@ -43,7 +43,7 @@ public class EnemyManager extends ControllerManager{
 
                 EnemyController enemyController = new EnemyController(
                         new Enemy(enX2, enY),
-                        new ImageDrawer("resources/dauan.png")
+                        new ImageDrawer("resources/star.png")
                 );
                 this.add(enemyController);
 

@@ -55,6 +55,11 @@ public class GameObject {
         this.hp = hp;
     }
 
+    public int getMiddleX() {
+        return this.x + this.width / 2;
+    }
+
+
     public GameObject(int x, int y, int width, int height, int point, int hp) {
         this.x = x;
         this.y = y;

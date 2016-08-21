@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Player;
+import Model.Star;
 import View.GameDrawer;
 import View.ImageDrawer;
 
@@ -14,13 +15,19 @@ import java.awt.event.KeyListener;
  */
 public class PlayerController extends SingleController implements KeyListener, Colliable {
 
-    private static final int SPEED = 3;
-    private GameInput gameInput;
+    private static final int SPEED = 10;
+    private static final int ATK_SPEED = 3;
+    private int count;
 
-    public PlayerController(Player player, GameDrawer gameDrawer) {
+    private GameInput gameInput;
+    private ControllerManager starManager;
+
+    private PlayerController(Player player, GameDrawer gameDrawer) {
         super(player, gameDrawer);
         this.gameInput = new GameInput();
+        this.starManager = new ControllerManager();
         CollisionPool.instance.add(this);
+        PlayerControllerManager.instance.add(this);
         //this.gameVector.dx = SPEED;
     }
 
@@ -31,6 +38,7 @@ public class PlayerController extends SingleController implements KeyListener, C
 
     @Override
     public void run() {
+        count++;
         this.gameVector.dx = 0;
         this.gameVector.dy = 0;
 
@@ -39,32 +47,31 @@ public class PlayerController extends SingleController implements KeyListener, C
         } else if (!gameInput.keyLeft && gameInput.keyRight) {
             this.gameVector.dx = SPEED;
         }
-        if (gameInput.keySpace){
-            
-        }
+
         super.run();
-        this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
+//        starManager.run();
+//        this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
     }
 
-    public final static PlayerController playerController = new PlayerController(
-            new Player(300, 700),
-            new ImageDrawer("resources/Ahuy.png")
+    public final static PlayerController instance = new PlayerController(
+            new Player(300, 500),
+            new ImageDrawer("resources/ninja.png")
     );
 
     @Override
     public void onCollide(Colliable colliable) {
         if (colliable instanceof WeaponController) {
-            if(PlayerController.playerController.gameObject.getHp() == 0){
+            if(PlayerController.instance.gameObject.getHp() == 0){
                 this.getGameObject().destroy();
-                JOptionPane.showMessageDialog(null, "Điểm: " + PlayerController.playerController.gameObject.getPoint(), "Game Over", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Điểm: " + PlayerController.instance.gameObject.getPoint(), "Game Over", JOptionPane.WARNING_MESSAGE);
                 System.exit(0);
             }
-            PlayerController.playerController.getGameObject().setHp(PlayerController.playerController.gameObject.getHp() - 1);
+            PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() - 1);
             colliable.getGameObject().destroy();
         }
         if (colliable instanceof EnemyController) {
             colliable.getGameObject().destroy();
-            PlayerController.playerController.getGameObject().setHp(PlayerController.playerController.gameObject.getHp() - 1);
+            PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() - 1);
         }
 //        if (colliable instanceof TrapController) {
 //            // PlayerController.playcontroller.getGameObject().setPoint(PlayerController.playcontroller.gameObject.getPoint() - 100);
@@ -92,6 +99,7 @@ public class PlayerController extends SingleController implements KeyListener, C
             case KeyEvent.VK_SPACE:
                 this.gameInput.keySpace = true;
                 break;
+
         }
     }
 
@@ -109,5 +117,23 @@ public class PlayerController extends SingleController implements KeyListener, C
                 break;
         }
 
+    }
+
+    public void moveLeft(){
+        this.gameInput.keyLeft = true;
+        this.gameVector.dy = 0;
+    }
+
+    public void moveRight(){
+        this.gameInput.keyRight = true;
+        this.gameVector.dy = 0;
+    }
+
+    public void stopLeft(){
+        this.gameInput.keyLeft = false;
+    }
+
+    public void stopRight(){
+        this.gameInput.keyRight = false;
     }
 }

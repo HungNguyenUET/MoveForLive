@@ -13,6 +13,7 @@ public class WeaponController extends SingleController implements Colliable {
     public WeaponController(Weapon gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
         this.gameVector.dy += SPEED;
+
         CollisionPool.instance.add(this);
     }
 
@@ -21,7 +22,7 @@ public class WeaponController extends SingleController implements Colliable {
         super.run();
         if (gameObject.getY() > 800) {
             gameObject.destroy();
-            PlayerController.playerController.getGameObject().setPoint(PlayerController.playerController.gameObject.getPoint() + 1);
+            PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint() + 1);
         }
 
     }

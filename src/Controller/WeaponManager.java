@@ -29,7 +29,7 @@ public class WeaponManager extends ControllerManager {
             for(int i = 0; i < 1; i++){
                 WeaponController weaponController = new WeaponController(
                     new Weapon(enX, enY),
-                        new ImageDrawer("resources/poop.png")
+                        new ImageDrawer("resources/sword.png")
                 );
                 this.add(weaponController);
             }

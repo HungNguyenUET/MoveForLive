@@ -7,4 +7,6 @@ public class GameInput {
     public boolean keyLeft;
     public boolean keyRight;
     public boolean keySpace;
+    public boolean keyA;
+    public boolean keyD;
 }

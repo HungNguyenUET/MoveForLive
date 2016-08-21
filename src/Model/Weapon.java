@@ -5,8 +5,8 @@ package Model;
  */
 public class Weapon extends GameObject {
 
-    public static final int DEFAULT_WIDTH = 20;
-    public static final int DEFAULT_HEIGHT = 24;
+    public static final int DEFAULT_WIDTH = 40;
+    public static final int DEFAULT_HEIGHT = 48;
 
     public Weapon(int x, int y, int width, int height) {
         super(x, y, width, height, 0, 0);
