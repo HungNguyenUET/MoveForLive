@@ -1,11 +1,9 @@
 package Controller;
 
 import Model.Player;
-import Model.Star;
 import View.GameDrawer;
 import View.ImageDrawer;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -44,13 +42,17 @@ public class PlayerController extends SingleController implements KeyListener, C
 
         if (gameInput.keyLeft && !gameInput.keyRight) {
             this.gameVector.dx = -SPEED;
+            if(this.gameObject.getX() < 50){
+                this.gameObject.setX(50);
+            }
         } else if (!gameInput.keyLeft && gameInput.keyRight) {
             this.gameVector.dx = SPEED;
+            if(this.gameObject.getX() > 450){
+                this.gameObject.setX(450);
+            }
         }
 
         super.run();
-//        starManager.run();
-//        this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
     }
 
     public final static PlayerController instance = new PlayerController(
@@ -63,8 +65,8 @@ public class PlayerController extends SingleController implements KeyListener, C
         if (colliable instanceof WeaponController) {
             if(PlayerController.instance.gameObject.getHp() == 0){
                 this.getGameObject().destroy();
-                JOptionPane.showMessageDialog(null, "Điểm: " + PlayerController.instance.gameObject.getPoint(), "Game Over", JOptionPane.WARNING_MESSAGE);
-                System.exit(0);
+                //JOptionPane.showMessageDialog(null, "Điểm: " + PlayerController.instance.gameObject.getPoint(), "Game Over", JOptionPane.WARNING_MESSAGE);
+                //System.exit(0);
             }
             PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() - 1);
             colliable.getGameObject().destroy();
