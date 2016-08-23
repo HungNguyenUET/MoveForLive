@@ -22,7 +22,7 @@ public class WeaponManager extends ControllerManager {
     public void run() {
         super.run();
         count++;
-        int enX = rand.nextInt(1000);
+        int enX = rand.nextInt(500);
         int enY = rand.nextInt(100);
         if(count == A){
             count = 0;

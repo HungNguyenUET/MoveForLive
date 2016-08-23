@@ -1,6 +1,5 @@
 package Controller;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -27,25 +26,6 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
     @Override
     public void run() {
         super.run();
-        if(PlayerController.instance.getGameObject().getHp() <= 0 ||
-            PlayerController2.instance.getGameObject().getHp() <= 0){
-            if(PlayerController.instance.getGameObject().getPoint() > PlayerController2.instance.getGameObject().getPoint()){
-                JOptionPane.showMessageDialog(null, "Player 1: " + PlayerController.instance.gameObject.getPoint() +
-                                "\nPlayer 2: " + PlayerController2.instance.gameObject.getPoint() + "\nPLAYER 1 WIN",
-                        "Game Over", JOptionPane.WARNING_MESSAGE);
-            }
-            if(PlayerController.instance.getGameObject().getPoint() < PlayerController2.instance.getGameObject().getPoint()){
-                JOptionPane.showMessageDialog(null, "Player 1: " + PlayerController.instance.gameObject.getPoint() +
-                                "\nPlayer 2: " + PlayerController2.instance.gameObject.getPoint() + "\nPLAYER 2 WIN",
-                        "Game Over", JOptionPane.WARNING_MESSAGE);
-            }
-            if(PlayerController.instance.getGameObject().getPoint() == PlayerController2.instance.getGameObject().getPoint()){
-                JOptionPane.showMessageDialog(null, "Player 1: " + PlayerController.instance.gameObject.getPoint() +
-                                "\nPlayer 2: " + PlayerController2.instance.gameObject.getPoint() + "\nDRAW",
-                        "Game Over", JOptionPane.WARNING_MESSAGE);
-            }
-            System.exit(0);
-        }
     }
 
     @Override
