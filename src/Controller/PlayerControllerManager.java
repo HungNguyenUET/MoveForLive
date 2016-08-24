@@ -64,6 +64,9 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
 //                this.gameVector.dx = SPEED;
                 PlayerController.instance.moveRight();
                 break;
+            case KeyEvent.VK_UP:
+                PlayerController.instance.moveUp();
+                break;
             case KeyEvent.VK_SPACE:
                 PlayerController.instance.bulletrun();
                 break;
@@ -72,6 +75,9 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
                 break;
             case KeyEvent.VK_D:
                 PlayerController2.instance.moveRight();
+                break;
+            case KeyEvent.VK_W:
+                PlayerController2.instance.moveUp();
                 break;
 
         }

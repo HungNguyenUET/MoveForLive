@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 public class PlayerController extends SingleController implements KeyListener, Colliable {
 
     private static final int SPEED = 10;
+    private static final int JUMP_SPEED = 5;
     private static final int ATK_SPEED = 3;
     private int count;
 
@@ -45,8 +46,6 @@ public class PlayerController extends SingleController implements KeyListener, C
     public void run() {
         count++;
         this.gameVector.dx = 0;
-        this.gameVector.dy = 0;
-
         if (gameInput.keyLeft && !gameInput.keyRight) {
             this.gameVector.dx = -SPEED;
             if(this.gameObject.getX() < 50){
@@ -57,7 +56,9 @@ public class PlayerController extends SingleController implements KeyListener, C
             if(this.gameObject.getX() > 450){
                 this.gameObject.setX(450);
             }
-        } else if (gameInput.keySpace) {
+        }else if (gameInput.keyUp) {
+            this.gameVector.dy = -JUMP_SPEED;
+        }else if (gameInput.keySpace) {
 //            if (count > ATK_SPEED) {
 //                BulletController bulletController = new BulletController(
 //                        new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
@@ -65,9 +66,18 @@ public class PlayerController extends SingleController implements KeyListener, C
 //                bulletManager.add(bulletController);
 //                count = 0;
 //            }
-
         }
-
+        if (this.gameObject.getY() == 350 ) {
+            this.gameVector.dy = JUMP_SPEED;
+            gameInput.keyUp = false;
+        } else if(this.gameObject.getY() >= 500){
+            this.gameObject.setY(500);
+        }
+        else if (this.gameObject.getX() <= 0){
+            this.gameObject.setX(0);
+        }else if (this.gameObject.getX() >= 450){
+            this.gameObject.setX(450);
+        }
         super.run();
         bulletManager.run();
     }
@@ -111,9 +121,12 @@ public class PlayerController extends SingleController implements KeyListener, C
                 this.gameVector.dy = 0;
                 break;
             case KeyEvent.VK_RIGHT:
-//                this.gameVector.dx = SPEED;
                 this.gameInput.keyRight = true;
                 this.gameVector.dy = 0;
+                break;
+            case KeyEvent.VK_UP:
+                this.gameInput.keyUp = true;
+                this.gameVector.dx = 0;
                 break;
             case KeyEvent.VK_SPACE:
                 this.gameInput.keySpace = true;
@@ -130,6 +143,10 @@ public class PlayerController extends SingleController implements KeyListener, C
                 break;
             case KeyEvent.VK_RIGHT:
                 this.gameInput.keyRight = false;
+                break;
+            case KeyEvent.VK_UP:
+                this.gameInput.keyUp = false;
+                this.gameVector.dx = 0;
                 break;
             case KeyEvent.VK_SPACE:
                 this.gameInput.keySpace = false;
@@ -155,6 +172,11 @@ public class PlayerController extends SingleController implements KeyListener, C
     public void moveLeft(){
         this.gameInput.keyLeft = true;
         this.gameVector.dy = 0;
+    }
+
+    public void moveUp(){
+        this.gameInput.keyUp = true;
+        this.gameVector.dx = 0;
     }
 
     public void moveRight(){

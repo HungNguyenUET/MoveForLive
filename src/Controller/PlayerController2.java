@@ -14,6 +14,7 @@ import java.awt.event.KeyListener;
  */
 public class PlayerController2 extends SingleController  implements Colliable, KeyListener {
     private static final int SPEED = 10;
+    private static final int JUMP_SPEED = 5;
     private GameInput gameInput;
 
 
@@ -68,6 +69,10 @@ public class PlayerController2 extends SingleController  implements Colliable, K
                 this.gameInput.keyD = true;
                 this.gameVector.dy = 0;
                 break;
+            case KeyEvent.VK_W:
+                this.gameInput.keyUp = true;
+                this.gameVector.dx = 0;
+                break;
         }
 
     }
@@ -82,6 +87,9 @@ public class PlayerController2 extends SingleController  implements Colliable, K
             case KeyEvent.VK_D:
                 this.gameInput.keyD = false;
                 break;
+            case KeyEvent.VK_W:
+                this.gameInput.keyUp = false;
+                break;
         }
 
     }
@@ -89,8 +97,6 @@ public class PlayerController2 extends SingleController  implements Colliable, K
     public void run() {
 //        count++;
         this.gameVector.dx = 0;
-        this.gameVector.dy = 0;
-
         if (gameInput.keyA && !gameInput.keyD) {
             this.gameVector.dx = -SPEED;
             if(this.gameObject.getX() < 550){
@@ -101,17 +107,22 @@ public class PlayerController2 extends SingleController  implements Colliable, K
             if(this.gameObject.getX() > 900){
                 this.gameObject.setX(900);
             }
+        }else if (gameInput.keyW) {
+            this.gameVector.dy = -JUMP_SPEED;
         }
 
-        super.run();
         if (gameObject.getX() <= 500) {
             this.gameVector.dx = 500;
-        }
-
-        if ( gameObject.getX() >= 950) {
+        }else if (this.gameObject.getY() == 350 ) {
+            this.gameVector.dy = JUMP_SPEED;
+            gameInput.keyW = false;
+        }else if(this.gameObject.getY() >= 500){
+            this.gameObject.setY(500);
+        } else if ( gameObject.getX() >= 950) {
             this.gameVector.dx = 950;
         }
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
+        super.run();
     }
 
     public final static PlayerController2 instance = new PlayerController2(
@@ -127,6 +138,10 @@ public class PlayerController2 extends SingleController  implements Colliable, K
     public void moveRight(){
         this.gameInput.keyD = true;
         this.gameVector.dy = 0;
+    }
+    public void moveUp(){
+        this.gameInput.keyW = true;
+        this.gameVector.dx = 0;
     }
 
     public void stopLeft(){
