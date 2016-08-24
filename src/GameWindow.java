@@ -1,12 +1,7 @@
-import Controller.CollisionPool;
-import Controller.EnemyManager;
-import Controller.PlayerController;
-import Controller.WeaponManager;
 import Model.GameSetting;
-import Utils.Utils;
-import gamescence.GameScence;
-import gamescence.GameScenceListener;
-import gamescence.MenuGameScence;
+import GameScene.GameScene;
+import GameScene.GameSceneListener;
+import GameScene.MenuGameScene;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;
@@ -16,17 +11,17 @@ import java.awt.image.BufferedImage;
 /**
  * Created by giaqu on 8/14/2016.
  */
-public class GameWindow extends Frame implements Runnable, GameScenceListener{
+public class GameWindow extends Frame implements Runnable, GameSceneListener {
 
     BufferedImage bufferedImage;
     Graphics bufferedImageGraphics;
     Thread thread;
-    GameScence currentGameScence;
+    GameScene currentGameScene;
     GameSetting gameSetting;
 
     public GameWindow(){
         configUI();
-        changeGameScence(new MenuGameScence());
+        changeGameScene(new MenuGameScene());
         this.bufferedImage = new BufferedImage(gameSetting.getScreenWidth(),gameSetting.getScreenHeight(), BufferedImage.TYPE_INT_ARGB);
         this.bufferedImageGraphics = bufferedImage.getGraphics();
         thread = new Thread(this);
@@ -78,7 +73,7 @@ public class GameWindow extends Frame implements Runnable, GameScenceListener{
 
     @Override
     public void update(Graphics g) {
-        this.currentGameScence.draw(bufferedImageGraphics);
+        this.currentGameScene.draw(bufferedImageGraphics);
         g.drawImage(bufferedImage, 0, 0, null);
     }
 
@@ -86,7 +81,7 @@ public class GameWindow extends Frame implements Runnable, GameScenceListener{
     public void run() {
         while (true){
             try {
-                this.currentGameScence.run();
+                this.currentGameScene.run();
                 Thread.sleep(gameSetting.getThreadDelay());
                 repaint();
             } catch (InterruptedException e) {
@@ -96,9 +91,9 @@ public class GameWindow extends Frame implements Runnable, GameScenceListener{
     }
 
     @Override
-    public void changeGameScence(GameScence gameScence) {
-        currentGameScence = gameScence;
-        currentGameScence.setGameSceneListener(this);
+    public void changeGameScene(GameScene gameScence) {
+        currentGameScene = gameScence;
+        currentGameScene.setGameSceneListener(this);
         this.addKeyListener(gameScence.getKeyListener());
     }
 }

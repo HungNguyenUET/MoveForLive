@@ -2,7 +2,6 @@ package View;
 
 import Model.GameObject;
 import Model.GameSetting;
-import gamescence.GameScence;
 
 import java.awt.*;
 import java.util.Vector;

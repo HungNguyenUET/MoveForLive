@@ -2,9 +2,8 @@ package Controller.Gift;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.PlayerController;
+import Controller.Player.PlayerController;
 import Controller.SingleController;
-import Model.GameObject;
 import Model.Gift;
 import View.GameDrawer;
 

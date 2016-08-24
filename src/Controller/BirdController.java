@@ -10,7 +10,7 @@ import java.awt.*;
  * Created by Viet on 8/24/2016.
  */
 public class BirdController extends SingleController implements Colliable {
-    public static final int SPEED = 5;
+    private static final int SPEED = 5;
 
     public BirdController(GameObject gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);

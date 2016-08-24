@@ -1,7 +1,7 @@
 package Controller;
 
+import Controller.Enemy.EnemyController;
 import Model.GameObject;
-import Model.Star;
 import View.GameDrawer;
 
 /**

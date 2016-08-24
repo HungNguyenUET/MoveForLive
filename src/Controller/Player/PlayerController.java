@@ -1,6 +1,9 @@
-package Controller;
+package Controller.Player;
 
+import Controller.*;
+import Controller.Enemy.EnemyController;
 import Controller.Gift.GiftController;
+import Controller.Weapon.WeaponController;
 import Model.Bullet;
 import Model.Player;
 import View.GameDrawer;

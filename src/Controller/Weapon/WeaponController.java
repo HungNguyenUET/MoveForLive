@@ -1,5 +1,10 @@
-package Controller;
+package Controller.Weapon;
 
+import Controller.Colliable;
+import Controller.CollisionPool;
+import Controller.Player.PlayerController;
+import Controller.Player.PlayerController2;
+import Controller.SingleController;
 import Model.Weapon;
 import View.GameDrawer;
 

@@ -1,7 +1,12 @@
-package gamescence;
+package GameScene;
 
 import Controller.*;
+import Controller.Enemy.EnemyManager;
 import Controller.Gift.GiftManager;
+import Controller.Player.PlayerController;
+import Controller.Player.PlayerController2;
+import Controller.Player.PlayerControllerManager;
+import Controller.Weapon.WeaponManager;
 import Utils.Utils;
 
 import java.awt.*;
@@ -10,9 +15,9 @@ import java.awt.event.KeyListener;
 /**
  * Created by Viet on 8/18/2016.
  */
-public class PlayGameScene implements GameScence {
+public class PlayGameScene implements GameScene {
     private Image backgroud;
-    private GameScenceListener gameScenceListener;
+    private GameSceneListener gameScenceListener;
 
     public PlayGameScene() {
         backgroud =  Utils.loadImage("resources/2dbackground.jpg");
@@ -42,7 +47,7 @@ public class PlayGameScene implements GameScence {
     }
 
     @Override
-    public void setGameSceneListener(GameScenceListener gameSceneListener) {
+    public void setGameSceneListener(GameSceneListener gameSceneListener) {
         this.gameScenceListener = gameSceneListener;
     }
 

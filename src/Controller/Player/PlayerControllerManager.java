@@ -1,4 +1,6 @@
-package Controller;
+package Controller.Player;
+
+import Controller.ControllerManager;
 
 import javax.swing.*;
 import java.awt.*;

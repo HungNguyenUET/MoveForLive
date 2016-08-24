@@ -1,6 +1,9 @@
-package Controller;
+package Controller.Player;
 
+import Controller.*;
+import Controller.Enemy.EnemyController;
 import Controller.Gift.GiftController;
+import Controller.Weapon.WeaponController;
 import Model.Player;
 import View.GameDrawer;
 import View.ImageDrawer;
@@ -12,7 +15,7 @@ import java.awt.event.KeyListener;
 /**
  * Created by Viet on 8/19/2016.
  */
-public class PlayerController2 extends SingleController  implements Colliable, KeyListener {
+public class PlayerController2 extends SingleController implements Colliable, KeyListener {
     private static final int SPEED = 10;
     private static final int JUMP_SPEED = 5;
     private GameInput gameInput;

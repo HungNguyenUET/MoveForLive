@@ -1,4 +1,4 @@
-package Controller;//package Controller;
+package Controller.Enemy;//package Controller;
 //
 //import Model.Enemy;
 //import View.GameDrawer;

@@ -1,10 +1,7 @@
 package Controller.Gift;
 
 import Controller.ControllerManager;
-import Controller.WeaponController;
-import Controller.WeaponManager;
 import Model.Gift;
-import Model.Weapon;
 import View.ImageDrawer;
 
 import java.util.Random;

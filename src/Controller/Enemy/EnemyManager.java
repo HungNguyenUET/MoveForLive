@@ -1,12 +1,13 @@
-package Controller;
+package Controller.Enemy;
 
+import Controller.ControllerManager;
 import Model.Enemy;
 import View.ImageDrawer;
 
 /**
  * Created by giaqu on 8/14/2016.
  */
-public class EnemyManager extends ControllerManager{
+public class EnemyManager extends ControllerManager {
 
     private static int count1 = 0;
     private static int count2 = 0;

@@ -1,12 +1,15 @@
-package Controller;
+package Controller.Enemy;
 
+import Controller.Colliable;
+import Controller.CollisionPool;
+import Controller.SingleController;
 import Model.Enemy;
 import View.GameDrawer;
 
 /**
  * Created by giaqu on 8/14/2016.
  */
-public class EnemyController extends SingleController implements Colliable{
+public class EnemyController extends SingleController implements Colliable {
 
     public EnemyController(Enemy gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);

@@ -11,9 +11,9 @@ import java.awt.*;
  */
 public class SingleController implements BaseController{
 
-    protected GameObject gameObject;
+    public GameObject gameObject;
     protected GameDrawer gameDrawer;
-    protected GameVector gameVector;
+    public GameVector gameVector;
 
     public SingleController(GameObject gameObject, GameDrawer gameDrawer) {
         this.gameObject = gameObject;
