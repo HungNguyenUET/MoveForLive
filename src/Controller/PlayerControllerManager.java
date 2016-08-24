@@ -22,6 +22,7 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
     @Override
     public void draw(Graphics g) {
         super.draw(g);
+
     }
 
     @Override
@@ -64,6 +65,7 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
                 PlayerController.instance.moveRight();
                 break;
             case KeyEvent.VK_SPACE:
+                PlayerController.instance.bulletrun();
                 break;
             case KeyEvent.VK_A:
                 PlayerController2.instance.moveLeft();
@@ -86,6 +88,7 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
                 PlayerController.instance.stopRight();
                 break;
             case KeyEvent.VK_SPACE:
+                PlayerController.instance.stopbullet();
                 break;
             case KeyEvent.VK_A:
                 PlayerController2.instance.stopLeft();

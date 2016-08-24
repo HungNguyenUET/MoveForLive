@@ -1,6 +1,7 @@
 package gamescence;
 
 import Controller.*;
+import Controller.Gift.GiftManager;
 import Utils.Utils;
 
 import java.awt.*;
@@ -26,6 +27,8 @@ public class PlayGameScene implements GameScence {
         PlayerControllerManager.instance.draw(g);
         WeaponManager.instance.draw(g);
         EnemyManager.instance.draw(g);
+        BirdManager.instance.draw(g);
+        GiftManager.instance.draw(g);
         g.drawString("POINT: " + PlayerController.instance.getGameObject().getPoint(), 400, 50);
         g.drawString("HP: " + PlayerController.instance.getGameObject().getHp(), 50, 50);
         g.drawString("POINT: " + PlayerController2.instance.getGameObject().getPoint(), 900, 50);
@@ -52,6 +55,7 @@ public class PlayGameScene implements GameScence {
         WeaponManager.instance.run();
         EnemyManager.instance.run();
         CollisionPool.instance.run();
-
+        BirdManager.instance.run();
+        GiftManager.instance.run();
     }
 }

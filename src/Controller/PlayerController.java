@@ -1,5 +1,7 @@
 package Controller;
 
+import Controller.Gift.GiftController;
+import Model.Bullet;
 import Model.Player;
 import View.GameDrawer;
 import View.ImageDrawer;
@@ -19,11 +21,14 @@ public class PlayerController extends SingleController implements KeyListener, C
 
     private GameInput gameInput;
     private ControllerManager starManager;
+    private ControllerManager bulletManager;
+
 
     private PlayerController(Player player, GameDrawer gameDrawer) {
         super(player, gameDrawer);
         this.gameInput = new GameInput();
         this.starManager = new ControllerManager();
+        this.bulletManager = new ControllerManager();
         CollisionPool.instance.add(this);
         //PlayerControllerManager.instance.add(this);
         //this.gameVector.dx = SPEED;
@@ -32,6 +37,8 @@ public class PlayerController extends SingleController implements KeyListener, C
     @Override
     public void draw(Graphics g) {
         super.draw(g);
+        bulletManager.draw(g);
+
     }
 
     @Override
@@ -50,14 +57,24 @@ public class PlayerController extends SingleController implements KeyListener, C
             if(this.gameObject.getX() > 450){
                 this.gameObject.setX(450);
             }
+        } else if (gameInput.keySpace) {
+//            if (count > ATK_SPEED) {
+//                BulletController bulletController = new BulletController(
+//                        new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
+//                        new ImageDrawer("resources/butter.png"));
+//                bulletManager.add(bulletController);
+//                count = 0;
+//            }
+
         }
 
         super.run();
+        bulletManager.run();
     }
 
     public final static PlayerController instance = new PlayerController(
             new Player(300, 500),
-            new ImageDrawer("resources/ninja.png")
+             new ImageDrawer("resources/ninja.png")
     );
 
     @Override
@@ -75,10 +92,10 @@ public class PlayerController extends SingleController implements KeyListener, C
             colliable.getGameObject().destroy();
             PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() - 1);
         }
-//        if (colliable instanceof TrapController) {
-//            // PlayerController.playcontroller.getGameObject().setPoint(PlayerController.playcontroller.gameObject.getPoint() - 100);
-//            colliable.getGameObject().destroy();
-//        }
+        if (colliable instanceof GiftController) {
+            PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() + 5);
+            colliable.getGameObject().destroy();
+        }
     }
 
     @Override
@@ -120,6 +137,20 @@ public class PlayerController extends SingleController implements KeyListener, C
         }
 
     }
+    public void bulletrun() {
+        count ++;
+        if (count > ATK_SPEED) {
+            BulletController bulletController = new BulletController(
+                    new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
+                    new ImageDrawer("resources/butter.png"));
+            bulletManager.add(bulletController);
+            count = 0;
+            System.out.println("ban");
+        }
+    }
+    public void stopbullet() {
+        this.gameInput.keySpace = false;
+    }
 
     public void moveLeft(){
         this.gameInput.keyLeft = true;
@@ -138,4 +169,5 @@ public class PlayerController extends SingleController implements KeyListener, C
     public void stopRight(){
         this.gameInput.keyRight = false;
     }
+
 }

@@ -14,7 +14,7 @@ public class MenuGameScence implements GameScence, KeyListener {
     private Image background;
 
     public MenuGameScence() {
-        background = Utils.loadImage("resources/background.jpg");
+        background = Utils.loadImage("resources/game2.png ");
     }
 
     @Override

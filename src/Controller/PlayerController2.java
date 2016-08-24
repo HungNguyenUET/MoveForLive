@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.Gift.GiftController;
 import Model.Player;
 import View.GameDrawer;
 import View.ImageDrawer;
@@ -43,6 +44,10 @@ public class PlayerController2 extends SingleController  implements Colliable, K
         if (colliable instanceof EnemyController) {
             colliable.getGameObject().destroy();
             PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() - 1);
+        }
+        if (colliable instanceof GiftController) {
+            PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() + 5);
+            colliable.getGameObject().destroy();
         }
     }
 
