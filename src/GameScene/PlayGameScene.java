@@ -1,6 +1,7 @@
 package GameScene;
 
 import Controller.*;
+import Controller.Enemy.BirdManager;
 import Controller.Enemy.EnemyManager;
 import Controller.Gift.GiftManager;
 import Controller.Player.PlayerController;
@@ -21,6 +22,10 @@ public class PlayGameScene implements GameScene {
 
     public PlayGameScene() {
         backgroud =  Utils.loadImage("resources/2dbackground.jpg");
+        reset();
+    }
+
+    private void reset(){
 
     }
 

@@ -35,7 +35,7 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
         PlayerController.instance.setGameInput(gameInput);
         PlayerController2.instance.setGameInput(gameInput);
         super.run();
-        if(PlayerController.instance.getGameObject().getHp() <= 0 ||
+        if(PlayerController.instance.getGameObject().getHp() <= 0 &&
             PlayerController2.instance.getGameObject().getHp() <= 0){
             if(PlayerController.instance.getGameObject().getPoint() > PlayerController2.instance.getGameObject().getPoint()){
                 JOptionPane.showMessageDialog(null, "Player 1: " + PlayerController.instance.gameObject.getPoint() +

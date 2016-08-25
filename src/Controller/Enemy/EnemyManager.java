@@ -11,8 +11,12 @@ public class EnemyManager extends ControllerManager {
 
     private static int count1 = 0;
     private static int count2 = 0;
+    private static int count3 = 0;
+    private static int count4 = 0;
     private static final int B = 300;
-    private static final int C = 300;
+    private static final int C = 250;
+    private static final int D = 450;
+    private static final int E = 400;
 
     private EnemyManager(){
 
@@ -24,8 +28,12 @@ public class EnemyManager extends ControllerManager {
         super.run();
         count1++;
         count2++;
+        count3++;
+        count4++;
         int enX1 = 0;
         int enX2 = 500;
+        int enX3 = 450;
+        int enX4 = 950;
         int enY = 550 ;
         if(count1 == B){
             count1 = 0;
@@ -50,7 +58,29 @@ public class EnemyManager extends ControllerManager {
 
             }
         }
+        if(count3 == D){
+            count3= 0;
+            for (int i = 0; i < 1; i++) {
 
+                EnemyController enemyController = new EnemyController(
+                        new Enemy(enX3, enY),
+                        new ImageDrawer("resources/star.png")
+                );
+                this.add(enemyController);
+            }
+        }
+        if(count4 == E){
+            count4 = 0;
+            for (int j = 0; j < 1; j++) {
+
+                EnemyController enemyController = new EnemyController(
+                        new Enemy(enX4, enY),
+                        new ImageDrawer("resources/star.png")
+                );
+                this.add(enemyController);
+
+            }
+        }
     }
 
     public final static EnemyManager instance = new EnemyManager();
