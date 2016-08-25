@@ -158,7 +158,7 @@ public class PlayerController extends SingleController implements KeyListener, C
 
     }
     public void bulletrun() {
-        count ++;
+        count++;
         if (count > ATK_SPEED) {
             BulletController bulletController = new BulletController(
                     new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
