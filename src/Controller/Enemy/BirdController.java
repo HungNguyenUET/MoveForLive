@@ -1,5 +1,8 @@
-package Controller;
+package Controller.Enemy;
 
+import Controller.Colliable;
+import Controller.CollisionPool;
+import Controller.SingleController;
 import Model.GameObject;
 import View.AnimationDrawer;
 import View.GameDrawer;
@@ -10,7 +13,7 @@ import java.awt.*;
  * Created by Viet on 8/24/2016.
  */
 public class BirdController extends SingleController implements Colliable {
-    public static final int SPEED = 5;
+    private static final int SPEED = 5;
 
     public BirdController(GameObject gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);

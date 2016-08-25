@@ -1,5 +1,6 @@
-package Controller;
+package Controller.Weapon;
 
+import Controller.ControllerManager;
 import Model.Weapon;
 import View.ImageDrawer;
 

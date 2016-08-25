@@ -1,18 +1,24 @@
-package Controller;
+package Controller.Player;
 
+import Controller.Colliable;
+import Controller.CollisionPool;
+import Controller.Enemy.EnemyController;
+import Controller.GameInput;
+import Controller.Gift.GiftController;
+import Controller.SingleController;
+import Controller.Weapon.WeaponController;
 import Model.Player;
 import View.GameDrawer;
 import View.ImageDrawer;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * Created by Viet on 8/19/2016.
  */
-public class PlayerController2 extends SingleController  implements Colliable, KeyListener {
+public class PlayerController2 extends SingleController implements Colliable {
     private static final int SPEED = 10;
+    private static final int JUMP_SPEED = 5;
     private GameInput gameInput;
 
 
@@ -32,11 +38,6 @@ public class PlayerController2 extends SingleController  implements Colliable, K
     @Override
     public void onCollide(Colliable colliable) {
         if (colliable instanceof WeaponController) {
-            if(PlayerController2.instance.gameObject.getHp() == 0){
-                this.getGameObject().destroy();
-                //JOptionPane.showMessageDialog(null, "Điểm: " + PlayerController.instance.gameObject.getPoint(), "Game Over", JOptionPane.WARNING_MESSAGE);
-                //System.exit(0);
-            }
             PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() - 1);
             colliable.getGameObject().destroy();
         }
@@ -44,48 +45,26 @@ public class PlayerController2 extends SingleController  implements Colliable, K
             colliable.getGameObject().destroy();
             PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() - 1);
         }
-    }
-
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-
-            case KeyEvent.VK_A:
-                this.gameInput.keyA = true;
-                this.gameVector.dy = 0;
-                break;
-            case KeyEvent.VK_D:
-                this.gameInput.keyD = true;
-                this.gameVector.dy = 0;
-                break;
+        if (colliable instanceof GiftController) {
+            PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() + 5);
+            colliable.getGameObject().destroy();
         }
-
-    }
-
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_A:
-                this.gameInput.keyA = false;
-                break;
-            case KeyEvent.VK_D:
-                this.gameInput.keyD = false;
-                break;
+        if(PlayerController2.instance.gameObject.getHp() == 0){
+            this.getGameObject().destroy();
+            if (colliable instanceof WeaponController || colliable instanceof EnemyController || colliable instanceof GiftController) {
+                PlayerController2.instance.getGameObject().setHp(0);
+                PlayerController2.instance.getGameObject().setPoint(PlayerController2.instance.gameObject.getPoint() + 0);
+                colliable.getGameObject().destroy();
+            }
         }
-
     }
+
+
+
     @Override
     public void run() {
 //        count++;
         this.gameVector.dx = 0;
-        this.gameVector.dy = 0;
-
         if (gameInput.keyA && !gameInput.keyD) {
             this.gameVector.dx = -SPEED;
             if(this.gameObject.getX() < 550){
@@ -96,17 +75,22 @@ public class PlayerController2 extends SingleController  implements Colliable, K
             if(this.gameObject.getX() > 900){
                 this.gameObject.setX(900);
             }
+        }else if (gameInput.keyW) {
+            this.gameVector.dy = -JUMP_SPEED;
         }
 
-        super.run();
         if (gameObject.getX() <= 500) {
             this.gameVector.dx = 500;
-        }
-
-        if ( gameObject.getX() >= 950) {
+        }else if (this.gameObject.getY() == 350 ) {
+            this.gameVector.dy = JUMP_SPEED;
+            gameInput.keyW = false;
+        }else if(this.gameObject.getY() >= 500){
+            this.gameObject.setY(500);
+        } else if ( gameObject.getX() >= 950) {
             this.gameVector.dx = 950;
         }
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
+        super.run();
     }
 
     public final static PlayerController2 instance = new PlayerController2(
@@ -123,6 +107,10 @@ public class PlayerController2 extends SingleController  implements Colliable, K
         this.gameInput.keyD = true;
         this.gameVector.dy = 0;
     }
+    public void moveUp(){
+        this.gameInput.keyW = true;
+        this.gameVector.dx = 0;
+    }
 
     public void stopLeft(){
         this.gameInput.keyA = false;
@@ -130,5 +118,9 @@ public class PlayerController2 extends SingleController  implements Colliable, K
 
     public void stopRight(){
         this.gameInput.keyD = false;
+    }
+
+    public void setGameInput(GameInput gameInput) {
+        this.gameInput = gameInput;
     }
 }

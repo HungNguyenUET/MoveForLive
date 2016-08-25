@@ -1,5 +1,6 @@
-package Controller;
+package Controller.Enemy;
 
+import Controller.ControllerManager;
 import Model.Bird;
 import Utils.Utils;
 import View.AnimationDrawer;
