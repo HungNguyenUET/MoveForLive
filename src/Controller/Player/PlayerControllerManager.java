@@ -62,7 +62,6 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override

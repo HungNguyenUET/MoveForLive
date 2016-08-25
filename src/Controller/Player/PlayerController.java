@@ -58,7 +58,7 @@ public class PlayerController extends SingleController implements Colliable {
                 this.gameObject.setX(450);
             }
         }else if (gameInput.keyUp) {
-            this.gameVector.dy = -JUMP_SPEED;
+                this.gameVector.dy = -JUMP_SPEED;
         }
         if (gameInput.keySpace) {
              bulletrun();
@@ -115,6 +115,7 @@ public class PlayerController extends SingleController implements Colliable {
                     new ImageDrawer("resources/star.png"));
             bulletManager.add(bulletController);
             count = 0;
+
             //System.out.println("ban");
         }
     }
