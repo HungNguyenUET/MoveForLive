@@ -116,6 +116,10 @@ public class PlayerController extends SingleController implements KeyListener, C
 
     }
 
+    public void setGameInput(GameInput gameInput) {
+        this.gameInput = gameInput;
+    }
+
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -129,6 +133,7 @@ public class PlayerController extends SingleController implements KeyListener, C
                 break;
             case KeyEvent.VK_UP:
                 this.gameInput.keyUp = true;
+
                 this.gameVector.dx = 0;
                 break;
             case KeyEvent.VK_SPACE:
