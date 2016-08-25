@@ -114,7 +114,7 @@ public class PlayerController extends SingleController implements Colliable {
         if (count > ATK_SPEED) {
             BulletController bulletController = new BulletController(
                     new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
-                    new ImageDrawer("resources/butter.png"));
+                    new ImageDrawer("resources/star.png"));
             bulletManager.add(bulletController);
             count = 0;
             System.out.println("ban");
