@@ -15,7 +15,7 @@ import java.awt.event.KeyListener;
 /**
  * Created by Viet on 8/19/2016.
  */
-public class PlayerController2 extends SingleController implements Colliable, KeyListener {
+public class PlayerController2 extends SingleController implements Colliable {
     private static final int SPEED = 10;
     private static final int JUMP_SPEED = 5;
     private GameInput gameInput;
@@ -56,46 +56,7 @@ public class PlayerController2 extends SingleController implements Colliable, Ke
     }
 
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-
-            case KeyEvent.VK_A:
-                this.gameInput.keyA = true;
-                this.gameVector.dy = 0;
-                break;
-            case KeyEvent.VK_D:
-                this.gameInput.keyD = true;
-                this.gameVector.dy = 0;
-                break;
-            case KeyEvent.VK_W:
-                this.gameInput.keyUp = true;
-                this.gameVector.dx = 0;
-                break;
-        }
-
-    }
-
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_A:
-                this.gameInput.keyA = false;
-                break;
-            case KeyEvent.VK_D:
-                this.gameInput.keyD = false;
-                break;
-            case KeyEvent.VK_W:
-                this.gameInput.keyUp = false;
-                break;
-        }
-
-    }
+    
     @Override
     public void run() {
 //        count++;

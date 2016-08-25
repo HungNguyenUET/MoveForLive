@@ -108,7 +108,7 @@ public class PlayerController extends SingleController implements Colliable {
     public void setGameInput(GameInput gameInput) {
         this.gameInput = gameInput;
     }
-    
+
     public void bulletrun() {
         count++;
         if (count > ATK_SPEED) {
