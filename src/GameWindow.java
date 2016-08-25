@@ -20,11 +20,14 @@ public class GameWindow extends Frame implements Runnable, GameSceneListener {
     GameSetting gameSetting;
 
     public GameWindow(){
+        //Setup window game
         configUI();
+        //Mo man hinh Menu Game
         changeGameScene(new MenuGameScene());
         this.bufferedImage = new BufferedImage(gameSetting.getScreenWidth(),
                 gameSetting.getScreenHeight(), BufferedImage.TYPE_INT_ARGB);
         this.bufferedImageGraphics = bufferedImage.getGraphics();
+        //Tao luong
         thread = new Thread(this);
         thread.start();
     }
