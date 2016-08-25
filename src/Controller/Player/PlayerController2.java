@@ -154,4 +154,8 @@ public class PlayerController2 extends SingleController implements Colliable, Ke
     public void stopRight(){
         this.gameInput.keyD = false;
     }
+
+    public void setGameInput(GameInput gameInput) {
+        this.gameInput = gameInput;
+    }
 }
