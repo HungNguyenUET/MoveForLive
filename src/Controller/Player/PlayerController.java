@@ -10,8 +10,6 @@ import View.GameDrawer;
 import View.ImageDrawer;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * Created by giaqu on 8/14/2016.
@@ -61,8 +59,9 @@ public class PlayerController extends SingleController implements Colliable {
             }
         }else if (gameInput.keyUp) {
             this.gameVector.dy = -JUMP_SPEED;
-        }else if (gameInput.keySpace) {
-            bulletrun();
+        }
+        if (gameInput.keySpace) {
+             bulletrun();
         }
         if (this.gameObject.getY() == 350 ) {
             this.gameVector.dy = JUMP_SPEED;
@@ -109,19 +108,15 @@ public class PlayerController extends SingleController implements Colliable {
         this.gameInput = gameInput;
     }
 
-    public void bulletrun() {
-        count++;
+    private void bulletrun() {
         if (count > ATK_SPEED) {
             BulletController bulletController = new BulletController(
                     new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
                     new ImageDrawer("resources/star.png"));
             bulletManager.add(bulletController);
             count = 0;
-            System.out.println("ban");
+            //System.out.println("ban");
         }
-    }
-    public void stopbullet() {
-        this.gameInput.keySpace = false;
     }
 
     public void moveLeft(){
@@ -137,14 +132,6 @@ public class PlayerController extends SingleController implements Colliable {
     public void moveRight(){
         this.gameInput.keyRight = true;
         this.gameVector.dy = 0;
-    }
-
-    public void stopLeft(){
-        this.gameInput.keyLeft = false;
-    }
-
-    public void stopRight(){
-        this.gameInput.keyRight = false;
     }
 
 }
