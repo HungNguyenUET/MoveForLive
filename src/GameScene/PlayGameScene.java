@@ -27,8 +27,6 @@ public class PlayGameScene implements GameScene {
     @Override
     public void draw(Graphics g) {
         g.drawImage(backgroud, 0, 0, null);
-        //PlayerController.instance.draw(g);
-        //PlayerController2.instance.draw(g);
         PlayerControllerManager.instance.draw(g);
         WeaponManager.instance.draw(g);
         EnemyManager.instance.draw(g);
@@ -54,8 +52,6 @@ public class PlayGameScene implements GameScene {
 
     @Override
     public void run() {
-        //PlayerController.instance.run();
-        //PlayerController2.instance.run();
         PlayerControllerManager.instance.run();
         WeaponManager.instance.run();
         EnemyManager.instance.run();
