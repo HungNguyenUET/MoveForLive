@@ -2,7 +2,10 @@ package GameScene;
 
 import Utils.Utils;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -25,10 +28,7 @@ public class MenuGameScene implements GameScene, KeyListener {
 //            }
 //        });
 //        panel.add(button);
-        reset();
     }
-
-    private void reset(){}
 
     @Override
     public void draw(Graphics g) {
@@ -56,7 +56,7 @@ public class MenuGameScene implements GameScene, KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             if (gameSceneListener != null)
-                gameSceneListener.changeGameScene(new PlayGameScene(), true);
+                gameSceneListener.changeGameScene(new PlayGameScene());
         }
 
     }

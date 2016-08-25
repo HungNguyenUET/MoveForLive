@@ -1,17 +1,16 @@
 package Controller.Player;
 
-import Controller.Colliable;
-import Controller.CollisionPool;
+import Controller.*;
 import Controller.Enemy.EnemyController;
-import Controller.GameInput;
 import Controller.Gift.GiftController;
-import Controller.SingleController;
 import Controller.Weapon.WeaponController;
 import Model.Player;
 import View.GameDrawer;
 import View.ImageDrawer;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Created by Viet on 8/19/2016.
@@ -38,6 +37,11 @@ public class PlayerController2 extends SingleController implements Colliable {
     @Override
     public void onCollide(Colliable colliable) {
         if (colliable instanceof WeaponController) {
+            if(PlayerController2.instance.gameObject.getHp() == 0){
+                this.getGameObject().destroy();
+                //JOptionPane.showMessageDialog(null, "Điểm: " + PlayerController.instance.gameObject.getPoint(), "Game Over", JOptionPane.WARNING_MESSAGE);
+                //System.exit(0);
+            }
             PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() - 1);
             colliable.getGameObject().destroy();
         }
@@ -48,14 +52,6 @@ public class PlayerController2 extends SingleController implements Colliable {
         if (colliable instanceof GiftController) {
             PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() + 5);
             colliable.getGameObject().destroy();
-        }
-        if(PlayerController2.instance.gameObject.getHp() == 0){
-            this.getGameObject().destroy();
-            if (colliable instanceof WeaponController || colliable instanceof EnemyController || colliable instanceof GiftController) {
-                PlayerController2.instance.getGameObject().setHp(0);
-                PlayerController2.instance.getGameObject().setPoint(PlayerController2.instance.gameObject.getPoint() + 0);
-                colliable.getGameObject().destroy();
-            }
         }
     }
 
