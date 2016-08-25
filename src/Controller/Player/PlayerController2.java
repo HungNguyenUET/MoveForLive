@@ -56,7 +56,7 @@ public class PlayerController2 extends SingleController implements Colliable {
     }
 
 
-    
+
     @Override
     public void run() {
 //        count++;
