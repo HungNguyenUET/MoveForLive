@@ -62,13 +62,7 @@ public class PlayerController extends SingleController implements KeyListener, C
         }else if (gameInput.keyUp) {
             this.gameVector.dy = -JUMP_SPEED;
         }else if (gameInput.keySpace) {
-//            if (count > ATK_SPEED) {
-//                BulletController bulletController = new BulletController(
-//                        new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
-//                        new ImageDrawer("resources/butter.png"));
-//                bulletManager.add(bulletController);
-//                count = 0;
-//            }
+            bulletrun();
         }
         if (this.gameObject.getY() == 350 ) {
             this.gameVector.dy = JUMP_SPEED;
