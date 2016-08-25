@@ -22,7 +22,8 @@ public class GameWindow extends Frame implements Runnable, GameSceneListener {
     public GameWindow(){
         configUI();
         changeGameScene(new MenuGameScene());
-        this.bufferedImage = new BufferedImage(gameSetting.getScreenWidth(),gameSetting.getScreenHeight(), BufferedImage.TYPE_INT_ARGB);
+        this.bufferedImage = new BufferedImage(gameSetting.getScreenWidth(),
+                gameSetting.getScreenHeight(), BufferedImage.TYPE_INT_ARGB);
         this.bufferedImageGraphics = bufferedImage.getGraphics();
         thread = new Thread(this);
         thread.start();
