@@ -16,7 +16,7 @@ import java.awt.event.KeyListener;
 /**
  * Created by giaqu on 8/14/2016.
  */
-public class PlayerController extends SingleController implements KeyListener, Colliable {
+public class PlayerController extends SingleController implements Colliable {
 
     private static final int SPEED = 10;
     private static final int JUMP_SPEED = 5;
@@ -105,57 +105,10 @@ public class PlayerController extends SingleController implements KeyListener, C
         }
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
     public void setGameInput(GameInput gameInput) {
         this.gameInput = gameInput;
     }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_LEFT:
-                this.gameInput.keyLeft = true;
-                this.gameVector.dy = 0;
-                break;
-            case KeyEvent.VK_RIGHT:
-                this.gameInput.keyRight = true;
-                this.gameVector.dy = 0;
-                break;
-            case KeyEvent.VK_UP:
-                this.gameInput.keyUp = true;
-
-                this.gameVector.dx = 0;
-                break;
-            case KeyEvent.VK_SPACE:
-                this.gameInput.keySpace = true;
-                break;
-
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_LEFT:
-                this.gameInput.keyLeft = false;
-                break;
-            case KeyEvent.VK_RIGHT:
-                this.gameInput.keyRight = false;
-                break;
-            case KeyEvent.VK_UP:
-                this.gameInput.keyUp = false;
-                this.gameVector.dx = 0;
-                break;
-            case KeyEvent.VK_SPACE:
-                this.gameInput.keySpace = false;
-                break;
-        }
-
-    }
+    
     public void bulletrun() {
         count++;
         if (count > ATK_SPEED) {
