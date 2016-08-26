@@ -23,6 +23,7 @@ public class BirdController extends SingleController implements Colliable {
 
     }
 
+
     @Override
     public void draw(Graphics g) {
         super.draw(g);
