@@ -54,8 +54,8 @@ public class PlayerController extends SingleController implements Colliable {
             }
         } else if (!gameInput.keyA && gameInput.keyD) {
             this.gameVector.dx = SPEED;
-            if(this.gameObject.getX() > 650){
-                this.gameObject.setX(650);
+            if(this.gameObject.getX() > 500){
+                this.gameObject.setX(500);
             }
         }
         if (gameInput.keyW) {
@@ -78,25 +78,25 @@ public class PlayerController extends SingleController implements Colliable {
         if (gameInput.keySpace) {
              bulletrun();
         }
-        if(this.gameObject.getY() >= 600){
-            this.gameObject.setY(600);
+        if(this.gameObject.getY() >= 500){
+            this.gameObject.setY(500);
 
-        } else if (this.gameObject.getY() == 450 ) {
+        } else if (this.gameObject.getY() == 350 ) {
              Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyW = false;
         }
-        else if (this.gameObject.getX() <= 0){
-            this.gameObject.setX(0);
-        }else if (this.gameObject.getX() >= 650){
-            this.gameObject.setX(650);
+        else if (this.gameObject.getX() <= 50){
+            this.gameObject.setX(50);
+        }else if (this.gameObject.getX() >= 500){
+            this.gameObject.setX(500);
         }
         super.run();
         bulletManager.run();
     }
 
     public final static PlayerController instance = new PlayerController(
-            new Player(350, 600),
+            new Player(250, 500),
              new ImageDrawer("resources/ninja1.png")
     );
 

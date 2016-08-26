@@ -18,7 +18,7 @@ public class PlayButtonController extends SingleController implements MouseListe
 
 
     public static final PlayButtonController instance = new PlayButtonController(
-            new PlayButton(630, 500),
+            new PlayButton(500, 450),
             new ImageDrawer("resources/playbutton.png")
     );
 

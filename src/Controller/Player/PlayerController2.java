@@ -70,13 +70,13 @@ public class PlayerController2 extends SingleController implements Colliable {
         this.gameVector.dx = 0;
         if (gameInput.keyLeft&& !gameInput.keyRight) {
             this.gameVector.dx = -SPEED;
-            if(this.gameObject.getX() < 750){
-                this.gameObject.setX(750);
+            if(this.gameObject.getX() < 600){
+                this.gameObject.setX(600);
             }
         } else if (!gameInput.keyLeft && gameInput.keyRight) {
             this.gameVector.dx = SPEED;
-            if(this.gameObject.getX() > 1300){
-                this.gameObject.setX(1300);
+            if(this.gameObject.getX() > 1000){
+                this.gameObject.setX(1000);
             }
         }
         if (gameInput.keyUp) {
@@ -95,17 +95,17 @@ public class PlayerController2 extends SingleController implements Colliable {
         if (gameInput.keyEnter) {
             bulletrun2();
         }
-        if(this.gameObject.getY() >= 600){
-            this.gameObject.setY(600);
+        if(this.gameObject.getY() >= 500){
+            this.gameObject.setY(500);
 
-        }else if (this.gameObject.getY() == 450 ) {
+        }else if (this.gameObject.getY() == 350 ) {
             Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyUp = false;
-        }else if (gameObject.getX() <= 750) {
-            this.gameObject.setX(750);
-        }else if ( gameObject.getX() >= 1300) {
-            this.gameObject.setX(1300);
+        }else if (gameObject.getX() <= 600) {
+            this.gameObject.setX(600);
+        }else if ( gameObject.getX() >= 1000) {
+            this.gameObject.setX(1000);
         }
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
         super.run();
@@ -113,7 +113,7 @@ public class PlayerController2 extends SingleController implements Colliable {
     }
 
     public final static PlayerController2 instance = new PlayerController2(
-            new Player(1050, 600),
+            new Player(750, 500),
             new ImageDrawer("resources/ninja2.png")
     );
 

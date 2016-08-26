@@ -23,7 +23,7 @@ public class PlayGameScene implements GameScene {
     private GameSceneListener gameScenceListener;
 
     public PlayGameScene() {
-        backgroud =  Utils.loadImage("resources/playsecen.gif");
+        backgroud =  Utils.loadImage("resources/background.png");
         gameOver = Utils.loadImage("resources/gameover.png");
         Utils.playSound("resources/nhacnen.wav",true);
         reset();
@@ -47,9 +47,9 @@ public class PlayGameScene implements GameScene {
         g.drawString("POINT: " + PlayerController2.instance.getGameObject().getPoint(), 1200, 50);
         g.drawString("HP: " + PlayerController2.instance.getGameObject().getHp(), 800, 50);
         if(PlayerController2.instance.gameObject.getHp() <= 0){
-            g.drawImage(gameOver, 900, 200, null);
+            g.drawImage(gameOver, 650, 150, null);
         }else if(PlayerController.instance.gameObject.getHp() <= 0){
-            g.drawImage(gameOver, 200, 200, null);
+            g.drawImage(gameOver, 150, 150, null);
         }
     }
 

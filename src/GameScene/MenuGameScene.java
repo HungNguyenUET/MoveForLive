@@ -18,7 +18,7 @@ public class MenuGameScene implements GameScene, MouseListener  {
 //    private JPanel panel = new JPanel();
 
     public MenuGameScene() {
-        background = Utils.loadImage("resources/backg.png");
+        background = Utils.loadImage("resources/backg2.png");
 //        button.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
@@ -66,7 +66,7 @@ public class MenuGameScene implements GameScene, MouseListener  {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (e.getX() <= 760 && e.getX() >= 630 && e.getY() >= 500 && e.getY() <= 630) {
+        if (e.getX() <= 630 && e.getX() >= 500 && e.getY() >= 450 && e.getY() <= 580) {
             if (gameSceneListener != null) {
                 gameSceneListener.changeGameScene(new PlayGameScene(), true);
             }

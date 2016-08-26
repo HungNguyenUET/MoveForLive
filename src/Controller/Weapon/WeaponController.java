@@ -14,7 +14,8 @@ import View.ImageDrawer;
  */
 public class WeaponController extends SingleController implements Colliable {
 
-    public static final int SPEED = 5;
+    public static final int SPEED = 4;
+    public static final int FOLLOW_SPEED = 3;
 
     public WeaponController(Weapon gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
@@ -25,7 +26,7 @@ public class WeaponController extends SingleController implements Colliable {
     @Override
     public void run() {
         super.run();
-        if (gameObject.getY() > 625 && gameObject.getX() <= 650) {
+        if (gameObject.getY() > 600 && gameObject.getX() <= 500) {
             gameObject.destroy();
             if(PlayerController.instance.gameObject.getHp() == 0){
                 PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint());
@@ -33,7 +34,7 @@ public class WeaponController extends SingleController implements Colliable {
                 PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint() + 1);
         }
 
-        if (gameObject.getY() > 625 && gameObject.getX() <= 1300 && gameObject.getX() > 700) {
+        if (gameObject.getY() > 600 && gameObject.getX() <= 1000 && gameObject.getX() > 600) {
             gameObject.destroy();
             if(PlayerController2.instance.gameObject.getHp() == 0){
                 PlayerController2.instance.getGameObject().setPoint(PlayerController2.instance.gameObject.getPoint());
@@ -51,22 +52,22 @@ public class WeaponController extends SingleController implements Colliable {
                 weaponController.gameVector.dy = SPEED;
                 break;
             case FOLLOWED1:
-                weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/sword.png"));
+                weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/follow_sword.png"));
                 int dx1 = PlayerController.instance.getGameObject().getX() - weaponController.gameObject.getX();
                 int dy1 = PlayerController.instance.getGameObject().getY() - weaponController.gameObject.getY();
                 if (dy1 > 0) {
-                    double ratio = Math.sqrt(dx1 * dx1 + dy1 * dy1) / SPEED;
+                    double ratio = Math.sqrt(dx1 * dx1 + dy1 * dy1) / FOLLOW_SPEED;
                     weaponController.getGameVector().dy = (int) (dy1 / ratio);
                     weaponController.getGameVector().dx = (int) (dx1 / ratio);
                     WeaponManager.instance.add(weaponController);
                 }
                 break;
             case FOLLOWED2:
-                weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/sword.png"));
+                weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/follow_sword.png"));
                 int dx2 = PlayerController2.instance.getGameObject().getX() - weaponController.gameObject.getX();
                 int dy2 = PlayerController2.instance.getGameObject().getY() - weaponController.gameObject.getY();
                 if (dy2 > 0) {
-                    double ratio = Math.sqrt(dx2 * dx2 + dy2 * dy2) / SPEED;
+                    double ratio = Math.sqrt(dx2 * dx2 + dy2 * dy2) / FOLLOW_SPEED;
                     weaponController.getGameVector().dy = (int) (dy2 / ratio);
                     weaponController.getGameVector().dx = (int) (dx2 / ratio);
                     WeaponManager.instance.add(weaponController);
