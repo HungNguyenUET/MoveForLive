@@ -103,11 +103,7 @@ public class PlayerController extends SingleController implements Colliable {
         }
         if(PlayerController.instance.gameObject.getHp() == 0){
             this.getGameObject().destroy();
-            if (colliable instanceof WeaponController || colliable instanceof EnemyController || colliable instanceof GiftController) {
-                PlayerController.instance.getGameObject().setHp(0);
-                PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint());
-                colliable.getGameObject().destroy();
-            }
+            PlayerController.instance.getGameObject().setHp(0);
         }
     }
 

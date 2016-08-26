@@ -58,11 +58,7 @@ public class PlayerController2 extends SingleController implements Colliable {
         }
         if(PlayerController2.instance.gameObject.getHp() == 0){
             this.getGameObject().destroy();
-            if (colliable instanceof WeaponController || colliable instanceof EnemyController || colliable instanceof GiftController) {
-                PlayerController2.instance.getGameObject().setHp(0);
-                PlayerController2.instance.getGameObject().setPoint(PlayerController2.instance.gameObject.getPoint());
-                colliable.getGameObject().destroy();
-            }
+            PlayerController2.instance.getGameObject().setHp(0);
         }
     }
 
@@ -86,7 +82,7 @@ public class PlayerController2 extends SingleController implements Colliable {
             this.gameVector.dy = -JUMP_SPEED;
         }
         if (gameInput.keyG) {
-            bulletrun2();
+            bulletrun();
         }
         if(this.gameObject.getY() >= 600){
             this.gameObject.setY(600);
@@ -100,7 +96,7 @@ public class PlayerController2 extends SingleController implements Colliable {
         } else if ( gameObject.getX() >= 1300) {
             this.gameVector.dx = 1300;
         }
-        this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
+//        this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
         super.run();
         bulletManager.run();
     }
@@ -110,7 +106,7 @@ public class PlayerController2 extends SingleController implements Colliable {
             new ImageDrawer("resources/demon.png")
     );
 
-    private void bulletrun2() {
+    private void bulletrun() {
         if (count > ATK_SPEED) {
             BulletController bulletController = new BulletController(
                     new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),

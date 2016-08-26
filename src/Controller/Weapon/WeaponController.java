@@ -25,14 +25,21 @@ public class WeaponController extends SingleController implements Colliable {
     @Override
     public void run() {
         super.run();
-        if (gameObject.getY() > 625 && gameObject.getX() <= 500) {
+        if (gameObject.getY() > 625 && gameObject.getX() <= 650) {
             gameObject.destroy();
-            PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint() + 1);
+            if(PlayerController.instance.gameObject.getHp() == 0){
+                PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint());
+            } else
+                PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint() + 1);
+
         }
 
-        if (gameObject.getY() > 625 && gameObject.getX() <= 1000 && gameObject.getX() > 500) {
+        if (gameObject.getY() > 625 && gameObject.getX() <= 1300 && gameObject.getX() > 700) {
             gameObject.destroy();
-            PlayerController2.instance.getGameObject().setPoint(PlayerController2.instance.gameObject.getPoint() + 1);
+            if(PlayerController.instance.gameObject.getHp() == 0){
+                PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint());
+            } else
+                PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint() + 1);
         }
 
     }

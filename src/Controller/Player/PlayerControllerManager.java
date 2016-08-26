@@ -105,7 +105,7 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
                 gameInput.keySpace = false;
                 break;
             case KeyEvent.VK_G:
-                gameInput.keySpace = false;
+                gameInput.keyG = false;
                 break;
             case KeyEvent.VK_A:
                 gameInput.keyA = false;
