@@ -6,7 +6,7 @@ package Model;
 public class Player extends GameObject {
 
     public static final int WIDTH = 50;
-    public static final int HEIGHT = 90 ;
+    public static final int HEIGHT = 60 ;
     public static final int HP = 5;
 
     public static final int POINT = 0;
