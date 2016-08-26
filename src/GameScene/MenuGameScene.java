@@ -16,7 +16,7 @@ public class MenuGameScene implements GameScene, KeyListener {
 //    private JPanel panel = new JPanel();
 
     public MenuGameScene() {
-        background = Utils.loadImage("resources/game2.png");
+        background = Utils.loadImage("resources/backg.png");
 //        button.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {

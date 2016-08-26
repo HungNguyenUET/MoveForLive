@@ -1,7 +1,7 @@
 package GameScene;
 
 import Controller.*;
-import Controller.Enemy.BirdManager;
+//import Controller.Enemy.BirdManager;
 import Controller.Enemy.EnemyManager;
 import Controller.Gift.GiftManager;
 import Controller.Player.PlayerController;
@@ -21,7 +21,7 @@ public class PlayGameScene implements GameScene {
     private GameSceneListener gameScenceListener;
 
     public PlayGameScene() {
-        backgroud =  Utils.loadImage("resources/2dbackground.jpg");
+        backgroud =  Utils.loadImage("resources/playsecen.gif");
         reset();
     }
 

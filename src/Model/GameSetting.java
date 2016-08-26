@@ -4,8 +4,8 @@ package Model;
  * Created by Viet on 8/18/2016.
  */
 public class GameSetting {
-    private static final int WIDTH_DEFAULT = 1000;
-    private static final int HEIGHT_DEFAULT = 625;
+    private static final int WIDTH_DEFAULT = 1400;
+    private static final int HEIGHT_DEFAULT = 700;
     private static final int THREAD_DELAY = 17;
 
     private int screenWidth;

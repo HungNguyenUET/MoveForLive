@@ -13,7 +13,7 @@ public class BirdManager extends ControllerManager {
 
     private Random rand = new Random();
     private static int count = 0;
-    private static final int A = 20;
+    private static final int A = 10;
 
     public BirdManager() {
         super();
@@ -23,8 +23,8 @@ public class BirdManager extends ControllerManager {
     public void run() {
         super.run();
         count++;
-        int enX = rand.nextInt(1000);
-        int enY = rand.nextInt(100);
+        int enX = rand.nextInt(1400);
+        int enY = rand.nextInt(700);
         if (count == A) {
             count = 0;
             for (int i = 0; i < 1 ; i++) {
@@ -34,6 +34,7 @@ public class BirdManager extends ControllerManager {
                                 Utils.loadFromSprite("resources/bird.png",true,64,64,0,0)
                         )
                 );
+                enX += 100;
                 this.add(birdController);
 
             }
