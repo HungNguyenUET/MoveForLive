@@ -23,6 +23,8 @@ public class PlayGameScene implements GameScene {
 
     public PlayGameScene() {
         backgroud =  Utils.loadImage("resources/playsecen.gif");
+        Utils.playSound("resources/nhacnen.wav",true);
+
         reset();
     }
 
@@ -38,10 +40,10 @@ public class PlayGameScene implements GameScene {
         EnemyManager.instance.draw(g);
         BirdManager.instance.draw(g);
         GiftManager.instance.draw(g);
-        g.drawString("POINT: " + PlayerController.instance.getGameObject().getPoint(), 500, 50);
+        g.drawString("POINT: " + PlayerController.instance.getGameObject().getPoint(), 400, 50);
         g.drawString("HP: " + PlayerController.instance.getGameObject().getHp(), 50, 50);
-        g.drawString("POINT: " + PlayerController2.instance.getGameObject().getPoint(), 1200, 50);
-        g.drawString("HP: " + PlayerController2.instance.getGameObject().getHp(), 800, 50);
+        g.drawString("POINT: " + PlayerController2.instance.getGameObject().getPoint(), 900, 50);
+        g.drawString("HP: " + PlayerController2.instance.getGameObject().getHp(), 600, 50);
 
     }
 

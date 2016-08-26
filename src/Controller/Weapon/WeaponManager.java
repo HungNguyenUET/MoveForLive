@@ -13,7 +13,7 @@ public class WeaponManager extends ControllerManager {
 
     private Random rand = new Random();
     private static int count = 0;
-    private static final int A = 20;
+    private static final int A = 50;
 
     private WeaponManager() {
         super();
@@ -23,7 +23,7 @@ public class WeaponManager extends ControllerManager {
     public void run() {
         super.run();
         count++;
-        int enX = rand.nextInt(1300);
+        int enX = rand.nextInt(1000);
         int enY = rand.nextInt(100);
         if(count == A){
             count = 0;

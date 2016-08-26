@@ -62,7 +62,7 @@ public class PlayerController extends SingleController implements Colliable {
         if (gameInput.keySpace) {
              bulletrun();
         }
-        if (this.gameObject.getY() == 500 ) {
+        if (this.gameObject.getY() == 400 ) {
              Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyUp = false;
@@ -96,14 +96,14 @@ public class PlayerController extends SingleController implements Colliable {
         if (colliable instanceof GiftController) {
             PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() + 5);
             colliable.getGameObject().destroy();
-            if(PlayerController.instance.gameObject.getHp() >= 5){
-                PlayerController.instance.getGameObject().setHp(5);
-
-            }
         }
         if(PlayerController.instance.gameObject.getHp() == 0){
             this.getGameObject().destroy();
-            PlayerController.instance.getGameObject().setHp(0);
+            if (colliable instanceof WeaponController || colliable instanceof EnemyController || colliable instanceof GiftController) {
+                PlayerController.instance.getGameObject().setHp(0);
+                PlayerController.instance.getGameObject().setPoint(PlayerController.instance.gameObject.getPoint() + 0);
+                colliable.getGameObject().destroy();
+            }
         }
     }
 

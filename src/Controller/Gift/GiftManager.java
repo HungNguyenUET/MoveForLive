@@ -29,7 +29,7 @@ public class GiftManager extends ControllerManager{
             for(int i = 0; i < 1; i++){
                 GiftController giftController = new GiftController(
                         new Gift(enX, enY),
-                        new ImageDrawer("resources/giftbox.png")
+                        new ImageDrawer("resources/heart.png")
                 );
                 this.add(giftController);
             }
