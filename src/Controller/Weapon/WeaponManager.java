@@ -1,8 +1,6 @@
 package Controller.Weapon;
 
 import Controller.ControllerManager;
-import Model.Weapon;
-import View.ImageDrawer;
 
 import java.util.Random;
 
@@ -13,7 +11,7 @@ public class WeaponManager extends ControllerManager {
 
     private Random rand = new Random();
     private static int count = 0;
-    private static final int A = 50;
+    private static final int A = 20;
 
     private WeaponManager() {
         super();
@@ -28,11 +26,17 @@ public class WeaponManager extends ControllerManager {
         if(count == A){
             count = 0;
             for(int i = 0; i < 1; i++){
-                WeaponController weaponController = new WeaponController(
-                    new Weapon(enX, enY),
-                        new ImageDrawer("resources/sword.png")
-                );
-                this.add(weaponController);
+                int random = rand.nextInt(3);
+                if (random == 1) {
+                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponBehavior.FOLLOWED1);
+                    this.add(weaponController);
+                }else if (random == 2){
+                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponBehavior.FOLLOWED2);
+                    this.add(weaponController);
+                }else {
+                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponBehavior.STRAIGHT);
+                    this.add(weaponController);
+                }
             }
         }
     }

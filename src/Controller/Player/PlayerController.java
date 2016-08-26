@@ -57,18 +57,34 @@ public class PlayerController extends SingleController implements Colliable {
             if(this.gameObject.getX() > 650){
                 this.gameObject.setX(650);
             }
-        }else if (gameInput.keyW) {
+        }
+        if (gameInput.keyW) {
             this.gameVector.dy = -JUMP_SPEED;
         }
+//        if (gameInput.keyW && gameInput.keyA){
+//            this.gameVector.dy -= JUMP_SPEED;
+//            this.gameVector.dx -= SPEED;
+//
+//
+//        } else if (gameInput.keyW && gameInput.keyD) {
+//            this.gameVector.dy -= JUMP_SPEED;
+//            this.gameVector.dx = SPEED;
+//        }
+//        } else if (gameInput.keyW && !gameInput.keyA){
+//            this.gameVector.dy -= JUMP_SPEED;
+//        } else if (!gameInput.keyW && gameInput.keyA){
+//            this.gameVector.dx -= SPEED;
+//        }
         if (gameInput.keySpace) {
              bulletrun();
         }
-        if (this.gameObject.getY() == 450 ) {
+        if(this.gameObject.getY() >= 600){
+            this.gameObject.setY(600);
+
+        } else if (this.gameObject.getY() == 450 ) {
              Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyW = false;
-        } else if(this.gameObject.getY() >= 600){
-            this.gameObject.setY(600);
         }
         else if (this.gameObject.getX() <= 0){
             this.gameObject.setX(0);

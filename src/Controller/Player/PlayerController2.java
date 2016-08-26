@@ -78,9 +78,20 @@ public class PlayerController2 extends SingleController implements Colliable {
             if(this.gameObject.getX() > 1300){
                 this.gameObject.setX(1300);
             }
-        }else if (gameInput.keyUp) {
+        }
+        if (gameInput.keyUp) {
             this.gameVector.dy = -JUMP_SPEED;
         }
+//        if (gameInput.keyUp && gameInput.keyLeft){
+//            this.gameVector.dy -= JUMP_SPEED;
+//            this.gameVector.dx -= SPEED;
+//
+//
+//        } else if (gameInput.keyUp && gameInput.keyRight){
+//            this.gameVector.dy -= JUMP_SPEED;
+//            this.gameVector.dx = SPEED;
+//
+//        }
         if (gameInput.keyEnter) {
             bulletrun2();
         }

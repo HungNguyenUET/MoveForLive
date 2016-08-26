@@ -7,6 +7,7 @@ import Controller.Player.PlayerController2;
 import Controller.SingleController;
 import Model.Weapon;
 import View.GameDrawer;
+import View.ImageDrawer;
 
 /**
  * Created by giaqu on 8/14/2016.
@@ -17,8 +18,7 @@ public class WeaponController extends SingleController implements Colliable {
 
     public WeaponController(Weapon gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
-        this.gameVector.dy += SPEED;
-
+        //this.gameVector.dy += SPEED;
         CollisionPool.instance.add(this);
     }
 
@@ -43,6 +43,38 @@ public class WeaponController extends SingleController implements Colliable {
 
     }
 
+    public static WeaponController create(int x, int y, WeaponBehavior weaponBehavior){
+        WeaponController weaponController = null;
+        switch (weaponBehavior){
+            case STRAIGHT:
+                weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/sword.png"));
+                weaponController.gameVector.dy = SPEED;
+                break;
+            case FOLLOWED1:
+                weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/sword.png"));
+                int dx1 = PlayerController.instance.getGameObject().getX() - weaponController.gameObject.getX();
+                int dy1 = PlayerController.instance.getGameObject().getY() - weaponController.gameObject.getY();
+                if (dy1 > 0) {
+                    double ratio = Math.sqrt(dx1 * dx1 + dy1 * dy1) / SPEED;
+                    weaponController.getGameVector().dy = (int) (dy1 / ratio);
+                    weaponController.getGameVector().dx = (int) (dx1 / ratio);
+                    WeaponManager.instance.add(weaponController);
+                }
+                break;
+            case FOLLOWED2:
+                weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/sword.png"));
+                int dx2 = PlayerController2.instance.getGameObject().getX() - weaponController.gameObject.getX();
+                int dy2 = PlayerController2.instance.getGameObject().getY() - weaponController.gameObject.getY();
+                if (dy2 > 0) {
+                    double ratio = Math.sqrt(dx2 * dx2 + dy2 * dy2) / SPEED;
+                    weaponController.getGameVector().dy = (int) (dy2 / ratio);
+                    weaponController.getGameVector().dx = (int) (dx2 / ratio);
+                    WeaponManager.instance.add(weaponController);
+                }
+                break;
+        }
+        return weaponController;
+    }
     @Override
     public void onCollide(Colliable colliable) {
 
