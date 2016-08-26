@@ -61,7 +61,7 @@ public class PlayerController2 extends SingleController implements Colliable {
 
     @Override
     public void run() {
-//        count++;
+        count++;
         this.gameVector.dx = 0;
         if (gameInput.keyA && !gameInput.keyD) {
             this.gameVector.dx = -SPEED;
