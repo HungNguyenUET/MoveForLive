@@ -86,8 +86,8 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
             case KeyEvent.VK_W:
                 gameInput.keyW = true;
                 break;
-            case KeyEvent.VK_G:
-                gameInput.keyG = true;
+            case KeyEvent.VK_ENTER:
+                gameInput.keyEnter = true;
                 break;
         }
     }
@@ -104,8 +104,8 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
             case KeyEvent.VK_SPACE:
                 gameInput.keySpace = false;
                 break;
-            case KeyEvent.VK_G:
-                gameInput.keyG = false;
+            case KeyEvent.VK_ENTER:
+                gameInput.keyEnter = false;
                 break;
             case KeyEvent.VK_A:
                 gameInput.keyA = false;

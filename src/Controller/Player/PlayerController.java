@@ -47,17 +47,17 @@ public class PlayerController extends SingleController implements Colliable {
     public void run() {
         count++;
         this.gameVector.dx = 0;
-        if (gameInput.keyLeft && !gameInput.keyRight) {
+        if (gameInput.keyA && !gameInput.keyD) {
             this.gameVector.dx = -SPEED;
             if(this.gameObject.getX() < 50){
                 this.gameObject.setX(50);
             }
-        } else if (!gameInput.keyLeft && gameInput.keyRight) {
+        } else if (!gameInput.keyA && gameInput.keyD) {
             this.gameVector.dx = SPEED;
             if(this.gameObject.getX() > 650){
                 this.gameObject.setX(650);
             }
-        }else if (gameInput.keyUp) {
+        }else if (gameInput.keyW) {
             this.gameVector.dy = -JUMP_SPEED;
         }
         if (gameInput.keySpace) {
