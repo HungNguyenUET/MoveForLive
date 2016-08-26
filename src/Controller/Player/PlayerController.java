@@ -66,7 +66,7 @@ public class PlayerController extends SingleController implements Colliable {
         if (this.gameObject.getY() == 450 ) {
              Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
-            gameInput.keyUp = false;
+            gameInput.keyW = false;
         } else if(this.gameObject.getY() >= 600){
             this.gameObject.setY(600);
         }
