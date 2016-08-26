@@ -8,6 +8,9 @@ import View.ImageDrawer;
  * Created by Viet on 8/26/2016.
  */
 public class DemonManager extends ControllerManager {
+
+    private static int count = 0;
+
     public DemonManager() {
         super();
     }
@@ -15,13 +18,17 @@ public class DemonManager extends ControllerManager {
     @Override
     public void run() {
         super.run();
-        int enX = 600;
+        count++;
+        int enX = 50;
         int enY = 50;
-        DemonController demonController = new DemonController(
-                new Demon(enX, enY),
-                new ImageDrawer("resources/demon2.png")
-        );
-        this.add(demonController);
+        if(count > 10) {
+            count = 0;
+            DemonController demonController = new DemonController(
+                    new Demon(enX, enY),
+                    new ImageDrawer("resources/demon2.png")
+            );
+            this.add(demonController);
+        }
     }
     public final static DemonManager instance = new DemonManager();
 }

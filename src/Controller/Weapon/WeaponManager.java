@@ -24,7 +24,7 @@ public class WeaponManager extends ControllerManager {
         super.run();
         count++;
         int enX = rand.nextInt(1300);
-        int enY = rand.nextInt(100);
+        int enY = rand.nextInt(150);
         if(count == A){
             count = 0;
             for(int i = 0; i < 1; i++){

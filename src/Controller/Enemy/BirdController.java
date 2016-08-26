@@ -18,8 +18,8 @@ public class BirdController extends SingleController implements Colliable {
 
     public BirdController(GameObject gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
-        this.gameVector.dy += SPEED;
         CollisionPool.instance.add(this);
+        this.gameVector.dy += SPEED;
 
     }
 
