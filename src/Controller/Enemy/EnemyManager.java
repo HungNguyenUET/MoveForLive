@@ -1,8 +1,6 @@
 package Controller.Enemy;
 
 import Controller.ControllerManager;
-import Model.Enemy;
-import View.ImageDrawer;
 
 /**
  * Created by giaqu on 8/14/2016.
@@ -38,28 +36,28 @@ public class EnemyManager extends ControllerManager {
         if(count1 == B){
             count1 = 0;
             for (int i = 0; i < 1; i++) {
-                EnemyController enemyController = EnemyController.create(enX, enY);
+                EnemyController enemyController = EnemyController.create(enX1, enY, EnemyState.SCENE1);
                 this.add(enemyController);
             }
         }
         if(count2 == C){
             count2 = 0;
             for (int j = 0; j < 1; j++) {
-                EnemyController enemyController = EnemyController.create(enX, enY);
+                EnemyController enemyController = EnemyController.create(enX2, enY, EnemyState.SCENE1);
                 this.add(enemyController);
             }
         }
         if(count3 == D){
             count3= 0;
             for (int i = 0; i < 1; i++) {
-                EnemyController enemyController = EnemyController.create(enX, enY);
+                EnemyController enemyController = EnemyController.create(enX3, enY, EnemyState.SCENE1);
                 this.add(enemyController);
             }
         }
         if(count4 == E){
             count4 = 0;
             for (int j = 0; j < 1; j++) {
-                EnemyController enemyController = EnemyController.create(enX, enY);
+                EnemyController enemyController = EnemyController.create(enX4, enY, EnemyState.SCENE1);
                 this.add(enemyController);
             }
         }

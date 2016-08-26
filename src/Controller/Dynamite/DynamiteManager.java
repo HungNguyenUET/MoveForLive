@@ -1,11 +1,7 @@
 package Controller.Dynamite;
 
 import Controller.ControllerManager;
-import Controller.Enemy.BirdController;
-import Controller.Weapon.WeaponController;
-import Model.Dynamite;
 import Model.GameSetting;
-import View.ImageDrawer;
 
 import java.util.Random;
 
@@ -33,7 +29,7 @@ public class DynamiteManager extends ControllerManager {
         if (count == 50) {
             count = 0;
             int x = rand.nextInt(GameSetting.getInstance().getScreenWidth()) + 1;
-            DynamiteController dynamiteController = DynamiteController.create();
+            DynamiteController dynamiteController = DynamiteController.create(x, 0, DynamiteState.SCENE1);
             this.add(dynamiteController);
         }
     }

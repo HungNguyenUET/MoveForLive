@@ -5,9 +5,10 @@ import Controller.Dynamite.DynamiteManager;
 import Controller.Enemy.BirdManager;
 import Controller.Enemy.EnemyManager;
 import Controller.Gift.GiftManager;
-import Controller.PlayerScene1.PlayerController11;
-import Controller.PlayerScene1.PlayerController12;
-import Controller.PlayerScene1.PlayerControllerManager1;
+
+import Controller.PlayerScene2.PlayerController21;
+import Controller.PlayerScene2.PlayerController22;
+import Controller.PlayerScene2.PlayerControllerManager2;
 import Controller.Weapon.WeaponManager;
 import Utils.Utils;
 
@@ -17,15 +18,15 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 /**
- * Created by Viet on 8/18/2016.
+ * Created by giaqu on 8/27/2016.
  */
-public class PlayGameScene implements GameScene, KeyListener {
+public class PlayGameScene2 implements GameScene, KeyListener {
     private Image backgroud;
     private Image gameOver;
     public static GameSceneListener gameScenceListener;
 
-    public PlayGameScene() {
-        backgroud =  Utils.loadImage("resources/background.png");
+    public PlayGameScene2() {
+        backgroud =  Utils.loadImage("resources/background2.png");
         gameOver = Utils.loadImage("resources/gameover.png");
         Utils.playSound("resources/nhacnen.wav",true);
         reset();
@@ -40,27 +41,28 @@ public class PlayGameScene implements GameScene, KeyListener {
     @Override
     public void draw(Graphics g) {
         g.drawImage(backgroud, 0, 0, null);
-        PlayerControllerManager1.instance.draw(g);
+        PlayerControllerManager2.instance.draw(g);
         WeaponManager.instance.draw(g);
         EnemyManager.instance.draw(g);
         BirdManager.instance.draw(g);
         GiftManager.instance.draw(g);
         DynamiteManager.getInst().draw(g);
 //        DemonManager.instance.draw(g);
-        g.drawString("POINT: " + PlayerController11.instance.getGameObject().getPoint(), 400, 50);
-        g.drawString("HP: " + PlayerController11.instance.getGameObject().getHp(), 50, 50);
-        g.drawString("POINT: " + PlayerController12.instance.getGameObject().getPoint(), 1000, 50);
-        g.drawString("HP: " + PlayerController12.instance.getGameObject().getHp(), 700, 50);
-        if(PlayerController12.instance.gameObject.getHp() <= 0){
+        g.drawString("POINT: " + PlayerController21.instance.getGameObject().getPoint(), 400, 50);
+        g.drawString("HP: " + PlayerController21.instance.getGameObject().getHp(), 50, 50);
+        g.drawString("POINT: " + PlayerController22.instance.getGameObject().getPoint(), 1000, 50);
+        g.drawString("HP: " + PlayerController22.instance.getGameObject().getHp(), 700, 50);
+        if(PlayerController22.instance.gameObject.getHp() <= 0){
             g.drawImage(gameOver, 650, 150, null);
-        }else if(PlayerController11.instance.gameObject.getHp() <= 0){
+        }
+        if(PlayerController21.instance.gameObject.getHp() <= 0){
             g.drawImage(gameOver, 150, 150, null);
         }
     }
 
     @Override
     public KeyListener getKeyListener() {
-        return PlayerControllerManager1.instance.getKeyListener();
+        return PlayerControllerManager2.instance.getKeyListener();
     }
 
     @Override
@@ -76,7 +78,7 @@ public class PlayGameScene implements GameScene, KeyListener {
 
     @Override
     public void run() {
-        PlayerControllerManager1.instance.run();
+        PlayerControllerManager2.instance.run();
         WeaponManager.instance.run();
         EnemyManager.instance.run();
         CollisionPool.instance.run();

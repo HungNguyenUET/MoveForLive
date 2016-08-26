@@ -1,8 +1,6 @@
 package Controller.Gift;
 
 import Controller.ControllerManager;
-import Model.Gift;
-import View.ImageDrawer;
 
 import java.util.Random;
 
@@ -27,7 +25,7 @@ public class GiftManager extends ControllerManager{
         if(count == GIFT_PERIOD){
             count = 0;
             for(int i = 0; i < 1; i++){
-                GiftController giftController = GiftController.create(enX, enY);
+                GiftController giftController = GiftController.create(enX, enY, GiftState.SCENE1);
                 this.add(giftController);
             }
         }

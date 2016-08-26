@@ -1,4 +1,4 @@
-package Controller.PlayerScene1;
+package Controller.PlayerScene2;
 
 import Controller.*;
 import Controller.Enemy.BirdController;
@@ -95,7 +95,7 @@ public class PlayerController21 extends SingleController implements Colliable {
         bulletManager.run();
     }
 
-    public static PlayerController21 instance = new PlayerController21(new Player(x, y), new ImageDrawer("resources/ninja1.png"));
+    public static PlayerController21 instance = new PlayerController21(new Player(300, 300), new ImageDrawer("resources/ninja1.png"));
 
     @Override
     public void onCollide(Colliable colliable) {
@@ -109,14 +109,15 @@ public class PlayerController21 extends SingleController implements Colliable {
         }
         if (colliable instanceof BirdController) {
             colliable.getGameObject().destroy();
-            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 1);
+//            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 1);
         }
         if (colliable instanceof GiftController) {
             PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() + 2);
             colliable.getGameObject().destroy();
         }
-        if(PlayerController21.instance.gameObject.getHp() == 0){
+        if(PlayerController21.instance.gameObject.getHp() <= 0){
             this.getGameObject().destroy();
+            PlayerController21.instance.getGameObject().setHp(0);
         }
     }
 

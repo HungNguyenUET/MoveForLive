@@ -2,6 +2,7 @@ package Controller.PlayerScene1;
 
 import Controller.ControllerManager;
 import Controller.GameInput;
+import GameScene.GameSceneListener;
 import GameScene.PauseGameScene;
 import GameScene.PlayGameScene;
 
@@ -15,9 +16,11 @@ import java.awt.event.KeyListener;
  */
 public class PlayerControllerManager1 extends ControllerManager implements KeyListener{
     GameInput gameInput;
+    private GameSceneListener gameSceneListener;
+
 
     public PlayerControllerManager1() {
-        this.add(Controller.PlayerScene1.PlayerController21.instance);
+        this.add(PlayerController11.instance);
         this.add(PlayerController12.instance);
         gameInput = new GameInput();
     }
@@ -34,32 +37,34 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
 
     @Override
     public void run() {
-        Controller.PlayerScene1.PlayerController21.instance.setGameInput(gameInput);
+        PlayerController11.instance.setGameInput(gameInput);
         PlayerController12.instance.setGameInput(gameInput);
         super.run();
         if(gameInput.keyP){
             gameInput.keyP = false;
             PlayGameScene.gameScenceListener.changeGameScene(new PauseGameScene(), true);
         }
-        if(Controller.PlayerScene1.PlayerController21.instance.getGameObject().getHp() <= 0 &&
-            PlayerController12.instance.getGameObject().getHp() <= 0){
-            if(Controller.PlayerScene1.PlayerController21.instance.getGameObject().getPoint() > PlayerController12.instance.getGameObject().getPoint()){
-                JOptionPane.showMessageDialog(null, "PlayerScene1 1: " + Controller.PlayerScene1.PlayerController21.instance.gameObject.getPoint() +
-                                "\nPlayerScene1 2: " + PlayerController12.instance.gameObject.getPoint() + "\nPLAYER 1 WIN",
-                        "Game Over", JOptionPane.WARNING_MESSAGE);
+//        if(Controller.PlayerScene1.PlayerController11.instance.getGameObject().getHp() <= 0 &&
+//            PlayerController12.instance.getGameObject().getHp() <= 0){
+//            if(Controller.PlayerScene1.PlayerController11.instance.getGameObject().getPoint() > PlayerController12.instance.getGameObject().getPoint()){
+//                JOptionPane.showMessageDialog(null, "PlayerScene1 1: " + Controller.PlayerScene1.PlayerController11.instance.gameObject.getPoint() +
+//                                "\nPlayerScene1 2: " + PlayerController12.instance.gameObject.getPoint() + "\nPLAYER 1 WIN",
+//                        "Game Over", JOptionPane.WARNING_MESSAGE);
+//            }
+//            if(Controller.PlayerScene1.PlayerController11.instance.getGameObject().getPoint() < PlayerController12.instance.getGameObject().getPoint()){
+//                JOptionPane.showMessageDialog(null, "PlayerScene1 1: " + Controller.PlayerScene1.PlayerController11.instance.gameObject.getPoint() +
+//                                "\nPlayerScene1 2: " + PlayerController12.instance.gameObject.getPoint() + "\nPLAYER 2 WIN",
+//                        "Game Over", JOptionPane.WARNING_MESSAGE);
+//            }
+//            if(Controller.PlayerScene1.PlayerController11.instance.getGameObject().getPoint() == PlayerController12.instance.getGameObject().getPoint()){
+//                JOptionPane.showMessageDialog(null, "PlayerScene1 1: " + Controller.PlayerScene1.PlayerController11.instance.gameObject.getPoint() +
+//                                "\nPlayerScene1 2: " + PlayerController12.instance.gameObject.getPoint() + "\nDRAW",
+//                        "Game Over", JOptionPane.WARNING_MESSAGE);
+//            }
+            if (gameSceneListener != null) {
+                gameSceneListener.changeGameScene(new PlayGameScene(), true);
             }
-            if(Controller.PlayerScene1.PlayerController21.instance.getGameObject().getPoint() < PlayerController12.instance.getGameObject().getPoint()){
-                JOptionPane.showMessageDialog(null, "PlayerScene1 1: " + Controller.PlayerScene1.PlayerController21.instance.gameObject.getPoint() +
-                                "\nPlayerScene1 2: " + PlayerController12.instance.gameObject.getPoint() + "\nPLAYER 2 WIN",
-                        "Game Over", JOptionPane.WARNING_MESSAGE);
-            }
-            if(Controller.PlayerScene1.PlayerController21.instance.getGameObject().getPoint() == PlayerController12.instance.getGameObject().getPoint()){
-                JOptionPane.showMessageDialog(null, "PlayerScene1 1: " + Controller.PlayerScene1.PlayerController21.instance.gameObject.getPoint() +
-                                "\nPlayerScene1 2: " + PlayerController12.instance.gameObject.getPoint() + "\nDRAW",
-                        "Game Over", JOptionPane.WARNING_MESSAGE);
-            }
-            System.exit(0);
-        }
+//        }
     }
 
 

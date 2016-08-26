@@ -6,9 +6,9 @@ import Controller.CollisionPool;
 import Controller.SingleController;
 import Model.Bird;
 import Model.GameObject;
+import Utils.Utils;
 import View.AnimationDrawer;
 import View.GameDrawer;
-import View.ImageDrawer;
 
 import java.awt.*;
 
@@ -50,11 +50,11 @@ public class BirdController extends SingleController implements Colliable {
         BirdController birdController = null;
         switch (birdState) {
             case SCENE1:
-                birdController = new BirdController(new Bird(x, y), new ImageDrawer("resources/bird.png"));
+                birdController = new BirdController(new Bird(x, y), new AnimationDrawer(Utils.loadFromSprite("resources/bird.png", true, 64, 64, 0, 0)));
                 /* TODO: */
                 break;
             case SCENE2:
-                birdController = new BirdController(new Bird(x, y), new ImageDrawer("resources/bird.png"));
+                birdController = new BirdController(new Bird(x, y), new AnimationDrawer(Utils.loadFromSprite("resources/bird.png", true, 64, 64, 0, 0)));
                 /* TODO: */
                 break;
         }

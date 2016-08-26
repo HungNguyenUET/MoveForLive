@@ -1,10 +1,6 @@
 package Controller.Enemy;
 
 import Controller.ControllerManager;
-import Controller.Weapon.WeaponController;
-import Model.Bird;
-import Utils.Utils;
-import View.AnimationDrawer;
 
 import java.util.Random;
 
@@ -30,7 +26,7 @@ public class BirdManager extends ControllerManager {
         if (count == A) {
             count = 0;
             for (int i = 0; i < 1 ; i++) {
-                BirdController birdController = BirdController.create(enX, enY);
+                BirdController birdController = BirdController.create(enX, enY, BirdState.SCENE1);
                 this.add(birdController);
             }
         }

@@ -2,7 +2,10 @@ package Controller.Gift;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.PlayerScene1.PlayerController21;
+import Controller.PlayerScene1.PlayerController11;
+import Controller.PlayerScene1.PlayerController12;
+import Controller.PlayerScene2.PlayerController21;
+import Controller.PlayerScene2.PlayerController22;
 import Controller.SingleController;
 import Model.Gift;
 import View.GameDrawer;
@@ -41,8 +44,29 @@ public class GiftController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable colliable) {
+        if (colliable instanceof PlayerController11) {
+            this.getGameObject().destroy();
+            if(PlayerController11.instance.gameObject.getHp() > 5){
+                PlayerController11.instance.gameObject.setHp(5);
+            }
+        }
+        if (colliable instanceof PlayerController12) {
+            this.getGameObject().destroy();
+            if(PlayerController12.instance.gameObject.getHp() > 5){
+                PlayerController12.instance.gameObject.setHp(5);
+            }
+        }
         if (colliable instanceof PlayerController21) {
             this.getGameObject().destroy();
+            if(PlayerController21.instance.gameObject.getHp() > 5){
+                PlayerController21.instance.gameObject.setHp(5);
+            }
+        }
+        if (colliable instanceof PlayerController22) {
+            this.getGameObject().destroy();
+            if(PlayerController22.instance.gameObject.getHp() > 5){
+                PlayerController22.instance.gameObject.setHp(5);
+            }
         }
     }
     public static GiftController create(int x, int y, GiftState giftState){

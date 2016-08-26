@@ -11,7 +11,7 @@ public class WeaponManager extends ControllerManager {
 
     private Random rand = new Random();
     private static int count = 0;
-    private static final int A = 30;
+    private static final int A = 50;
 
     private WeaponManager() {
         super();
@@ -28,13 +28,13 @@ public class WeaponManager extends ControllerManager {
             for(int i = 0; i < 1; i++){
                 int random = rand.nextInt(6);
                 if (random == 1) {
-                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponStateShot.FOLLOWED1);
+                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponStateShot.FOLLOWED1, WeaponStateScene.SCENE1);
                     this.add(weaponController);
                 }else if (random == 2){
-                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponStateShot.FOLLOWED2);
+                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponStateShot.FOLLOWED2, WeaponStateScene.SCENE1);
                     this.add(weaponController);
                 }else {
-                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponStateShot.STRAIGHT);
+                    WeaponController weaponController = WeaponController.create(enX, enY, WeaponStateShot.STRAIGHT, WeaponStateScene.SCENE1);
                     this.add(weaponController);
                 }
             }

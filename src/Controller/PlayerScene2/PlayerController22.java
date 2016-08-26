@@ -1,4 +1,4 @@
-package Controller.PlayerScene1;
+package Controller.PlayerScene2;
 
 import Controller.*;
 import Controller.Enemy.BirdController;
@@ -42,23 +42,24 @@ public class PlayerController22 extends SingleController implements Colliable {
     @Override
     public void onCollide(Colliable colliable) {
         if (colliable instanceof WeaponController) {
-            PlayerController12.instance.getGameObject().setHp(PlayerController12.instance.gameObject.getHp() - 1);
+            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
             colliable.getGameObject().destroy();
         }
         if (colliable instanceof EnemyController) {
             colliable.getGameObject().destroy();
-            PlayerController12.instance.getGameObject().setHp(PlayerController12.instance.gameObject.getHp() - 1);
+            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
         }
         if (colliable instanceof BirdController) {
             colliable.getGameObject().destroy();
-            PlayerController12.instance.getGameObject().setHp(PlayerController12.instance.gameObject.getHp() - 1);
+//            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
         }
         if (colliable instanceof GiftController) {
-            PlayerController12.instance.getGameObject().setHp(PlayerController12.instance.gameObject.getHp() + 2);
+            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() + 2);
             colliable.getGameObject().destroy();
         }
-        if(PlayerController12.instance.gameObject.getHp() == 0){
+        if(PlayerController22.instance.gameObject.getHp() <= 0){
             this.getGameObject().destroy();
+            PlayerController22.instance.getGameObject().setHp(0);
         }
     }
 
@@ -112,8 +113,8 @@ public class PlayerController22 extends SingleController implements Colliable {
         bulletManager.run();
     }
 
-    public final static PlayerController12 instance = new PlayerController12(
-            new Player(x, y),
+    public final static PlayerController22 instance = new PlayerController22(
+            new Player(300, 300),
             new ImageDrawer("resources/ninja2.png")
     );
 

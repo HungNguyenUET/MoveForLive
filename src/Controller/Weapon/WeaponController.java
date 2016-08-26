@@ -2,7 +2,10 @@ package Controller.Weapon;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.PlayerScene1.PlayerController21;
+import Controller.PlayerScene1.PlayerController11;
+import Controller.PlayerScene1.PlayerController12;
+import Controller.PlayerScene2.PlayerController21;
+import Controller.PlayerScene2.PlayerController22;
 import Controller.SingleController;
 import Model.Weapon;
 import View.GameDrawer;
@@ -27,10 +30,10 @@ public class WeaponController extends SingleController implements Colliable {
         super.run();
         if (gameObject.getY() > 600 && gameObject.getX() <= 500) {
             gameObject.destroy();
-            if(PlayerController21.instance.gameObject.getHp() == 0){
-                PlayerController21.instance.getGameObject().setPoint(PlayerController21.instance.gameObject.getPoint());
+            if(PlayerController11.instance.gameObject.getHp() == 0){
+                PlayerController11.instance.getGameObject().setPoint(PlayerController11.instance.gameObject.getPoint());
             } else
-                PlayerController21.instance.getGameObject().setPoint(PlayerController21.instance.gameObject.getPoint() + 1);
+                PlayerController11.instance.getGameObject().setPoint(PlayerController11.instance.gameObject.getPoint() + 1);
         }
 
         if (gameObject.getY() > 600 && gameObject.getX() <= 1000 && gameObject.getX() > 600) {
@@ -64,8 +67,8 @@ public class WeaponController extends SingleController implements Colliable {
                 switch (weaponStateScene){
                     case SCENE1: {
                         weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/follow_sword.png"));
-                        int dx1 = PlayerController21.instance.getGameObject().getX() - weaponController.gameObject.getX();
-                        int dy1 = PlayerController21.instance.getGameObject().getY() - weaponController.gameObject.getY();
+                        int dx1 = PlayerController11.instance.getGameObject().getX() - weaponController.gameObject.getX();
+                        int dy1 = PlayerController11.instance.getGameObject().getY() - weaponController.gameObject.getY();
                         if (dy1 > 0) {
                             double ratio = Math.sqrt(dx1 * dx1 + dy1 * dy1) / FOLLOW_SPEED;
                             weaponController.getGameVector().dy = (int) (dy1 / ratio);
@@ -108,8 +111,8 @@ public class WeaponController extends SingleController implements Colliable {
                     }
                     case SCENE2:{
                         weaponController = new WeaponController(new Weapon(x, y), new ImageDrawer("resources/follow_sword.png"));
-                        int dx2 = PlayerController12.instance.getGameObject().getX() - weaponController.gameObject.getX();
-                        int dy2 = PlayerController12.instance.getGameObject().getY() - weaponController.gameObject.getY();
+                        int dx2 = PlayerController22.instance.getGameObject().getX() - weaponController.gameObject.getX();
+                        int dy2 = PlayerController22.instance.getGameObject().getY() - weaponController.gameObject.getY();
                         if (dy2 > 0) {
                             double ratio = Math.sqrt(dx2 * dx2 + dy2 * dy2) / FOLLOW_SPEED;
                             weaponController.getGameVector().dy = (int) (dy2 / ratio);

@@ -2,7 +2,10 @@ package Controller.Dynamite;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.PlayerScene1.PlayerController21;
+import Controller.PlayerScene1.PlayerController11;
+import Controller.PlayerScene1.PlayerController12;
+import Controller.PlayerScene2.PlayerController21;
+import Controller.PlayerScene2.PlayerController22;
 import Controller.SingleController;
 import Model.Dynamite;
 import Model.GameObject;
@@ -35,24 +38,47 @@ public class DynamiteController extends SingleController implements Colliable {
             Utils.playSound("resources/explosion.wav", false);
             int dynamiteCenterX = this.gameObject.getX() + this.gameObject.getWidth() / 2;
             int dynamiteCenterY = this.gameObject.getY() + this.gameObject.getHeight() / 2;
-            int playerCenterX = PlayerController21.instance.gameObject.getX() + PlayerController21.instance.gameObject.getWidth() / 2;
-            int playerCenterY = PlayerController21.instance.gameObject.getY() + PlayerController21.instance.gameObject.getHeight() / 2;
+            int playerCenterX = PlayerController11.instance.gameObject.getX() + PlayerController11.instance.gameObject.getWidth() / 2;
+            int playerCenterY = PlayerController11.instance.gameObject.getY() + PlayerController11.instance.gameObject.getHeight() / 2;
             double R = Math.sqrt((dynamiteCenterX - playerCenterX) * (dynamiteCenterX - playerCenterX) + (dynamiteCenterY - playerCenterY) * (dynamiteCenterY - playerCenterY));
             if(R <= DYNAMITE_RADIUS) {
-                PlayerController21.instance.gameObject.setHp(PlayerController21.instance.gameObject.getHp() - 1);
+                if(PlayerController11.instance.gameObject.getHp() <= 0){
+                    PlayerController11.instance.getGameObject().setPoint(PlayerController11.instance.gameObject.getPoint());
+                } else
+                    PlayerController11.instance.gameObject.setHp(PlayerController11.instance.gameObject.getHp() - 1);
             }
         }
     }
 
     @Override
     public void onCollide(Colliable c) {
-        if (c instanceof PlayerController21) {
+        if (c instanceof PlayerController11) {
             Utils.playSound("resources/explosion.wav", false);
-            PlayerController21.instance.gameObject.setHp(PlayerController21.instance.gameObject.getHp() - 1);
+            if(PlayerController11.instance.gameObject.getHp() <= 0){
+                PlayerController11.instance.getGameObject().setPoint(PlayerController11.instance.gameObject.getPoint());
+            } else
+                PlayerController11.instance.getGameObject().setPoint(PlayerController11.instance.gameObject.getPoint() - 1);
         }
         if (c instanceof PlayerController12) {
             Utils.playSound("resources/explosion.wav", false);
-            PlayerController12.instance.gameObject.setHp(PlayerController21.instance.gameObject.getHp() - 1);
+            if(PlayerController12.instance.gameObject.getHp() <= 0){
+                PlayerController12.instance.getGameObject().setPoint(PlayerController12.instance.gameObject.getPoint());
+            } else
+                PlayerController12.instance.gameObject.setHp(PlayerController12.instance.gameObject.getHp() - 1);
+        }
+        if (c instanceof PlayerController21) {
+            Utils.playSound("resources/explosion.wav", false);
+            if(PlayerController21.instance.gameObject.getHp() <= 0){
+                PlayerController21.instance.getGameObject().setPoint(PlayerController21.instance.gameObject.getPoint());
+            } else
+                PlayerController21.instance.gameObject.setHp(PlayerController21.instance.gameObject.getHp() - 1);
+        }
+        if (c instanceof PlayerController22) {
+            Utils.playSound("resources/explosion.wav", false);
+            if(PlayerController22.instance.gameObject.getHp() <= 0){
+                PlayerController22.instance.getGameObject().setPoint(PlayerController22.instance.gameObject.getPoint());
+            } else
+                PlayerController22.instance.gameObject.setHp(PlayerController22.instance.gameObject.getHp() - 1);
         }
     }
     public static DynamiteController create(int x, int y){

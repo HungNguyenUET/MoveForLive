@@ -51,14 +51,15 @@ public class PlayerController12 extends SingleController implements Colliable {
         }
         if (colliable instanceof BirdController) {
             colliable.getGameObject().destroy();
-            PlayerController12.instance.getGameObject().setHp(PlayerController12.instance.gameObject.getHp() - 1);
+//            PlayerController12.instance.getGameObject().setHp(PlayerController12.instance.gameObject.getHp() - 1);
         }
         if (colliable instanceof GiftController) {
             PlayerController12.instance.getGameObject().setHp(PlayerController12.instance.gameObject.getHp() + 2);
             colliable.getGameObject().destroy();
         }
-        if(PlayerController12.instance.gameObject.getHp() == 0){
+        if(PlayerController12.instance.gameObject.getHp() <= 0){
             this.getGameObject().destroy();
+            PlayerController12.instance.getGameObject().setHp(0);
         }
     }
 
