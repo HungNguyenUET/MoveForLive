@@ -34,7 +34,7 @@ public class PlayerController11 extends SingleController implements Colliable {
         this.gameInput = new GameInput();
         this.bulletManager = new ControllerManager();
         CollisionPool.instance.add(this);
-        //PlayerControllerManager.instance.add(this);
+        //PlayerControllerManager1.instance.add(this);
         //this.gameVector.dx = SPEED;
     }
 

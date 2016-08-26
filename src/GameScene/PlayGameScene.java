@@ -6,7 +6,7 @@ import Controller.Enemy.BirdManager;
 import Controller.Enemy.EnemyManager;
 import Controller.Gift.GiftManager;
 import Controller.PlayerScene1.PlayerController21;
-import Controller.PlayerScene1.PlayerControllerManager;
+import Controller.PlayerScene1.PlayerControllerManager1;
 import Controller.Weapon.WeaponManager;
 import Utils.Utils;
 
@@ -39,7 +39,7 @@ public class PlayGameScene implements GameScene, KeyListener {
     @Override
     public void draw(Graphics g) {
         g.drawImage(backgroud, 0, 0, null);
-        PlayerControllerManager.instance.draw(g);
+        PlayerControllerManager1.instance.draw(g);
         WeaponManager.instance.draw(g);
         EnemyManager.instance.draw(g);
         BirdManager.instance.draw(g);
@@ -59,7 +59,7 @@ public class PlayGameScene implements GameScene, KeyListener {
 
     @Override
     public KeyListener getKeyListener() {
-        return PlayerControllerManager.instance.getKeyListener();
+        return PlayerControllerManager1.instance.getKeyListener();
     }
 
     @Override
@@ -75,7 +75,7 @@ public class PlayGameScene implements GameScene, KeyListener {
 
     @Override
     public void run() {
-        PlayerControllerManager.instance.run();
+        PlayerControllerManager1.instance.run();
         WeaponManager.instance.run();
         EnemyManager.instance.run();
         CollisionPool.instance.run();

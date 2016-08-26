@@ -30,7 +30,7 @@ public class BirdManager extends ControllerManager {
         if (count == A) {
             count = 0;
             for (int i = 0; i < 1 ; i++) {
-                BirdController birdController = BirdController.create(enX, enY)
+                BirdController birdController = BirdController.create(enX, enY);
                 this.add(birdController);
             }
         }

@@ -38,47 +38,29 @@ public class EnemyManager extends ControllerManager {
         if(count1 == B){
             count1 = 0;
             for (int i = 0; i < 1; i++) {
-
-                EnemyController enemyController = new EnemyController(
-                        new Enemy(enX1, enY),
-                        new ImageDrawer("resources/star.png")
-                );
+                EnemyController enemyController = EnemyController.create(enX, enY);
                 this.add(enemyController);
             }
         }
         if(count2 == C){
             count2 = 0;
             for (int j = 0; j < 1; j++) {
-
-                EnemyController enemyController = new EnemyController(
-                        new Enemy(enX2, enY),
-                        new ImageDrawer("resources/star.png")
-                );
+                EnemyController enemyController = EnemyController.create(enX, enY);
                 this.add(enemyController);
-
             }
         }
         if(count3 == D){
             count3= 0;
             for (int i = 0; i < 1; i++) {
-
-                EnemyController enemyController = new EnemyController(
-                        new Enemy(enX3, enY),
-                        new ImageDrawer("resources/star.png")
-                );
+                EnemyController enemyController = EnemyController.create(enX, enY);
                 this.add(enemyController);
             }
         }
         if(count4 == E){
             count4 = 0;
             for (int j = 0; j < 1; j++) {
-
-                EnemyController enemyController = new EnemyController(
-                        new Enemy(enX4, enY),
-                        new ImageDrawer("resources/star.png")
-                );
+                EnemyController enemyController = EnemyController.create(enX, enY);
                 this.add(enemyController);
-
             }
         }
     }
