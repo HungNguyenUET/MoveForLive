@@ -15,7 +15,7 @@ public class EnemyController extends SingleController implements Colliable {
         super(gameObject, gameDrawer);
         if(this.getGameObject().getX() == 0 || this.getGameObject().getX() == 690)
             this.gameVector.dx += 3;
-        if(this.getGameObject().getX() == 650 || this.getGameObject().getX() == 1350)
+        if(this.getGameObject().getX() == 650 || this.getGameObject().getX() == 1300)
             this.gameVector.dx -= 3;
         CollisionPool.instance.add(this);
     }
@@ -30,10 +30,10 @@ public class EnemyController extends SingleController implements Colliable {
             gameObject.destroy();
         }
 
-        if ( gameObject.getX() <= 1350 && gameObject.getX() > 700) {
+        if ( gameObject.getX() <= 1300 && gameObject.getX() > 750) {
             gameObject.destroy();
         }
-        if ( gameObject.getX() <= 700 && gameObject.getX() > 650) {
+        if ( gameObject.getX() <= 750 && gameObject.getX() > 650) {
             gameObject.destroy();
         }
 
