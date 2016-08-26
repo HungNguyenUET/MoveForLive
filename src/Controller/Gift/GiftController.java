@@ -2,10 +2,11 @@ package Controller.Gift;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.Player.PlayerController;
+import Controller.PlayerScene1.PlayerController21;
 import Controller.SingleController;
 import Model.Gift;
 import View.GameDrawer;
+import View.ImageDrawer;
 
 import java.util.Random;
 
@@ -40,8 +41,22 @@ public class GiftController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable colliable) {
-        if (colliable instanceof PlayerController) {
+        if (colliable instanceof PlayerController21) {
             this.getGameObject().destroy();
         }
+    }
+    public static GiftController create(int x, int y, GiftState giftState){
+        GiftController giftController = null;
+        switch (giftState) {
+            case SCENE1:
+                giftController = new GiftController(new Gift(x, y), new ImageDrawer("resources/heart.png"));
+                /* TODO: */
+                break;
+            case SCENE2:
+                giftController = new GiftController(new Gift(x, y), new ImageDrawer("resources/heart.png"));
+                /* TODO: */
+                break;
+        }
+        return giftController;
     }
 }

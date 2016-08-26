@@ -1,6 +1,8 @@
 package Controller.Dynamite;
 
 import Controller.ControllerManager;
+import Controller.Enemy.BirdController;
+import Controller.Weapon.WeaponController;
 import Model.Dynamite;
 import Model.GameSetting;
 import View.ImageDrawer;
@@ -31,10 +33,8 @@ public class DynamiteManager extends ControllerManager {
         if (count == 50) {
             count = 0;
             int x = rand.nextInt(GameSetting.getInstance().getScreenWidth()) + 1;
-            Dynamite dynamite = new Dynamite(x, 0);
-            ImageDrawer imageDrawer = new ImageDrawer("resources/dynamite.png");
-            DynamiteController dynamiteController = new DynamiteController(dynamite, imageDrawer);
-            this.singleControllerVector.add(dynamiteController);
+            DynamiteController dynamiteController = DynamiteController.create();
+            this.add(dynamiteController);
         }
     }
 }

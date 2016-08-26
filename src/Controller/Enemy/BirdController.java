@@ -4,9 +4,11 @@ import Controller.BulletController;
 import Controller.Colliable;
 import Controller.CollisionPool;
 import Controller.SingleController;
+import Model.Bird;
 import Model.GameObject;
 import View.AnimationDrawer;
 import View.GameDrawer;
+import View.ImageDrawer;
 
 import java.awt.*;
 
@@ -20,7 +22,6 @@ public class BirdController extends SingleController implements Colliable {
         super(gameObject, gameDrawer);
         CollisionPool.instance.add(this);
         this.gameVector.dy += SPEED;
-
     }
 
 
@@ -31,7 +32,6 @@ public class BirdController extends SingleController implements Colliable {
             if (((AnimationDrawer) gameDrawer).animationReachEnd()) {
                 gameObject.destroy();
             }
-
         }
     }
 
@@ -45,5 +45,19 @@ public class BirdController extends SingleController implements Colliable {
         if(colliable instanceof BulletController){
             this.getGameObject().destroy();
         }
+    }
+    public static BirdController create(int x, int y, BirdState birdState){
+        BirdController birdController = null;
+        switch (birdState) {
+            case SCENE1:
+                birdController = new BirdController(new Bird(x, y), new ImageDrawer("resources/bird.png"));
+                /* TODO: */
+                break;
+            case SCENE2:
+                birdController = new BirdController(new Bird(x, y), new ImageDrawer("resources/bird.png"));
+                /* TODO: */
+                break;
+        }
+            return birdController;
     }
 }

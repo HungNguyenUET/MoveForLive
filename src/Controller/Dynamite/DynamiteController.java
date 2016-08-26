@@ -2,8 +2,7 @@ package Controller.Dynamite;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.Player.PlayerController;
-import Controller.Player.PlayerController2;
+import Controller.PlayerScene1.PlayerController21;
 import Controller.SingleController;
 import Model.Dynamite;
 import Model.GameObject;
@@ -36,24 +35,24 @@ public class DynamiteController extends SingleController implements Colliable {
             Utils.playSound("resources/explosion.wav", false);
             int dynamiteCenterX = this.gameObject.getX() + this.gameObject.getWidth() / 2;
             int dynamiteCenterY = this.gameObject.getY() + this.gameObject.getHeight() / 2;
-            int playerCenterX = PlayerController.instance.gameObject.getX() + PlayerController.instance.gameObject.getWidth() / 2;
-            int playerCenterY = PlayerController.instance.gameObject.getY() + PlayerController.instance.gameObject.getHeight() / 2;
+            int playerCenterX = PlayerController21.instance.gameObject.getX() + PlayerController21.instance.gameObject.getWidth() / 2;
+            int playerCenterY = PlayerController21.instance.gameObject.getY() + PlayerController21.instance.gameObject.getHeight() / 2;
             double R = Math.sqrt((dynamiteCenterX - playerCenterX) * (dynamiteCenterX - playerCenterX) + (dynamiteCenterY - playerCenterY) * (dynamiteCenterY - playerCenterY));
             if(R <= DYNAMITE_RADIUS) {
-                PlayerController.instance.gameObject.setHp(PlayerController.instance.gameObject.getHp() - 1);
+                PlayerController21.instance.gameObject.setHp(PlayerController21.instance.gameObject.getHp() - 1);
             }
         }
     }
 
     @Override
     public void onCollide(Colliable c) {
-        if (c instanceof PlayerController) {
+        if (c instanceof PlayerController21) {
             Utils.playSound("resources/explosion.wav", false);
-            PlayerController.instance.gameObject.setHp(PlayerController.instance.gameObject.getHp() - 1);
+            PlayerController21.instance.gameObject.setHp(PlayerController21.instance.gameObject.getHp() - 1);
         }
-        if (c instanceof PlayerController2) {
+        if (c instanceof PlayerController12) {
             Utils.playSound("resources/explosion.wav", false);
-            PlayerController2.instance.gameObject.setHp(PlayerController.instance.gameObject.getHp() - 1);
+            PlayerController12.instance.gameObject.setHp(PlayerController21.instance.gameObject.getHp() - 1);
         }
     }
     public static DynamiteController create(int x, int y){
@@ -65,5 +64,19 @@ public class DynamiteController extends SingleController implements Colliable {
     @Override
     public GameObject getGameObject() {
         return super.getGameObject();
+    }
+    public static DynamiteController create(int x, int y, DynamiteState dynamiteState){
+        DynamiteController dynamiteController = null;
+        switch (dynamiteState) {
+            case SCENE1:
+                dynamiteController = new DynamiteController(new Dynamite(x, y), new ImageDrawer("resources/dynamite.png"));
+                /* TODO: */
+                break;
+            case SCENE2:
+                dynamiteController = new DynamiteController(new Dynamite(x, y), new ImageDrawer("resources/dynamite.png"));
+                /* TODO: */
+                break;
+        }
+        return dynamiteController;
     }
 }

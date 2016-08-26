@@ -5,9 +5,8 @@ import Controller.Dynamite.DynamiteManager;
 import Controller.Enemy.BirdManager;
 import Controller.Enemy.EnemyManager;
 import Controller.Gift.GiftManager;
-import Controller.Player.PlayerController;
-import Controller.Player.PlayerController2;
-import Controller.Player.PlayerControllerManager;
+import Controller.PlayerScene1.PlayerController21;
+import Controller.PlayerScene1.PlayerControllerManager;
 import Controller.Weapon.WeaponManager;
 import Utils.Utils;
 
@@ -47,13 +46,13 @@ public class PlayGameScene implements GameScene, KeyListener {
         GiftManager.instance.draw(g);
         DynamiteManager.getInst().draw(g);
 //        DemonManager.instance.draw(g);
-        g.drawString("POINT: " + PlayerController.instance.getGameObject().getPoint(), 400, 50);
-        g.drawString("HP: " + PlayerController.instance.getGameObject().getHp(), 50, 50);
-        g.drawString("POINT: " + PlayerController2.instance.getGameObject().getPoint(), 1000, 50);
-        g.drawString("HP: " + PlayerController2.instance.getGameObject().getHp(), 700, 50);
-        if(PlayerController2.instance.gameObject.getHp() <= 0){
+        g.drawString("POINT: " + PlayerController21.instance.getGameObject().getPoint(), 400, 50);
+        g.drawString("HP: " + PlayerController21.instance.getGameObject().getHp(), 50, 50);
+        g.drawString("POINT: " + PlayerController12.instance.getGameObject().getPoint(), 1000, 50);
+        g.drawString("HP: " + PlayerController12.instance.getGameObject().getHp(), 700, 50);
+        if(PlayerController12.instance.gameObject.getHp() <= 0){
             g.drawImage(gameOver, 650, 150, null);
-        }else if(PlayerController.instance.gameObject.getHp() <= 0){
+        }else if(PlayerController21.instance.gameObject.getHp() <= 0){
             g.drawImage(gameOver, 150, 150, null);
         }
     }

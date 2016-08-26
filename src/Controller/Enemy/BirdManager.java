@@ -1,6 +1,7 @@
 package Controller.Enemy;
 
 import Controller.ControllerManager;
+import Controller.Weapon.WeaponController;
 import Model.Bird;
 import Utils.Utils;
 import View.AnimationDrawer;
@@ -29,14 +30,8 @@ public class BirdManager extends ControllerManager {
         if (count == A) {
             count = 0;
             for (int i = 0; i < 1 ; i++) {
-                BirdController birdController = new BirdController(
-                        new Bird(enX, enY),
-                        new AnimationDrawer(
-                                Utils.loadFromSprite("resources/bird.png",true,64,64,0,0)
-                        )
-                );
+                BirdController birdController = BirdController.create(enX, enY)
                 this.add(birdController);
-
             }
         }
     }

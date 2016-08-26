@@ -27,10 +27,7 @@ public class GiftManager extends ControllerManager{
         if(count == GIFT_PERIOD){
             count = 0;
             for(int i = 0; i < 1; i++){
-                GiftController giftController = new GiftController(
-                        new Gift(enX, enY),
-                        new ImageDrawer("resources/heart.png")
-                );
+                GiftController giftController = GiftController.create(enX, enY);
                 this.add(giftController);
             }
         }
