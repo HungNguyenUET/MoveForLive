@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.Enemy.BirdController;
 import Model.Bullet;
 import Model.GameObject;
 import View.GameDrawer;
@@ -26,6 +27,8 @@ public class BulletController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable colliable) {
-
+        if (colliable instanceof BirdController){
+            this.getGameObject().destroy();
+        }
     }
 }
