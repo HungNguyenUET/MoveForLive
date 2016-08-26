@@ -8,6 +8,7 @@ import Controller.Gift.GiftController;
 import Controller.SingleController;
 import Controller.Weapon.WeaponController;
 import Model.Player;
+import Utils.Utils;
 import View.GameDrawer;
 import View.ImageDrawer;
 
@@ -67,34 +68,35 @@ public class PlayerController2 extends SingleController implements Colliable {
         this.gameVector.dx = 0;
         if (gameInput.keyA && !gameInput.keyD) {
             this.gameVector.dx = -SPEED;
-            if(this.gameObject.getX() < 750){
-                this.gameObject.setX(750);
+            if(this.gameObject.getX() < 800){
+                this.gameObject.setX(800);
             }
         } else if (!gameInput.keyA && gameInput.keyD) {
             this.gameVector.dx = SPEED;
-            if(this.gameObject.getX() > 1300){
-                this.gameObject.setX(1300);
+            if(this.gameObject.getX() > 1370){
+                this.gameObject.setX(1370);
             }
         }else if (gameInput.keyW) {
             this.gameVector.dy = -JUMP_SPEED;
         }
-        if(this.gameObject.getY() >= 600){
-            this.gameObject.setY(600);
 
-        }else if (this.gameObject.getY() == 500 ) {
+        if (gameObject.getX() <= 500) {
+            this.gameVector.dx = 500;
+        }else if (this.gameObject.getY() == 350 ) {
+            Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyW = false;
-        }else if (gameObject.getX() <= 750) {
-            this.gameVector.dx = 750;
-        } else if ( gameObject.getX() >= 1300) {
-            this.gameVector.dx = 1300;
+        }else if(this.gameObject.getY() >= 500){
+            this.gameObject.setY(500);
+        } else if ( gameObject.getX() >= 950) {
+            this.gameVector.dx = 950;
         }
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
         super.run();
     }
 
     public final static PlayerController2 instance = new PlayerController2(
-            new Player(1050, 600),
+            new Player(800, 500),
             new ImageDrawer("resources/demon.png")
     );
 

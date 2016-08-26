@@ -1,5 +1,8 @@
-package Controller;
+package Controller.Player;
 
+import Controller.Colliable;
+import Controller.CollisionPool;
+import Controller.SingleController;
 import Model.Bullet;
 import Model.GameObject;
 import View.GameDrawer;
