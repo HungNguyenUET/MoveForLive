@@ -75,8 +75,8 @@ public class PlayerController2 extends SingleController implements Colliable {
             }
         } else if (!gameInput.keyA && gameInput.keyD) {
             this.gameVector.dx = SPEED;
-            if(this.gameObject.getX() > 1300){
-                this.gameObject.setX(1300);
+            if(this.gameObject.getX() > 1350){
+                this.gameObject.setX(1350);
             }
         }else if (gameInput.keyW) {
             this.gameVector.dy = -JUMP_SPEED;
@@ -92,9 +92,9 @@ public class PlayerController2 extends SingleController implements Colliable {
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyW = false;
         }else if (gameObject.getX() <= 750) {
-            this.gameVector.dx = 750;
-        } else if ( gameObject.getX() >= 1300) {
-            this.gameVector.dx = 1300;
+            this.gameObject.setX(0);
+        }else if ( gameObject.getX() >= 1350) {
+            this.gameObject.setX(1350);
         }
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
         super.run();
