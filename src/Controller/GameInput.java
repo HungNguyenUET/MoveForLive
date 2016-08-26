@@ -11,4 +11,5 @@ public class GameInput {
     public boolean keyA;
     public boolean keyD;
     public boolean keyW;
+    public boolean keyG;
 }

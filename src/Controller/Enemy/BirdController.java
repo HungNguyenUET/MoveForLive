@@ -2,7 +2,6 @@ package Controller.Enemy;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.Player.BulletController;
 import Controller.SingleController;
 import Model.GameObject;
 import View.AnimationDrawer;
@@ -41,8 +40,6 @@ public class BirdController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable colliable) {
-        if (colliable instanceof BulletController) {
-            this.gameObject.destroy();
-        }
+
     }
 }

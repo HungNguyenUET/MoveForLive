@@ -1,12 +1,10 @@
 package Controller.Player;
 
-import Controller.Colliable;
-import Controller.CollisionPool;
+import Controller.*;
 import Controller.Enemy.EnemyController;
-import Controller.GameInput;
 import Controller.Gift.GiftController;
-import Controller.SingleController;
 import Controller.Weapon.WeaponController;
+import Model.Bullet;
 import Model.Player;
 import Utils.Utils;
 import View.GameDrawer;
@@ -14,19 +12,24 @@ import View.ImageDrawer;
 
 import java.awt.*;
 
+import static Utils.Utils.playSound;
+
 /**
  * Created by Viet on 8/19/2016.
  */
 public class PlayerController2 extends SingleController implements Colliable {
     private static final int SPEED = 10;
     private static final int JUMP_SPEED = 5;
+    private static final int ATK_SPEED = 3;
+    private int count;
     private GameInput gameInput;
+    private ControllerManager bulletManager;
 
 
     public PlayerController2(Player gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
         this.gameInput = new GameInput();
-//        this.starManager = new ControllerManager();
+        this.bulletManager = new ControllerManager();
         CollisionPool.instance.add(this);
         //PlayerControllerManager.instance.add(this);
     }
@@ -34,6 +37,7 @@ public class PlayerController2 extends SingleController implements Colliable {
     @Override
     public void draw(Graphics g) {
         super.draw(g);
+        bulletManager.draw(g);
     }
 
     @Override
@@ -68,37 +72,53 @@ public class PlayerController2 extends SingleController implements Colliable {
         this.gameVector.dx = 0;
         if (gameInput.keyA && !gameInput.keyD) {
             this.gameVector.dx = -SPEED;
-            if(this.gameObject.getX() < 800){
-                this.gameObject.setX(800);
+            if(this.gameObject.getX() < 750){
+                this.gameObject.setX(750);
             }
         } else if (!gameInput.keyA && gameInput.keyD) {
             this.gameVector.dx = SPEED;
-            if(this.gameObject.getX() > 1370){
-                this.gameObject.setX(1370);
+            if(this.gameObject.getX() > 1300){
+                this.gameObject.setX(1300);
             }
         }else if (gameInput.keyW) {
             this.gameVector.dy = -JUMP_SPEED;
         }
+        if (gameInput.keyG) {
+            bulletrun();
+        }
+        if(this.gameObject.getY() >= 600){
+            this.gameObject.setY(600);
 
-        if (gameObject.getX() <= 500) {
-            this.gameVector.dx = 500;
-        }else if (this.gameObject.getY() == 350 ) {
+        }else if (this.gameObject.getY() == 500 ) {
             Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyW = false;
-        }else if(this.gameObject.getY() >= 500){
-            this.gameObject.setY(500);
-        } else if ( gameObject.getX() >= 950) {
-            this.gameVector.dx = 950;
+        }else if (gameObject.getX() <= 750) {
+            this.gameVector.dx = 750;
+        } else if ( gameObject.getX() >= 1300) {
+            this.gameVector.dx = 1300;
         }
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
         super.run();
+        bulletManager.run();
     }
 
     public final static PlayerController2 instance = new PlayerController2(
-            new Player(800, 500),
+            new Player(1050, 600),
             new ImageDrawer("resources/demon.png")
     );
+
+    private void bulletrun() {
+        if (count > ATK_SPEED) {
+            BulletController bulletController = new BulletController(
+                    new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),
+                    new ImageDrawer("resources/star.png"));
+            bulletManager.add(bulletController);
+            count = 0;
+            Utils.playSound("resources/shootsound.wav", false);
+            //System.out.println("ban");
+        }
+    }
 
     public void moveLeft(){
         this.gameInput.keyA = true;
