@@ -22,7 +22,7 @@ public class EnemyController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable colliable) {
-        if (gameObject.getX() >= 450) {
+        if (gameObject.getX() >= 650) {
             gameObject.destroy();
         }
 
@@ -30,10 +30,10 @@ public class EnemyController extends SingleController implements Colliable {
             gameObject.destroy();
         }
 
-        if ( gameObject.getX() <= 1000 && gameObject.getX() > 500) {
+        if ( gameObject.getX() <= 1350 && gameObject.getX() > 700) {
             gameObject.destroy();
         }
-        if ( gameObject.getX() <= 500 && gameObject.getX() > 450) {
+        if ( gameObject.getX() <= 700 && gameObject.getX() > 650) {
             gameObject.destroy();
         }
 

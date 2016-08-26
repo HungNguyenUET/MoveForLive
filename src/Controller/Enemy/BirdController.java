@@ -1,5 +1,8 @@
-package Controller;
+package Controller.Enemy;
 
+import Controller.Colliable;
+import Controller.CollisionPool;
+import Controller.SingleController;
 import Model.GameObject;
 import View.AnimationDrawer;
 import View.GameDrawer;

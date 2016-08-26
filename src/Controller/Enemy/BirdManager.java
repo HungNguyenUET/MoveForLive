@@ -1,5 +1,6 @@
-package Controller;
+package Controller.Enemy;
 
+import Controller.ControllerManager;
 import Model.Bird;
 import Utils.Utils;
 import View.AnimationDrawer;
@@ -13,7 +14,7 @@ public class BirdManager extends ControllerManager {
 
     private Random rand = new Random();
     private static int count = 0;
-    private static final int A = 10;
+    private static final int A = 20;
 
     public BirdManager() {
         super();
@@ -24,7 +25,7 @@ public class BirdManager extends ControllerManager {
         super.run();
         count++;
         int enX = rand.nextInt(1400);
-        int enY = rand.nextInt(700);
+        int enY = rand.nextInt(150);
         if (count == A) {
             count = 0;
             for (int i = 0; i < 1 ; i++) {
@@ -34,7 +35,6 @@ public class BirdManager extends ControllerManager {
                                 Utils.loadFromSprite("resources/bird.png",true,64,64,0,0)
                         )
                 );
-                enX += 100;
                 this.add(birdController);
 
             }

@@ -33,7 +33,7 @@ public class GiftController extends SingleController implements Colliable {
     @Override
     public void run() {
         super.run();
-        if(gameObject.getY() > 625) {
+        if(gameObject.getY() > 650) {
             gameObject.destroy();
         }
     }
