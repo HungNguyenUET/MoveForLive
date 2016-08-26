@@ -93,8 +93,8 @@ public class PlayerController2 extends SingleController implements Colliable {
             gameInput.keyW = false;
         }else if (gameObject.getX() <= 750) {
             this.gameObject.setX(0);
-        }else if ( gameObject.getX() >= 1350) {
-            this.gameObject.setX(1350);
+        }else if ( gameObject.getX() >= 1300) {
+            this.gameObject.setX(1300);
         }
         this.getGameObject().moveTo(gameObject.getX() + gameVector.dx, gameObject.getY() + gameVector.dy);
         super.run();
