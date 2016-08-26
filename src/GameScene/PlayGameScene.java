@@ -1,6 +1,7 @@
 package GameScene;
 
 import Controller.CollisionPool;
+import Controller.Dynamite.DynamiteManager;
 import Controller.Enemy.BirdManager;
 import Controller.Enemy.EnemyManager;
 import Controller.Gift.GiftManager;
@@ -44,6 +45,7 @@ public class PlayGameScene implements GameScene, KeyListener {
         EnemyManager.instance.draw(g);
         BirdManager.instance.draw(g);
         GiftManager.instance.draw(g);
+        DynamiteManager.getInst().draw(g);
 //        DemonManager.instance.draw(g);
         g.drawString("POINT: " + PlayerController.instance.getGameObject().getPoint(), 400, 50);
         g.drawString("HP: " + PlayerController.instance.getGameObject().getHp(), 50, 50);
@@ -80,6 +82,7 @@ public class PlayGameScene implements GameScene, KeyListener {
         CollisionPool.instance.run();
         BirdManager.instance.run();
         GiftManager.instance.run();
+        DynamiteManager.getInst().run();
 //        DemonManager.instance.run();
     }
 

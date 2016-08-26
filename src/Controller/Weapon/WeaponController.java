@@ -14,8 +14,8 @@ import View.ImageDrawer;
  */
 public class WeaponController extends SingleController implements Colliable {
 
-    public static final int SPEED = 4;
-    public static final int FOLLOW_SPEED = 3;
+    public static final int SPEED = 5;
+    public static final int FOLLOW_SPEED = 2;
 
     public WeaponController(Weapon gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);

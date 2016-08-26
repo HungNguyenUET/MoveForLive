@@ -11,7 +11,7 @@ public class WeaponManager extends ControllerManager {
 
     private Random rand = new Random();
     private static int count = 0;
-    private static final int A = 20;
+    private static final int A = 30;
 
     private WeaponManager() {
         super();

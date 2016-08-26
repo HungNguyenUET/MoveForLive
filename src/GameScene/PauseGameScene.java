@@ -20,7 +20,7 @@ public class PauseGameScene implements GameScene, KeyListener {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(pause, 200, 200, null);
+        g.drawImage(pause, 550, 250, null);
     }
 
     @Override
