@@ -25,12 +25,11 @@ public class PlayGameScene implements GameScene {
     public PlayGameScene() {
         backgroud =  Utils.loadImage("resources/playsecen.gif");
         Utils.playSound("resources/nhacnen.wav",true);
-
         reset();
     }
 
     private void reset(){
-
+//        new PlayGameScene();
     }
 
     @Override

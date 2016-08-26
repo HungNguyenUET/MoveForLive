@@ -4,7 +4,6 @@ import Controller.PlayButtonController;
 import Utils.Utils;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -31,7 +30,9 @@ public class MenuGameScene implements GameScene, MouseListener  {
         reset();
     }
 
-    private void reset(){}
+    private void reset(){
+//        new MenuGameScene();
+    }
 
     @Override
     public void draw(Graphics g) {
@@ -57,20 +58,11 @@ public class MenuGameScene implements GameScene, MouseListener  {
         this.gameSceneListener = gameSceneListener;
     }
 
-
-
-
     @Override
     public void run() {
 
     }
 
-    /**
-     * Invoked when the mouse button has been clicked (pressed
-     * and released) on a component.
-     *
-     * @param e
-     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -86,31 +78,16 @@ public class MenuGameScene implements GameScene, MouseListener  {
 
     }
 
-    /**
-     * Invoked when a mouse button has been released on a component.
-     *
-     * @param e
-     */
     @Override
     public void mouseReleased(MouseEvent e) {
 
     }
 
-    /**
-     * Invoked when the mouse enters a component.
-     *
-     * @param e
-     */
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
-    /**
-     * Invoked when the mouse exits a component.
-     *
-     * @param e
-     */
     @Override
     public void mouseExited(MouseEvent e) {
 

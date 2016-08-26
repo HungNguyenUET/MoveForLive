@@ -1,6 +1,7 @@
 package Controller.Player;
 
 import Controller.*;
+import Controller.Enemy.BirdController;
 import Controller.Enemy.EnemyController;
 import Controller.Gift.GiftController;
 import Controller.Weapon.WeaponController;
@@ -90,6 +91,10 @@ public class PlayerController extends SingleController implements Colliable {
             colliable.getGameObject().destroy();
         }
         if (colliable instanceof EnemyController) {
+            colliable.getGameObject().destroy();
+            PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() - 1);
+        }
+        if (colliable instanceof BirdController) {
             colliable.getGameObject().destroy();
             PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() - 1);
         }
