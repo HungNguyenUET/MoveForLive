@@ -80,7 +80,7 @@ public class PlayerController extends SingleController implements Colliable {
 
     public final static PlayerController instance = new PlayerController(
             new Player(350, 600),
-             new ImageDrawer("resources/ninja.png")
+             new ImageDrawer("resources/ninja1.png")
     );
 
     @Override
@@ -94,7 +94,7 @@ public class PlayerController extends SingleController implements Colliable {
             PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() - 1);
         }
         if (colliable instanceof GiftController) {
-            PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() + 5);
+            PlayerController.instance.getGameObject().setHp(PlayerController.instance.gameObject.getHp() + 2);
             colliable.getGameObject().destroy();
         }
         if(PlayerController.instance.gameObject.getHp() == 0){

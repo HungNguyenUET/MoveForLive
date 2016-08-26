@@ -51,7 +51,7 @@ public class PlayerController2 extends SingleController implements Colliable {
             PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() - 1);
         }
         if (colliable instanceof GiftController) {
-            PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() + 5);
+            PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() + 2);
             colliable.getGameObject().destroy();
         }
         if(PlayerController2.instance.gameObject.getHp() == 0){
@@ -105,7 +105,7 @@ public class PlayerController2 extends SingleController implements Colliable {
 
     public final static PlayerController2 instance = new PlayerController2(
             new Player(1050, 600),
-            new ImageDrawer("resources/demon.png")
+            new ImageDrawer("resources/ninja2.png")
     );
 
     private void bulletrun2() {

@@ -12,7 +12,7 @@ import java.util.Random;
 public class GiftManager extends ControllerManager{
     private Random rand = new Random();
     private static int count = 0;
-    private static final int GIFT_PERIOD = 50;
+    private static final int GIFT_PERIOD = 100;
 
     private GiftManager() {
         super();
