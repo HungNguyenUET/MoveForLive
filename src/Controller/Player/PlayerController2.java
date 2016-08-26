@@ -12,8 +12,6 @@ import View.ImageDrawer;
 
 import java.awt.*;
 
-import static Utils.Utils.playSound;
-
 /**
  * Created by Viet on 8/19/2016.
  */
@@ -53,12 +51,16 @@ public class PlayerController2 extends SingleController implements Colliable {
         if (colliable instanceof GiftController) {
             PlayerController2.instance.getGameObject().setHp(PlayerController2.instance.gameObject.getHp() + 5);
             colliable.getGameObject().destroy();
+            if(PlayerController2.instance.gameObject.getHp() >= 5){
+                PlayerController2.instance.getGameObject().setHp(5);
+
+            }
         }
         if(PlayerController2.instance.gameObject.getHp() == 0){
             this.getGameObject().destroy();
             if (colliable instanceof WeaponController || colliable instanceof EnemyController || colliable instanceof GiftController) {
                 PlayerController2.instance.getGameObject().setHp(0);
-                PlayerController2.instance.getGameObject().setPoint(PlayerController2.instance.gameObject.getPoint() + 0);
+                PlayerController2.instance.getGameObject().setPoint(PlayerController2.instance.gameObject.getPoint());
                 colliable.getGameObject().destroy();
             }
         }
