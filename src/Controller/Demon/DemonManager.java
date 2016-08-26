@@ -21,7 +21,7 @@ public class DemonManager extends ControllerManager {
         count++;
         int enX = 50;
         int enY = 50;
-        if(count > 10) {
+        if(count == 10) {
             count = 0;
             DemonController demonController = new DemonController(
                     new Demon(enX, enY),
