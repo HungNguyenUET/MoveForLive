@@ -84,7 +84,7 @@ public class PlayerController2 extends SingleController implements Colliable {
             this.gameVector.dy = -JUMP_SPEED;
         }
         if (gameInput.keyG) {
-            bulletrun();
+            bulletrun2();
         }
         if(this.gameObject.getY() >= 600){
             this.gameObject.setY(600);
@@ -108,7 +108,7 @@ public class PlayerController2 extends SingleController implements Colliable {
             new ImageDrawer("resources/demon.png")
     );
 
-    private void bulletrun() {
+    private void bulletrun2() {
         if (count > ATK_SPEED) {
             BulletController bulletController = new BulletController(
                     new Bullet(this.gameObject.getMiddleX() - Bullet.WIDTH / 2, this.gameObject.getY()),

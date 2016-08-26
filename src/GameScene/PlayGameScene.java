@@ -12,6 +12,7 @@ import Utils.Utils;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 /**
  * Created by Viet on 8/18/2016.
@@ -47,6 +48,11 @@ public class PlayGameScene implements GameScene {
     @Override
     public KeyListener getKeyListener() {
         return PlayerControllerManager.instance.getKeyListener();
+    }
+
+    @Override
+    public MouseListener getMouseListener() {
+        return null;
     }
 
     @Override
