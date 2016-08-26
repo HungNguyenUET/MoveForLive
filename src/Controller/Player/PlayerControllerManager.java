@@ -2,6 +2,8 @@ package Controller.Player;
 
 import Controller.ControllerManager;
 import Controller.GameInput;
+import GameScene.PauseGameScene;
+import GameScene.PlayGameScene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +37,10 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
         PlayerController.instance.setGameInput(gameInput);
         PlayerController2.instance.setGameInput(gameInput);
         super.run();
+        if(gameInput.keyP){
+            gameInput.keyP = false;
+            PlayGameScene.gameScenceListener.changeGameScene(new PauseGameScene(), true);
+        }
         if(PlayerController.instance.getGameObject().getHp() <= 0 &&
             PlayerController2.instance.getGameObject().getHp() <= 0){
             if(PlayerController.instance.getGameObject().getPoint() > PlayerController2.instance.getGameObject().getPoint()){
@@ -88,6 +94,9 @@ public class PlayerControllerManager extends ControllerManager implements KeyLis
                 break;
             case KeyEvent.VK_ENTER:
                 gameInput.keyEnter = true;
+                break;
+            case KeyEvent.VK_P:
+                gameInput.keyP = true;
                 break;
         }
     }
