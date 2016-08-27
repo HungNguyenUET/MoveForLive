@@ -32,7 +32,7 @@ public class EnemyManager extends ControllerManager {
         int enX2 = 500;
         int enX3 = 600;
         int enX4 = 1000;
-        int enY = 550 ;
+        int enY = 625 ;
         if(count1 == B){
             count1 = 0;
             for (int i = 0; i < 1; i++) {

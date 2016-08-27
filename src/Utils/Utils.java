@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 /**
- * Created by giaqu on 8/14/2016.
+ * Created by HungNguyen on 8/27/2016.
  */
 public class Utils {
     public static BufferedImage loadImage(String url){

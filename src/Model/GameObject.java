@@ -3,7 +3,7 @@ package Model;
 import java.awt.*;
 
 /**
- * Created by giaqu on 8/14/2016.
+ * Created by HungNguyen on 8/27/2016.
  */
 public class GameObject {
     protected int x;
@@ -101,4 +101,3 @@ public class GameObject {
     }
 
 }
-

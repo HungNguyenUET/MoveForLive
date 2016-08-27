@@ -9,7 +9,7 @@ import java.util.Vector;
 /**
  * Created by giaqu on 8/14/2016.
  */
-public class CollisionPool implements BaseController{
+public class CollisionPool implements BaseController {
 
     private Vector<Colliable> colliableVector;
 

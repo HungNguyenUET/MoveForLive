@@ -95,7 +95,7 @@ public class PlayerController21 extends SingleController implements Colliable {
         bulletManager.run();
     }
 
-    public static PlayerController21 instance = new PlayerController21(new Player(500, 200), new ImageDrawer("resources/ninja1.png"));
+    public static PlayerController21 instance = new PlayerController21(new Player(300, 300), new ImageDrawer("resources/ninja1.png"));
 
     @Override
     public void onCollide(Colliable colliable) {

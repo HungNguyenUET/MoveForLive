@@ -4,6 +4,7 @@ import Controller.CollisionPool;
 import Controller.Dynamite.DynamiteManager;
 import Controller.Enemy.BirdManager;
 import Controller.Enemy.EnemyManager;
+import Controller.GameInput;
 import Controller.Gift.GiftManager;
 import Controller.PlayerScene1.PlayerController11;
 import Controller.PlayerScene1.PlayerController12;
@@ -12,32 +13,22 @@ import Controller.Weapon.WeaponManager;
 import Utils.Utils;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 /**
- * Created by Viet on 8/18/2016.
+ * Created by HungNguyen on 8/27/2016.
  */
-public class PlayGameScene implements GameScene, KeyListener {
-
+public class PlayGameScene implements Scene {
     private Image backgroud;
     private Image gameOver;
-    public static GameSceneListener gameScenceListener;
+    GameInput gameInput;
 
-
-    public PlayGameScene() {
+    public PlayGameScene(){
         backgroud =  Utils.loadImage("resources/background.png");
         gameOver = Utils.loadImage("resources/gameover.png");
+        gameInput = new GameInput();
         Utils.playSound("resources/nhacnen.wav",true);
-
-        reset();
-    }
-
-
-
-    private void reset(){
-//        new PlayGameScene();
     }
 
     @Override
@@ -62,22 +53,6 @@ public class PlayGameScene implements GameScene, KeyListener {
     }
 
     @Override
-    public KeyListener getKeyListener() {
-        return PlayerControllerManager1.instance.getKeyListener();
-    }
-
-    @Override
-    public MouseListener getMouseListener() {
-        return null;
-    }
-
-    @Override
-    public void setGameSceneListener(GameSceneListener gameSceneListener) {
-        this.gameScenceListener = gameSceneListener;
-    }
-
-
-    @Override
     public void run() {
         PlayerControllerManager1.instance.run();
         WeaponManager.instance.run();
@@ -86,45 +61,20 @@ public class PlayGameScene implements GameScene, KeyListener {
         BirdManager.instance.run();
         GiftManager.instance.run();
         DynamiteManager.getInst().run();
-//        DemonManager.instance.run();
     }
 
-    /**
-     * Invoked when a key has been typed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key typed event.
-     *
-     * @param e
-     */
     @Override
-    public void keyTyped(KeyEvent e) {
-
+    public KeyListener getKeyListener() {
+        return PlayerControllerManager1.instance.getKeyListener();
     }
 
-    /**
-     * Invoked when a key has been pressed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key pressed event.
-     *
-     * @param e
-     */
     @Override
-    public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_P) {
-            gameScenceListener.changeGameScene(new PauseGameScene(), true);
-            System.out.println("a");
-        }
+    public MouseListener getMouseListenr() {
+        return null;
     }
 
-    /**
-     * Invoked when a key has been released.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key released event.
-     *
-     * @param e
-     */
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void setGameInput(GameInput gameInput) {
 
     }
 }

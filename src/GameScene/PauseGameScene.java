@@ -1,5 +1,6 @@
 package GameScene;
 
+import Controller.GameInput;
 import Utils.Utils;
 
 import java.awt.*;
@@ -10,32 +11,13 @@ import java.awt.event.MouseListener;
 /**
  * Created by Viet on 8/27/2016.
  */
-public class PauseGameScene implements GameScene, KeyListener {
-    private GameSceneListener gameSceneListener;
+public class PauseGameScene implements Scene,KeyListener {
     private Image pause;
+    private GameInput gameInput;
 
     public PauseGameScene() {
         pause = Utils.loadImage("resources/pause2.png");
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        g.drawImage(pause, 550, 250, null);
-    }
-
-    @Override
-    public KeyListener getKeyListener() {
-        return this;
-    }
-
-    @Override
-    public MouseListener getMouseListener() {
-        return null;
-    }
-
-    @Override
-    public void setGameSceneListener(GameSceneListener gameSceneListener) {
-        this.gameSceneListener = gameSceneListener;
+        gameInput = new GameInput();
     }
 
 
@@ -47,21 +29,40 @@ public class PauseGameScene implements GameScene, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_P) {
-            gameSceneListener.changeGameScene(new PlayGameScene(), true);
-
-        }
-
+        gameInput.keyP = true;
     }
 
 
     @Override
     public void keyReleased(KeyEvent e) {
+        gameInput.keyP = false;
     }
 
+    @Override
+    public void draw(Graphics g) {
+        g.drawImage(pause, 550, 250, null);
+    }
 
     @Override
     public void run() {
+        if(gameInput.keyP){
+            GameManager.getInstance().getStackScreen().pop();
+            gameInput.keyP = false;
+        }
+    }
+
+    @Override
+    public KeyListener getKeyListener() {
+        return this;
+    }
+
+    @Override
+    public MouseListener getMouseListenr() {
+        return null;
+    }
+
+    @Override
+    public void setGameInput(GameInput gameInput) {
 
     }
 }

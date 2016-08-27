@@ -1,61 +1,32 @@
 package GameScene;
 
-import Controller.PlayButtonController;
+import Controller.GameInput;
 import Utils.Utils;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Created by Viet on 8/18/2016.
+ * Created by HungNguyen on 8/27/2016.
  */
-public class MenuGameScene implements GameScene, MouseListener  {
-    private GameSceneListener gameSceneListener;
+public class MenuGameScene implements Scene, KeyListener, MouseListener{
     private Image background;
-//    private JButton button = new JButton(new ImageIcon("resources/button.png"));
-//    private JPanel panel = new JPanel();
+    private Image buttonPlay;
+    private GameInput gameInput;
 
-    public MenuGameScene() {
+    public MenuGameScene(){
         background = Utils.loadImage("resources/backg2.png");
-//        button.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (gameSceneListener != null)
-//                    gameSceneListener.changeGameScene(new PlayGameScene());
-//            }
-//        });
-//        panel.add(button);
-        reset();
-    }
-
-    private void reset(){
-//        new MenuGameScene();
+        buttonPlay = Utils.loadImage("resources/playbutton.png");
+        gameInput = new GameInput();
     }
 
     @Override
     public void draw(Graphics g) {
-        
         g.drawImage(background, 0, 0, null);
-        PlayButtonController.instance.draw(g);
-
-    }
-
-    @Override
-    public KeyListener getKeyListener() {
-        return null;
-    }
-
-
-    @Override
-    public MouseListener getMouseListener() {
-        return this;
-    }
-
-    @Override
-    public void setGameSceneListener(GameSceneListener gameSceneListener) {
-        this.gameSceneListener = gameSceneListener;
+        g.drawImage(buttonPlay, 500, 450, null);
     }
 
     @Override
@@ -64,12 +35,40 @@ public class MenuGameScene implements GameScene, MouseListener  {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public KeyListener getKeyListener() {
+        return this;
+    }
 
+    @Override
+    public MouseListener getMouseListenr() {
+        return this;
+    }
+
+    @Override
+    public void setGameInput(GameInput gameInput) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
         if (e.getX() <= 630 && e.getX() >= 500 && e.getY() >= 450 && e.getY() <= 580) {
-            if (gameSceneListener != null) {
-                gameSceneListener.changeGameScene(new PlayGameScene(), true);
-            }
+            GameManager.getInstance().getStackScreen().push(new PlayGameScene());
+            System.out.println("Play Screen");
         }
     }
 

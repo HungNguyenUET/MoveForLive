@@ -3,7 +3,6 @@ package Controller.Enemy;
 import Controller.Colliable;
 import Controller.CollisionPool;
 import Controller.SingleController;
-import Model.Bird;
 import Model.Enemy;
 import View.GameDrawer;
 import View.ImageDrawer;
@@ -39,7 +38,7 @@ public class EnemyController extends SingleController implements Colliable {
             gameObject.destroy();
         }
     }
-    public static EnemyController create(int x, int y,  EnemyState enemyState){
+    public static EnemyController create(int x, int y, EnemyState enemyState){
         EnemyController enemyController = null;
         switch (enemyState) {
             case SCENE1:

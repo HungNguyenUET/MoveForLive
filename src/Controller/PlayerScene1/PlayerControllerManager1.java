@@ -2,6 +2,7 @@ package Controller.PlayerScene1;
 
 import Controller.ControllerManager;
 import Controller.GameInput;
+import GameScene.GameManager;
 import GameScene.PauseGameScene;
 import GameScene.PlayGameScene;
 import GameScene.PlayGameScene2;
@@ -16,6 +17,7 @@ import java.awt.event.KeyListener;
  */
 public class PlayerControllerManager1 extends ControllerManager implements KeyListener{
     GameInput gameInput;
+    int count = 0;
 
 
     public PlayerControllerManager1() {
@@ -39,19 +41,23 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
         PlayerController11.instance.setGameInput(gameInput);
         PlayerController12.instance.setGameInput(gameInput);
         super.run();
-        if(gameInput.keyP){
-            gameInput.keyP = false;
-            PlayGameScene.gameScenceListener.changeGameScene(new PauseGameScene(), true);
+        if(gameInput.keyP && count == 0){
+            GameManager.getInstance().getStackScreen().push(new PauseGameScene());
+            count++;
+        }
+        if(!gameInput.keyP){
+            count = 0;
         }
 
         if(PlayerController11.instance.getGameObject().getHp() <= 0 &&
-            PlayerController12.instance.getGameObject().getHp() <= 0){
+                PlayerController12.instance.getGameObject().getHp() <= 0){
             if(PlayerController11.instance.getGameObject().getPoint() > PlayerController12.instance.getGameObject().getPoint()){
                 int input = JOptionPane.showOptionDialog(null, "PlayerScene11: " + PlayerController11.instance.gameObject.getPoint() +
                                 "\nPlayerScene12: " + PlayerController12.instance.gameObject.getPoint() + "\nPLAYER 1 WIN",
                         "Game Over", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 if(input == JOptionPane.OK_OPTION){
-                    PlayGameScene.gameScenceListener.changeGameScene(new PlayGameScene2(), true);
+                    GameManager.getInstance().getStackScreen().pop();
+                    GameManager.getInstance().getStackScreen().push(new PlayGameScene2());
                 }
                 if(input == JOptionPane.CANCEL_OPTION){
                     System.exit(0);
@@ -62,7 +68,8 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
                                 "\nPlayerScene12: " + PlayerController12.instance.gameObject.getPoint() + "\nPLAYER 2 WIN",
                         "Game Over", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 if(input == JOptionPane.OK_OPTION){
-                    PlayGameScene.gameScenceListener.changeGameScene(new PlayGameScene2(), true);
+                    GameManager.getInstance().getStackScreen().pop();
+                    GameManager.getInstance().getStackScreen().push(new PlayGameScene2());
                 }
                 if(input == JOptionPane.CANCEL_OPTION){
                     System.exit(0);
@@ -73,7 +80,8 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
                                 "\nPlayerScene12: " + PlayerController12.instance.gameObject.getPoint() + "\nDRAW",
                         "Game Over", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                 if(input == JOptionPane.OK_OPTION){
-                    PlayGameScene.gameScenceListener.changeGameScene(new PlayGameScene2(), true);
+                    GameManager.getInstance().getStackScreen().pop();
+                    GameManager.getInstance().getStackScreen().push(new PlayGameScene2());
                 }
                 if(input == JOptionPane.CANCEL_OPTION){
                     System.exit(0);
@@ -120,10 +128,11 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
             case KeyEvent.VK_P:
                 gameInput.keyP = true;
                 break;
-            case KeyEvent.VK_R:
-                gameInput.keyR = true;
-                break;
         }
+    }
+
+    public void setGameInput(GameInput gameInput) {
+        this.gameInput = gameInput;
     }
 
     @Override
@@ -147,6 +156,10 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
             case KeyEvent.VK_D:
                 gameInput.keyD = false;
                 break;
+            case  KeyEvent.VK_P:
+                gameInput.keyP = false;
+                break;
+
 
         }
     }

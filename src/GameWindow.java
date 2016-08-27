@@ -1,67 +1,41 @@
-import GameScene.GameScene;
-import GameScene.GameSceneListener;
+import GameScene.GameManager;
 import GameScene.MenuGameScene;
 import Model.GameSetting;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
-import java.util.Stack;
 
 /**
- * Created by giaqu on 8/14/2016.
+ * Created by HungNguyen on 8/27/2016.
  */
-public class GameWindow extends Frame implements Runnable, GameSceneListener {
-
+public class GameWindow extends Frame implements Runnable {
+    Thread thread;
     BufferedImage bufferedImage;
     Graphics bufferedImageGraphics;
-    Thread thread;
-    GameScene currentGameScene;
     GameSetting gameSetting;
-
-    private Stack<GameScene> stack;
+    KeyListener keyListener;
+    MouseListener mouseListener;
 
     public GameWindow(){
         //Setup window game
         configUI();
-        stack = new Stack<GameScene>();
-        //Mo man hinh Menu Game
-        changeGameScene(new MenuGameScene(), false);
+        GameManager.getInstance().getStackScreen().push(new MenuGameScene());
         this.bufferedImage = new BufferedImage(gameSetting.getScreenWidth(),
                 gameSetting.getScreenHeight(), BufferedImage.TYPE_INT_ARGB);
         this.bufferedImageGraphics = bufferedImage.getGraphics();
-        //Tao luong
+        keyListener = GameManager.getInstance().getStackScreen().peek().getKeyListener();
+        mouseListener = GameManager.getInstance().getStackScreen().peek().getMouseListenr();
+        this.addKeyListener(keyListener);
+        this.addMouseListener(mouseListener);
         thread = new Thread(this);
         thread.start();
-
-        this.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-                    GameWindow.this.back();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-
-            private void back() {
-
-            }
-        });
-
     }
-    private void configUI() {
+
+    private void configUI(){
         this.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -107,7 +81,8 @@ public class GameWindow extends Frame implements Runnable, GameSceneListener {
 
     @Override
     public void update(Graphics g) {
-        this.currentGameScene.draw(bufferedImageGraphics);
+        //super.update(g);
+        GameManager.getInstance().getStackScreen().peek().draw(bufferedImageGraphics);
         g.drawImage(bufferedImage, 0, 0, null);
     }
 
@@ -115,7 +90,9 @@ public class GameWindow extends Frame implements Runnable, GameSceneListener {
     public void run() {
         while (true){
             try {
-                this.currentGameScene.run();
+                GameManager.getInstance().getStackScreen().peek().run();
+                keyListener = GameManager.getInstance().getStackScreen().peek().getKeyListener();
+                this.addKeyListener(keyListener);
                 Thread.sleep(gameSetting.getThreadDelay());
                 repaint();
             } catch (InterruptedException e) {
@@ -123,33 +100,4 @@ public class GameWindow extends Frame implements Runnable, GameSceneListener {
             }
         }
     }
-
-
-
-    @Override
-    public void changeGameScene(GameScene gameScene, boolean addToStack) {
-        if(currentGameScene != null && addToStack) {
-            this.removeKeyListener(currentGameScene.getKeyListener());
-            this.stack.push(currentGameScene);
-        }
-        currentGameScene = gameScene;
-        currentGameScene.setGameSceneListener(this);
-        this.addKeyListener(currentGameScene.getKeyListener());
-        this.addMouseListener(currentGameScene.getMouseListener());
-
-    }
-
-    @Override
-    public void back() {
-        if(!stack.isEmpty()) {
-            this.removeKeyListener(currentGameScene.getKeyListener());
-            currentGameScene = stack.pop();
-            currentGameScene.setGameSceneListener(this);
-            this.addKeyListener(currentGameScene.getKeyListener());
-        } else {
-            //System.exit(0);
-        }
-    }
 }
-
-

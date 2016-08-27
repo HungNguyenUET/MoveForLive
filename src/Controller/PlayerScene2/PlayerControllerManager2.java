@@ -2,7 +2,6 @@ package Controller.PlayerScene2;
 
 import Controller.ControllerManager;
 import Controller.GameInput;
-import GameScene.PauseGameScene;
 import GameScene.PlayGameScene;
 
 import javax.swing.*;
@@ -39,7 +38,6 @@ public class PlayerControllerManager2 extends ControllerManager implements KeyLi
         super.run();
         if(gameInput.keyP){
             gameInput.keyP = false;
-            PlayGameScene.gameScenceListener.changeGameScene(new PauseGameScene(), true);
         }
         if(PlayerController21.instance.getGameObject().getHp() <= 0 &&
                 PlayerController22.instance.getGameObject().getHp() <= 0){
