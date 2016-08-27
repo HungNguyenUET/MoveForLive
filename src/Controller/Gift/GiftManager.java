@@ -1,6 +1,7 @@
 package Controller.Gift;
 
 import Controller.ControllerManager;
+import GameScene.GameManager;
 
 import java.util.Random;
 
@@ -19,15 +20,33 @@ public class GiftManager extends ControllerManager{
     @Override
     public void run() {
         super.run();
-        count++;
-        int enX = rand.nextInt(1000);
-        int enY = rand.nextInt(150);
-        if(count == GIFT_PERIOD){
-            count = 0;
-            for(int i = 0; i < 1; i++){
-                GiftController giftController = GiftController.create(enX, enY, GiftState.SCENE1);
-                this.add(giftController);
-            }
+        switch (GameManager.getInstance().getStackScreen().peek().getStt()) {
+            case 1:
+                count++;
+                int enX1 = rand.nextInt(1000);
+                int enY1 = rand.nextInt(150);
+                if (count == GIFT_PERIOD) {
+                    count = 0;
+                    for (int i = 0; i < 1; i++) {
+                        GiftController giftController = GiftController.create(enX1, enY1);
+                        this.add(giftController);
+                    }
+                }
+                break;
+            case 2:
+                count++;
+                int enX2L = 0;
+                int enX2R = 1000;
+                int enY2 = rand.nextInt(600);
+                if (count == GIFT_PERIOD) {
+                    count = 0;
+                    for (int i = 0; i < 1; i++) {
+                        GiftController giftController = GiftController.create(enX2L, enY2);
+                        GiftController giftController2 = GiftController.create(enX2R, enY2);
+                        this.add(giftController);
+                    }
+                }
+                break;
         }
     }
 

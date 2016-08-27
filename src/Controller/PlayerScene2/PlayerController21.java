@@ -114,27 +114,28 @@ public class PlayerController21 extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable colliable) {
-        if (colliable instanceof WeaponController) {
-            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 0);
-            colliable.getGameObject().destroy();
-        }
-        if (colliable instanceof EnemyController) {
-            colliable.getGameObject().destroy();
-            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 0);
-        }
-        if (colliable instanceof BirdController) {
-            colliable.getGameObject().destroy();
-//            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 1);
-        }
-        if (colliable instanceof GiftController) {
-            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() + 2);
-            colliable.getGameObject().destroy();
-        }
         if (colliable instanceof BookController) {
             playerController2State = PlayerController2State.INVISIBLE;
             INVISIBLE_COOLDOWN += 5;
             colliable.getGameObject().destroy();
         }
+        if(playerController2State == PlayerController2State.INVISIBLE){
+
+        } else if (colliable instanceof WeaponController) {
+            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 0);
+            colliable.getGameObject().destroy();
+
+        }else if (colliable instanceof EnemyController) {
+            colliable.getGameObject().destroy();
+            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 0);
+        }else if (colliable instanceof BirdController) {
+            colliable.getGameObject().destroy();
+//            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 1);
+        } else if (colliable instanceof GiftController) {
+            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() + 2);
+            colliable.getGameObject().destroy();
+        }
+
         if(PlayerController21.instance.gameObject.getHp() <= 0){
             this.getGameObject().destroy();
             PlayerController21.instance.getGameObject().setHp(0);

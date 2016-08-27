@@ -43,5 +43,6 @@ public class SingleController implements BaseController{
     public void setGameDrawer(GameDrawer gameDrawer) {
         this.gameDrawer = gameDrawer;
     }
+
 }
 

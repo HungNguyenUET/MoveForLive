@@ -16,6 +16,7 @@ public class MenuGameScene implements Scene, KeyListener, MouseListener{
     private Image background;
     private Image buttonPlay;
     private GameInput gameInput;
+    private final int stt = 0;
 
     public MenuGameScene(){
         background = Utils.loadImage("resources/backg2.png");
@@ -47,6 +48,11 @@ public class MenuGameScene implements Scene, KeyListener, MouseListener{
     @Override
     public void setGameInput(GameInput gameInput) {
 
+    }
+
+    @Override
+    public int getStt() {
+        return stt;
     }
 
     @Override

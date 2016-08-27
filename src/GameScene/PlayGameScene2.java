@@ -24,6 +24,7 @@ import java.awt.event.MouseListener;
 public class PlayGameScene2 implements Scene, KeyListener {
     private Image backgroud;
     private Image gameOver;
+    private final int stt = 2;
 
     public PlayGameScene2() {
         backgroud =  Utils.loadImage("resources/background2.png");
@@ -79,6 +80,11 @@ public class PlayGameScene2 implements Scene, KeyListener {
     @Override
     public void setGameInput(GameInput gameInput) {
 
+    }
+
+    @Override
+    public int getStt() {
+        return stt;
     }
 
     @Override

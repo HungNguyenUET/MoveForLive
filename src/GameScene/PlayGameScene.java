@@ -23,6 +23,7 @@ public class PlayGameScene implements Scene {
     private Image backgroud;
     private Image gameOver;
     GameInput gameInput;
+    private final int stt = 1;
 
     public PlayGameScene(){
         backgroud =  Utils.loadImage("resources/background.png");
@@ -76,5 +77,10 @@ public class PlayGameScene implements Scene {
     @Override
     public void setGameInput(GameInput gameInput) {
 
+    }
+
+    @Override
+    public int getStt() {
+        return stt;
     }
 }

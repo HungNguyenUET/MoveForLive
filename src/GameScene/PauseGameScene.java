@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 public class PauseGameScene implements Scene,KeyListener {
     private Image pause;
     private GameInput gameInput;
+    private final int stt = -1;
 
     public PauseGameScene() {
         pause = Utils.loadImage("resources/pause2.png");
@@ -64,5 +65,10 @@ public class PauseGameScene implements Scene,KeyListener {
     @Override
     public void setGameInput(GameInput gameInput) {
 
+    }
+
+    @Override
+    public int getStt() {
+        return stt;
     }
 }

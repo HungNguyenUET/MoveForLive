@@ -44,31 +44,30 @@ public class PlayerController22 extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable colliable) {
-        if (colliable instanceof WeaponController) {
-            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
-            colliable.getGameObject().destroy();
-        }
-        if (colliable instanceof EnemyController) {
-            colliable.getGameObject().destroy();
-            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
-        }
-        if (colliable instanceof BirdController) {
-            colliable.getGameObject().destroy();
-//            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
-        }
-        if (colliable instanceof GiftController) {
-            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() + 2);
-            colliable.getGameObject().destroy();
-        }
-        if(PlayerController22.instance.gameObject.getHp() <= 0){
-            this.getGameObject().destroy();
-            PlayerController22.instance.getGameObject().setHp(0);
-        }
         if (colliable instanceof BookController) {
             playerController2State = PlayerController2State.INVISIBLE;
             INVISIBLE_COOLDOWN += 5;
             colliable.getGameObject().destroy();
         }
+        if(playerController2State == PlayerController2State.INVISIBLE){
+
+        }else if (colliable instanceof WeaponController) {
+            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
+            colliable.getGameObject().destroy();
+        }else if (colliable instanceof EnemyController) {
+            colliable.getGameObject().destroy();
+            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
+        }else if (colliable instanceof BirdController) {
+            colliable.getGameObject().destroy();
+//            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() - 1);
+        }else if (colliable instanceof GiftController) {
+            PlayerController22.instance.getGameObject().setHp(PlayerController22.instance.gameObject.getHp() + 2);
+            colliable.getGameObject().destroy();
+        }else if(PlayerController22.instance.gameObject.getHp() <= 0){
+            this.getGameObject().destroy();
+            PlayerController22.instance.getGameObject().setHp(0);
+        }
+
     }
 
 

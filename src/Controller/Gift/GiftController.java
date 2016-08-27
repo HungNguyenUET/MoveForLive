@@ -7,6 +7,7 @@ import Controller.PlayerScene1.PlayerController12;
 import Controller.PlayerScene2.PlayerController21;
 import Controller.PlayerScene2.PlayerController22;
 import Controller.SingleController;
+import GameScene.GameManager;
 import Model.Gift;
 import View.GameDrawer;
 import View.ImageDrawer;
@@ -37,8 +38,17 @@ public class GiftController extends SingleController implements Colliable {
     @Override
     public void run() {
         super.run();
-        if(gameObject.getY() > 600) {
-            gameObject.destroy();
+        switch (GameManager.getInstance().getStackScreen().peek().getStt()) {
+            case 1:
+                if(gameObject.getY() > 600) {
+                    gameObject.destroy();
+                }
+                break;
+            case 2:
+                if(gameObject.getX() < 0 || gameObject.getX() > 1000){
+                    gameObject.destroy();
+                }
+                break;
         }
     }
 
@@ -69,14 +79,14 @@ public class GiftController extends SingleController implements Colliable {
             }
         }
     }
-    public static GiftController create(int x, int y, GiftState giftState){
+    public static GiftController create(int x, int y){
         GiftController giftController = null;
-        switch (giftState) {
-            case SCENE1:
+        switch (GameManager.getInstance().getStackScreen().peek().getStt()) {
+            case 1:
                 giftController = new GiftController(new Gift(x, y), new ImageDrawer("resources/heart.png"));
                 /* TODO: */
                 break;
-            case SCENE2:
+            case 2:
                 giftController = new GiftController(new Gift(x, y), new ImageDrawer("resources/heart.png"));
                 /* TODO: */
                 break;

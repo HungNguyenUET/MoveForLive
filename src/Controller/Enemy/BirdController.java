@@ -4,6 +4,7 @@ import Controller.BulletController;
 import Controller.Colliable;
 import Controller.CollisionPool;
 import Controller.SingleController;
+import GameScene.GameManager;
 import Model.Bird;
 import Model.GameObject;
 import Utils.Utils;
@@ -46,18 +47,19 @@ public class BirdController extends SingleController implements Colliable {
             this.getGameObject().destroy();
         }
     }
-    public static BirdController create(int x, int y, BirdState birdState){
+    public static BirdController create(int x, int y){
         BirdController birdController = null;
-        switch (birdState) {
-            case SCENE1:
-                birdController = new BirdController(new Bird(x, y), new AnimationDrawer(Utils.loadFromSprite("resources/bird.png", true, 64, 64, 0, 0)));
+        switch (GameManager.getInstance().getStackScreen().peek().getStt()) {
+                case 1:
+                    birdController = new BirdController(new Bird(x, y), new AnimationDrawer(Utils.loadFromSprite("resources/bird.png", true, 64, 64, 0, 0)));
                 /* TODO: */
-                break;
-            case SCENE2:
-                birdController = new BirdController(new Bird(x, y), new AnimationDrawer(Utils.loadFromSprite("resources/bird.png", true, 64, 64, 0, 0)));
+                    break;
+                case 2:
+                    birdController = new BirdController(new Bird(x, y), new AnimationDrawer(Utils.loadFromSprite("resources/bird.png", true, 64, 64, 0, 0)));
                 /* TODO: */
-                break;
+                    break;
+
         }
-            return birdController;
+        return birdController;
     }
 }

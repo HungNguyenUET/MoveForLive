@@ -2,8 +2,7 @@ package Controller.Book;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
-import Controller.Gift.GiftController;
-import Controller.Gift.GiftState;
+
 import Controller.PlayerScene2.PlayerController21;
 import Controller.PlayerScene2.PlayerController22;
 import Controller.SingleController;
