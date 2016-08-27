@@ -14,10 +14,10 @@ public class EnemyManager extends ControllerManager {
     private static int count2 = 0;
     private static int count3 = 0;
     private static int count4 = 0;
-    private static final int B = 300;
-    private static final int C = 250;
-    private static final int D = 450;
-    private static final int E = 400;
+    private static final int B = 100;
+    private static final int C = 80;
+    private static final int D = 90;
+    private static final int E = 60;
 
     private EnemyManager(){
 
@@ -33,11 +33,11 @@ public class EnemyManager extends ControllerManager {
                 count2++;
                 count3++;
                 count4++;
-                int enX11L = 0;
-                int enX11R = 500;
-                int enX12L = 600;
+                int enX11L = 50;
+                int enX11R = 600;
+                int enX12L = 800;
                 int enX12R = 1000;
-                int enY = 500;
+                int enY = 0;
                 if (count1 == B) {
                     count1 = 0;
                     for (int i = 0; i < 1; i++) {
@@ -56,6 +56,7 @@ public class EnemyManager extends ControllerManager {
                     count3 = 0;
                     for (int i = 0; i < 1; i++) {
                         EnemyController enemyController = EnemyController.create(enX12L, enY);
+                        System.out.println("aaaaaa");
                         this.add(enemyController);
                     }
                 }
@@ -66,26 +67,26 @@ public class EnemyManager extends ControllerManager {
                         this.add(enemyController);
                     }
                 }
-            case 2:
-                count1++;
-                count2++;
-                int enY21 = 0;
-                int enY22 = 300;
-                int enX2 = rand.nextInt(1000);
-                if (count1 == B) {
-                    count1 = 0;
-                    for (int i = 0; i < 1; i++) {
-                        EnemyController enemyController = EnemyController.create(enX2, enY21);
-                        this.add(enemyController);
-                    }
-                }
-                if (count2 == C) {
-                    count2 = 0;
-                    for (int j = 0; j < 1; j++) {
-                        EnemyController enemyController = EnemyController.create(enX2, enY22);
-                        this.add(enemyController);
-                    }
-                }
+//            case 2:
+//                count1++;
+//                count2++;
+//                int enY21 = 0;
+//                int enY22 = 300;
+//                int enX2 = rand.nextInt(1000);
+//                if (count1 == B) {
+//                    count1 = 0;
+//                    for (int i = 0; i < 1; i++) {
+//                        EnemyController enemyController = EnemyController.create(enX2, enY21);
+//                        this.add(enemyController);
+//                    }
+//                }
+//                if (count2 == C) {
+//                    count2 = 0;
+//                    for (int j = 0; j < 1; j++) {
+//                        EnemyController enemyController = EnemyController.create(enX2, enY22);
+//                        this.add(enemyController);
+//                    }
+//                }
         }
     }
 

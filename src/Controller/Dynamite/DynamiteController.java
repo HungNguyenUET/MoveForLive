@@ -83,7 +83,7 @@ public class DynamiteController extends SingleController implements Colliable {
                 if (!GameSetting.getInstance().inScreen(this.gameObject)) {
                     this.gameObject.destroy();
                 }
-                if (this.getGameObject().getY() == 300 || this.getGameObject().getY() == 600) {
+                if (this.getGameObject().getY() == 250 || this.getGameObject().getY() == 550) {
                     gameObject.destroy();
 //            Utils.loadImage("resources/Explosion.png");
                     Utils.playSound("resources/explosion.wav", false);

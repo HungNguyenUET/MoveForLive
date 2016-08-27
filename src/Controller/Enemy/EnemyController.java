@@ -17,15 +17,15 @@ public class EnemyController extends SingleController implements Colliable {
         super(gameObject, gameDrawer);
         switch (GameManager.getInstance().getStackScreen().peek().getStt()) {
             case 1:
-                if (this.getGameObject().getX() == 0 || this.getGameObject().getX() == 500)
-                    this.gameVector.dx += 3;
-                if (this.getGameObject().getX() == 600 || this.getGameObject().getX() == 1000)
-                    this.gameVector.dx -= 3;
-                break;
-            case 2:
-                if (this.getGameObject().getY() == 0 || this.getGameObject().getX() == 300)
+                if (this.getGameObject().getY() == 0 || this.getGameObject().getY() == 500 )
+                    this.gameVector.dy += 3;
+                if (this.getGameObject().getY() == 600 || this.getGameObject().getY() == 1000)
                     this.gameVector.dy += 3;
                 break;
+//            case 2:
+//                if (this.getGameObject().getY() == 0 || this.getGameObject().getX() == 300)
+//                    this.gameVector.dy += 3;
+//                break;
         }
         CollisionPool.instance.add(this);
     }
@@ -49,14 +49,14 @@ public class EnemyController extends SingleController implements Colliable {
                     gameObject.destroy();
                 }
                 break;
-            case 2:
-                if (gameObject.getY() == 300) {
-                    gameObject.destroy();
-                }
-
-                if (gameObject.getY() == 600) {
-                    gameObject.destroy();
-                }
+//            case 2:
+//                if (gameObject.getY() == 250) {
+//                    gameObject.destroy();
+//                }
+//
+//                if (gameObject.getY() == 600) {
+//                    gameObject.destroy();
+//                }
         }
     }
     public static EnemyController create(int x, int y){
@@ -66,10 +66,10 @@ public class EnemyController extends SingleController implements Colliable {
                 enemyController = new EnemyController(new Enemy(x, y), new ImageDrawer("resources/star.png"));
                 /* TODO: */
                 break;
-            case 2:
-                enemyController = new EnemyController(new Enemy(x, y), new ImageDrawer("resources/star.png"));
-                /* TODO: */
-                break;
+//            case 2:
+//                enemyController = new EnemyController(new Enemy(x, y), new ImageDrawer("resources/star.png"));
+//                /* TODO: */
+//                break;
 
         }
         return enemyController;

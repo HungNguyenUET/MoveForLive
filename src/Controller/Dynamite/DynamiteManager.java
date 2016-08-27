@@ -26,6 +26,7 @@ public class DynamiteManager extends ControllerManager {
     public void run() {
         super.run();
         switch (GameManager.getInstance().getStackScreen().peek().getStt()) {
+
             case 1:
                 count++;
                 Random rand = new Random();
@@ -39,7 +40,7 @@ public class DynamiteManager extends ControllerManager {
             case 2:
                 count++;
                 Random rand1 = new Random();
-                if (count == 50) {
+                if (count == 20) {
                     count = 0;
                     int x = rand1.nextInt(GameSetting.getInstance().getScreenWidth()) + 1;
                     DynamiteController dynamiteController = DynamiteController.create(x, 0);
