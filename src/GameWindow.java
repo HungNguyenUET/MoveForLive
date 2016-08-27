@@ -93,6 +93,7 @@ public class GameWindow extends Frame implements Runnable {
                 GameManager.getInstance().getStackScreen().peek().run();
                 keyListener = GameManager.getInstance().getStackScreen().peek().getKeyListener();
                 this.addKeyListener(keyListener);
+                System.out.println(GameManager.getInstance().getStackScreen().peek().getStt());
                 Thread.sleep(gameSetting.getThreadDelay());
                 repaint();
             } catch (InterruptedException e) {

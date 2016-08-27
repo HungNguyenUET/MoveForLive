@@ -24,6 +24,12 @@ public class PlayGameScene implements Scene {
     private Image gameOver;
     GameInput gameInput;
 
+    public int getStt() {
+        return stt;
+    }
+
+    private final int stt = 1;
+
     public PlayGameScene(){
         backgroud =  Utils.loadImage("resources/background.png");
         gameOver = Utils.loadImage("resources/gameover.png");
