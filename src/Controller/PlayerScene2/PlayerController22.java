@@ -114,7 +114,7 @@ public class PlayerController22 extends SingleController implements Colliable {
     }
 
     public final static PlayerController22 instance = new PlayerController22(
-            new Player(300, 300),
+            new Player(500, 500),
             new ImageDrawer("resources/ninja2.png")
     );
 

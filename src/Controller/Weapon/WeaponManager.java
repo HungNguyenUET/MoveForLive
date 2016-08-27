@@ -26,7 +26,7 @@ public class WeaponManager extends ControllerManager {
         if(count == A){
             count = 0;
             for(int i = 0; i < 1; i++){
-                int random = rand.nextInt(6);
+                int random = rand.nextInt(3);
                 if (random == 1) {
                     WeaponController weaponController = WeaponController.create(enX, enY, WeaponStateShot.FOLLOWED1, WeaponStateScene.SCENE1);
                     this.add(weaponController);

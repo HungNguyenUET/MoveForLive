@@ -20,14 +20,17 @@ import java.awt.event.MouseListener;
  * Created by Viet on 8/18/2016.
  */
 public class PlayGameScene implements GameScene, KeyListener {
+
     private Image backgroud;
     private Image gameOver;
     public static GameSceneListener gameScenceListener;
+
 
     public PlayGameScene() {
         backgroud =  Utils.loadImage("resources/background.png");
         gameOver = Utils.loadImage("resources/gameover.png");
         Utils.playSound("resources/nhacnen.wav",true);
+
         reset();
     }
 
