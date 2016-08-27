@@ -2,15 +2,19 @@ package Controller.Dynamite;
 
 import Controller.Colliable;
 import Controller.CollisionPool;
+import Controller.Enemy.EnemyManager;
+import Controller.ExplosionController;
 import Controller.PlayerScene1.PlayerController11;
 import Controller.PlayerScene1.PlayerController12;
 import Controller.PlayerScene2.PlayerController21;
 import Controller.PlayerScene2.PlayerController22;
 import Controller.SingleController;
 import Model.Dynamite;
+import Model.Explosion;
 import Model.GameObject;
 import Model.GameSetting;
 import Utils.Utils;
+import View.AnimationDrawer;
 import View.GameDrawer;
 import View.ImageDrawer;
 
@@ -36,6 +40,19 @@ public class DynamiteController extends SingleController implements Colliable {
             gameObject.destroy();
 //            Utils.loadImage("resources/Explosion.png");
             Utils.playSound("resources/explosion.wav", false);
+            ExplosionController explosionController = new ExplosionController(
+                    new Explosion(this.gameObject.getX(),this.gameObject.getY()),
+                    new AnimationDrawer( Utils.loadImages(
+                            "resources/fire_1.png",
+                            "resources/fire_2.png",
+                            "resources/fire_3.png",
+                            "resources/fire_4.png",
+                            "resources/fire_5.png",
+                            "resources/fire_6.png",
+                            "resources/fire_7.png",
+                            "resources/fire_8.png"))
+            );
+            EnemyManager.instance.add(explosionController);
             int dynamiteCenterX = this.gameObject.getX() + this.gameObject.getWidth() / 2;
             int dynamiteCenterY = this.gameObject.getY() + this.gameObject.getHeight() / 2;
             int playerCenterX = PlayerController11.instance.gameObject.getX() + PlayerController11.instance.gameObject.getWidth() / 2;

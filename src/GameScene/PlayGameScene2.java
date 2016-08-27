@@ -24,12 +24,6 @@ public class PlayGameScene2 implements Scene, KeyListener {
     private Image backgroud;
     private Image gameOver;
 
-    public int getStt() {
-        return stt;
-    }
-
-    private final int stt = 2;
-
     public PlayGameScene2() {
         backgroud =  Utils.loadImage("resources/background2.png");
         gameOver = Utils.loadImage("resources/gameover.png");

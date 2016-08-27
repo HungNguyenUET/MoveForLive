@@ -16,11 +16,6 @@ public class MenuGameScene implements Scene, KeyListener, MouseListener{
     private Image background;
     private Image buttonPlay;
     private GameInput gameInput;
-    public int getStt() {
-        return stt;
-    }
-
-    private final int stt = 0;
 
     public MenuGameScene(){
         background = Utils.loadImage("resources/backg2.png");

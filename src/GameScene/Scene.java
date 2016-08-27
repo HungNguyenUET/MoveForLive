@@ -15,5 +15,4 @@ public interface Scene {
     KeyListener getKeyListener();
     MouseListener getMouseListenr();
     void setGameInput(GameInput gameInput);
-    int getStt();
 }
