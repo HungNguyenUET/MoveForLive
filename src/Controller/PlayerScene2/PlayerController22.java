@@ -71,8 +71,8 @@ public class PlayerController22 extends SingleController implements Colliable {
         this.gameVector.dx = 0;
         if (gameInput.keyLeft&& !gameInput.keyRight) {
             this.gameVector.dx = -SPEED;
-            if(this.gameObject.getX() < 600){
-                this.gameObject.setX(600);
+            if(this.gameObject.getX() < 50){
+                this.gameObject.setX(50);
             }
         } else if (!gameInput.keyLeft && gameInput.keyRight) {
             this.gameVector.dx = SPEED;
@@ -99,12 +99,12 @@ public class PlayerController22 extends SingleController implements Colliable {
         if(this.gameObject.getY() >= 500){
             this.gameObject.setY(500);
 
-        }else if (this.gameObject.getY() == 350 ) {
+        }else if (this.gameObject.getY() == 400 ) {
             Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyUp = false;
-        }else if (gameObject.getX() <= 600) {
-            this.gameObject.setX(600);
+        }else if (gameObject.getX() <= 50) {
+            this.gameObject.setX(50);
         }else if ( gameObject.getX() >= 1000) {
             this.gameObject.setX(1000);
         }
@@ -114,7 +114,7 @@ public class PlayerController22 extends SingleController implements Colliable {
     }
 
     public final static PlayerController22 instance = new PlayerController22(
-            new Player(300, 300),
+            new Player(500, 500),
             new ImageDrawer("resources/ninja2.png")
     );
 

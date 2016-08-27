@@ -40,15 +40,15 @@ public class PlayGameScene2 implements Scene, KeyListener {
         GiftManager.instance.draw(g);
         DynamiteManager.getInst().draw(g);
 //        DemonManager.instance.draw(g);
-        g.drawString("POINT: " + PlayerController21.instance.getGameObject().getPoint(), 400, 50);
+        g.drawString("POINT: " + PlayerController21.instance.getGameObject().getPoint(), 900, 50);
         g.drawString("HP: " + PlayerController21.instance.getGameObject().getHp(), 50, 50);
-        g.drawString("POINT: " + PlayerController22.instance.getGameObject().getPoint(), 1000, 50);
-        g.drawString("HP: " + PlayerController22.instance.getGameObject().getHp(), 700, 50);
+        g.drawString("POINT: " + PlayerController22.instance.getGameObject().getPoint(), 900, 350);
+        g.drawString("HP: " + PlayerController22.instance.getGameObject().getHp(), 50, 350);
         if(PlayerController22.instance.gameObject.getHp() <= 0){
-            g.drawImage(gameOver, 650, 150, null);
+            g.drawImage(gameOver, 400,300, null);
         }
         if(PlayerController21.instance.gameObject.getHp() <= 0){
-            g.drawImage(gameOver, 150, 150, null);
+            g.drawImage(gameOver, 400, 100, null);
         }
     }
 
@@ -65,7 +65,7 @@ public class PlayGameScene2 implements Scene, KeyListener {
 
     @Override
     public KeyListener getKeyListener() {
-        return this;
+        return PlayerControllerManager2.instance.getKeyListener();
     }
 
     @Override

@@ -54,8 +54,8 @@ public class PlayerController21 extends SingleController implements Colliable {
             }
         } else if (!gameInput.keyA && gameInput.keyD) {
             this.gameVector.dx = SPEED;
-            if(this.gameObject.getX() > 500){
-                this.gameObject.setX(500);
+            if(this.gameObject.getX() > 1000){
+                this.gameObject.setX(1000);
             }
         }
         if (gameInput.keyW) {
@@ -78,24 +78,24 @@ public class PlayerController21 extends SingleController implements Colliable {
         if (gameInput.keySpace) {
             bulletrun();
         }
-        if(this.gameObject.getY() >= 500){
-            this.gameObject.setY(500);
+        if(this.gameObject.getY() >= 200){
+            this.gameObject.setY(200);
 
-        } else if (this.gameObject.getY() == 350 ) {
+        } else if (this.gameObject.getY() == 100 ) {
             Utils.playSound("resources/jumpsound.wav", false);
             this.gameVector.dy = JUMP_SPEED;
             gameInput.keyW = false;
         }
         else if (this.gameObject.getX() <= 50){
             this.gameObject.setX(50);
-        }else if (this.gameObject.getX() >= 500){
-            this.gameObject.setX(500);
+        }else if (this.gameObject.getX() >= 1000){
+            this.gameObject.setX(1000);
         }
         super.run();
         bulletManager.run();
     }
 
-    public static PlayerController21 instance = new PlayerController21(new Player(300, 300), new ImageDrawer("resources/ninja1.png"));
+    public static PlayerController21 instance = new PlayerController21(new Player(500, 200), new ImageDrawer("resources/ninja1.png"));
 
     @Override
     public void onCollide(Colliable colliable) {
