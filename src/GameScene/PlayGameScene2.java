@@ -42,7 +42,6 @@ public class PlayGameScene2 implements Scene, KeyListener {
         GiftManager.instance.draw(g);
         DynamiteManager.getInst().draw(g);
         BookManager.instance.draw(g);
-//        DemonManager.instance.draw(g);
         g.drawString("POINT: " + PlayerController21.instance.getGameObject().getPoint(), 900, 50);
         g.drawString("HP: " + PlayerController21.instance.getGameObject().getHp(), 50, 50);
         g.drawString("POINT: " + PlayerController22.instance.getGameObject().getPoint(), 900, 350);
