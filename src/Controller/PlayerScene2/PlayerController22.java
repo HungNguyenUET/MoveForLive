@@ -22,7 +22,7 @@ public class PlayerController22 extends SingleController implements Colliable {
     private static final int JUMP_SPEED = 5;
     private static final int ATK_SPEED = 3;
     private int count;
-    private int INVISIBLE_COUNT = 0;
+    private int INVISIBLE_COOLDOWN = 5;
     private GameInput gameInput;
     private ControllerManager bulletManager;
     private PlayerController2State playerController2State;
@@ -66,6 +66,7 @@ public class PlayerController22 extends SingleController implements Colliable {
         }
         if (colliable instanceof BookController) {
             playerController2State = PlayerController2State.INVISIBLE;
+            INVISIBLE_COOLDOWN += 5;
             colliable.getGameObject().destroy();
         }
     }
@@ -80,7 +81,12 @@ public class PlayerController22 extends SingleController implements Colliable {
             case NORMAL:
                 break;
             case INVISIBLE:
-                this.setGameDrawer(new ImageDrawer("resources/nu.png"));
+                INVISIBLE_COOLDOWN--;
+                if (INVISIBLE_COOLDOWN >= 0) {
+                    this.setGameDrawer(new ImageDrawer("resources/nu.png"));
+                }else{
+                    playerController2State = PlayerController2State.NORMAL;
+                }
                 break;
         }
         if (gameInput.keyLeft&& !gameInput.keyRight) {

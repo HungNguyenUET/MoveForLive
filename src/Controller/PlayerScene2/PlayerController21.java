@@ -22,6 +22,7 @@ public class PlayerController21 extends SingleController implements Colliable {
     private static final int SPEED = 10;
     private static final int JUMP_SPEED = 5;
     private static final int ATK_SPEED = 3;
+    private int INVISIBLE_COOLDOWN = 5;
     private int count;
 
     private GameInput gameInput;
@@ -53,7 +54,12 @@ public class PlayerController21 extends SingleController implements Colliable {
             case NORMAL:
                 break;
             case INVISIBLE:
-                this.setGameDrawer(new ImageDrawer("resources/nam.png"));
+                INVISIBLE_COOLDOWN--;
+                if (INVISIBLE_COOLDOWN >= 0) {
+                    this.setGameDrawer(new ImageDrawer("resources/nam.png"));
+                }else{
+                    playerController2State = PlayerController2State.NORMAL;
+                }
                 break;
         }
         if (gameInput.keyA && !gameInput.keyD) {
@@ -126,6 +132,7 @@ public class PlayerController21 extends SingleController implements Colliable {
         }
         if (colliable instanceof BookController) {
             playerController2State = PlayerController2State.INVISIBLE;
+            INVISIBLE_COOLDOWN += 5;
             colliable.getGameObject().destroy();
         }
         if(PlayerController21.instance.gameObject.getHp() <= 0){
