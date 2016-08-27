@@ -1,6 +1,7 @@
 package Controller.PlayerScene2;
 
 import Controller.*;
+import Controller.Book.BookController;
 import Controller.Enemy.BirdController;
 import Controller.Enemy.EnemyController;
 import Controller.Gift.GiftController;
@@ -21,15 +22,17 @@ public class PlayerController22 extends SingleController implements Colliable {
     private static final int JUMP_SPEED = 5;
     private static final int ATK_SPEED = 3;
     private int count;
+    private int INVISIBLE_COUNT = 0;
     private GameInput gameInput;
     private ControllerManager bulletManager;
-
+    private PlayerController2State playerController2State;
 
     public PlayerController22(Player gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
         this.gameInput = new GameInput();
         this.bulletManager = new ControllerManager();
         CollisionPool.instance.add(this);
+        playerController2State = PlayerController2State.NORMAL;
         //PlayerControllerManager1.instance.add(this);
     }
 
@@ -61,6 +64,10 @@ public class PlayerController22 extends SingleController implements Colliable {
             this.getGameObject().destroy();
             PlayerController22.instance.getGameObject().setHp(0);
         }
+        if (colliable instanceof BookController) {
+            playerController2State = PlayerController2State.INVISIBLE;
+            colliable.getGameObject().destroy();
+        }
     }
 
 
@@ -69,6 +76,13 @@ public class PlayerController22 extends SingleController implements Colliable {
     public void run() {
         count++;
         this.gameVector.dx = 0;
+        switch (playerController2State){
+            case NORMAL:
+                break;
+            case INVISIBLE:
+                this.setGameDrawer(new ImageDrawer("resources/nu.png"));
+                break;
+        }
         if (gameInput.keyLeft&& !gameInput.keyRight) {
             this.gameVector.dx = -SPEED;
             if(this.gameObject.getX() < 50){

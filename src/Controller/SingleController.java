@@ -39,5 +39,9 @@ public class SingleController implements BaseController{
     public void run() {
         gameObject.move(this.gameVector);
     }
+
+    public void setGameDrawer(GameDrawer gameDrawer) {
+        this.gameDrawer = gameDrawer;
+    }
 }
 

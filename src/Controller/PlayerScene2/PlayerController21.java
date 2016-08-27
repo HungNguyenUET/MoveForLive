@@ -1,6 +1,7 @@
 package Controller.PlayerScene2;
 
 import Controller.*;
+import Controller.Book.BookController;
 import Controller.Enemy.BirdController;
 import Controller.Enemy.EnemyController;
 import Controller.Gift.GiftController;
@@ -25,12 +26,13 @@ public class PlayerController21 extends SingleController implements Colliable {
 
     private GameInput gameInput;
     private ControllerManager bulletManager;
-
+    private PlayerController2State playerController2State;
 
     private PlayerController21(Player player, GameDrawer gameDrawer) {
         super(player, gameDrawer);
         this.gameInput = new GameInput();
         this.bulletManager = new ControllerManager();
+        playerController2State = PlayerController2State.NORMAL;
         CollisionPool.instance.add(this);
         //PlayerControllerManager1.instance.add(this);
         //this.gameVector.dx = SPEED;
@@ -47,6 +49,13 @@ public class PlayerController21 extends SingleController implements Colliable {
     public void run() {
         count++;
         this.gameVector.dx = 0;
+        switch (playerController2State){
+            case NORMAL:
+                break;
+            case INVISIBLE:
+                this.setGameDrawer(new ImageDrawer("resources/nam.png"));
+                break;
+        }
         if (gameInput.keyA && !gameInput.keyD) {
             this.gameVector.dx = -SPEED;
             if(this.gameObject.getX() < 50){
@@ -100,12 +109,12 @@ public class PlayerController21 extends SingleController implements Colliable {
     @Override
     public void onCollide(Colliable colliable) {
         if (colliable instanceof WeaponController) {
-            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 1);
+            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 0);
             colliable.getGameObject().destroy();
         }
         if (colliable instanceof EnemyController) {
             colliable.getGameObject().destroy();
-            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 1);
+            PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() - 0);
         }
         if (colliable instanceof BirdController) {
             colliable.getGameObject().destroy();
@@ -113,6 +122,10 @@ public class PlayerController21 extends SingleController implements Colliable {
         }
         if (colliable instanceof GiftController) {
             PlayerController21.instance.getGameObject().setHp(PlayerController21.instance.gameObject.getHp() + 2);
+            colliable.getGameObject().destroy();
+        }
+        if (colliable instanceof BookController) {
+            playerController2State = PlayerController2State.INVISIBLE;
             colliable.getGameObject().destroy();
         }
         if(PlayerController21.instance.gameObject.getHp() <= 0){
