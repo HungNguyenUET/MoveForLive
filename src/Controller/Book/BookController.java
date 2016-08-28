@@ -24,12 +24,14 @@ public class BookController extends SingleController implements Colliable {
     public BookController(Book gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
         this.gameVector.dy = SPEED_Y;
+        //Add vao CollisionPool de xet va cham
         CollisionPool.instance.add(this);
     }
 
     @Override
     public void run() {
         super.run();
+        //Huy khi bay ra ngoai man hinh
         if(gameObject.getY() > 600) {
             gameObject.destroy();
         }

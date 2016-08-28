@@ -23,6 +23,7 @@ public class GameWindow extends Frame implements Runnable {
     public GameWindow(){
         //Setup window game
         configUI();
+        //Push vao stack MenuGameScene
         GameManager.getInstance().getStackScreen().push(new MenuGameScene());
         this.bufferedImage = new BufferedImage(gameSetting.getScreenWidth(),
                 gameSetting.getScreenHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -31,6 +32,7 @@ public class GameWindow extends Frame implements Runnable {
         mouseListener = GameManager.getInstance().getStackScreen().peek().getMouseListenr();
         this.addKeyListener(keyListener);
         this.addMouseListener(mouseListener);
+        //Khoi tao Luong chay
         thread = new Thread(this);
         thread.start();
     }
@@ -90,7 +92,9 @@ public class GameWindow extends Frame implements Runnable {
     public void run() {
         while (true){
             try {
+                //Chay ham run cua Scene dang o tren cung Stack
                 GameManager.getInstance().getStackScreen().peek().run();
+                //Lay KeyListener cua Scene dang o tren cung Stack
                 keyListener = GameManager.getInstance().getStackScreen().peek().getKeyListener();
                 this.addKeyListener(keyListener);
                 Thread.sleep(gameSetting.getThreadDelay());

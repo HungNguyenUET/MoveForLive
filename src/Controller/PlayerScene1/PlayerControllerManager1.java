@@ -38,6 +38,7 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
 
     @Override
     public void run() {
+        //Set GameInput cho cac PlayerController
         PlayerController11.instance.setGameInput(gameInput);
         PlayerController12.instance.setGameInput(gameInput);
         super.run();
@@ -48,7 +49,7 @@ public class PlayerControllerManager1 extends ControllerManager implements KeyLi
         if(!gameInput.keyP){
             count = 0;
         }
-
+        //Cac hanh vi khi Man hinh 1 GameOver
         if(PlayerController11.instance.getGameObject().getHp() <= 0 &&
                 PlayerController12.instance.getGameObject().getHp() <= 0){
             if(PlayerController11.instance.getGameObject().getPoint() > PlayerController12.instance.getGameObject().getPoint()){
