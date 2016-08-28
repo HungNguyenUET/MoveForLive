@@ -130,13 +130,15 @@ public class DynamiteController extends SingleController implements Colliable {
     public void onCollide(Colliable c) {
         if (c instanceof PlayerController11) {
             Utils.playSound("resources/explosion.wav", false);
+            this.getGameObject().destroy();
             if(PlayerController11.instance.gameObject.getHp() <= 0){
                 PlayerController11.instance.getGameObject().setPoint(PlayerController11.instance.gameObject.getPoint());
             } else
-                PlayerController11.instance.getGameObject().setPoint(PlayerController11.instance.gameObject.getPoint() - 1);
+                PlayerController11.instance.gameObject.setHp(PlayerController11.instance.gameObject.getHp() - 1);
         }
         if (c instanceof PlayerController12) {
             Utils.playSound("resources/explosion.wav", false);
+            this.getGameObject().destroy();
             if(PlayerController12.instance.gameObject.getHp() <= 0){
                 PlayerController12.instance.getGameObject().setPoint(PlayerController12.instance.gameObject.getPoint());
             } else
@@ -144,6 +146,7 @@ public class DynamiteController extends SingleController implements Colliable {
         }
         if (c instanceof PlayerController21) {
             Utils.playSound("resources/explosion.wav", false);
+            this.getGameObject().destroy();
             if(PlayerController21.instance.gameObject.getHp() <= 0){
                 PlayerController21.instance.getGameObject().setPoint(PlayerController21.instance.gameObject.getPoint());
             } else
@@ -151,6 +154,7 @@ public class DynamiteController extends SingleController implements Colliable {
         }
         if (c instanceof PlayerController22) {
             Utils.playSound("resources/explosion.wav", false);
+            this.getGameObject().destroy();
             if(PlayerController22.instance.gameObject.getHp() <= 0){
                 PlayerController22.instance.getGameObject().setPoint(PlayerController22.instance.gameObject.getPoint());
             } else
