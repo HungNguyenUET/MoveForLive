@@ -4,6 +4,7 @@
 ####
 ### Game di chuyển 2 nhân vât tránh và bắn
 ###
+#####  
 <img src="http://i.imgur.com/tiDEtvs.jpg">
 ####  
 <img src="http://i.imgur.com/3zW3pvD.jpg">
